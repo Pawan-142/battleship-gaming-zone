@@ -26,14 +26,29 @@ export const BattleshipHeader = ({ onBookClick }) => {
   return (
     <header className={`bs-header ${isScrolled ? 'scrolled' : ''}`}>
       <div className="bs-header-inner">
-        {/* Left: Minimal Wordmark */}
+        {/* Left: Official Emblem & Wordmark */}
         <div className="bs-logo-container">
-          <Link to="/" className="bs-logo-text" style={{ textDecoration: 'none' }}>
-            <div className="bs-logo-main">
-              <span className="bs-logo-diamond"></span>
-              <span>BATTLESHIP</span>
+          <Link to="/" className="bs-logo-text" style={{ textDecoration: 'none', display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <img 
+              src="/images/battleship/battleship_logo.jpg" 
+              alt="Battleship Gaming Zone" 
+              style={{ 
+                width: '42px', 
+                height: '42px', 
+                borderRadius: '50%', 
+                objectFit: 'cover', 
+                border: '1.5px solid #00f0ff',
+                boxShadow: '0 0 14px rgba(0, 240, 255, 0.45)'
+              }}
+            />
+            <div>
+              <div className="bs-logo-main" style={{ display: 'flex', alignItems: 'center', gap: '6px' }}>
+                <span style={{ letterSpacing: '0.08em', fontWeight: 800 }}>BATTLESHIP</span>
+              </div>
+              <span className="bs-logo-sub" style={{ fontSize: '0.65rem', color: '#94a3b8', letterSpacing: '0.1em' }}>
+                GAMING ZONE &bull; HYDERABAD
+              </span>
             </div>
-            <span className="bs-logo-sub">HYDERABAD &bull; ARENA</span>
           </Link>
 
           <div className="bs-live-badge">

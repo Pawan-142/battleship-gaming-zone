@@ -458,16 +458,29 @@ export const BattleshipBumperCarsPage = () => {
       {/* 8. Minimal Luxury Footer */}
       <footer style={{ padding: '56px 0', backgroundColor: 'var(--bs-black)', borderTop: 'var(--border-subtle)', fontFamily: 'var(--font-mono)', fontSize: '10px', color: 'var(--bs-gray-mute)' }}>
         <div className="bs-container" style={{ display: 'flex', flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between', gap: '28px' }}>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
-              <span className="bs-logo-diamond"></span>
-              <span style={{ color: 'var(--bs-white)', fontFamily: 'var(--font-heading)', fontWeight: 600, letterSpacing: '0.3em', fontSize: '13px' }}>
-                BATTLESHIP
+          <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+            <img 
+              src="/images/battleship/battleship_logo.jpg" 
+              alt="Battleship Gaming Zone" 
+              style={{ 
+                width: '44px', 
+                height: '44px', 
+                borderRadius: '50%', 
+                border: '1.5px solid #00f0ff', 
+                objectFit: 'cover',
+                boxShadow: '0 0 12px rgba(0, 240, 255, 0.4)'
+              }}
+            />
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '2px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <span style={{ color: 'var(--bs-white)', fontFamily: 'var(--font-heading)', fontWeight: 700, letterSpacing: '0.15em', fontSize: '14px' }}>
+                  BATTLESHIP GAMING ZONE
+                </span>
+              </div>
+              <span style={{ fontSize: '9px', letterSpacing: '0.15em', color: 'rgba(221,221,221,0.6)', textTransform: 'uppercase' }}>
+                Physical Entertainment &bull; Hyderabad, India
               </span>
             </div>
-            <span style={{ fontSize: '9px', letterSpacing: '0.2em', color: 'rgba(221,221,221,0.4)', textTransform: 'uppercase' }}>
-              Physical Entertainment & Gaming &bull; Hyderabad, India
-            </span>
           </div>
 
           <div style={{ display: 'flex', gap: '28px', textTransform: 'uppercase', letterSpacing: '0.18em' }}>
