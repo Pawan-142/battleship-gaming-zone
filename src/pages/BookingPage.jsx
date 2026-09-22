@@ -876,6 +876,20 @@ export const BookingPage = () => {
           margin-bottom: 1.25rem;
         }
 
+        [data-theme="light"] .summary-specs-list {
+          color: #334155;
+          border-bottom-color: rgba(15, 23, 42, 0.1);
+        }
+
+        [data-theme="light"] .summary-specs-list span,
+        [data-theme="light"] .summary-specs-list strong {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .summary-title-u {
+          color: #0f172a;
+        }
+
         .s-line {
           display: flex;
           align-items: center;
@@ -893,12 +907,29 @@ export const BookingPage = () => {
         .fare-row {
           display: flex;
           justify-content: space-between;
+          color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .fare-row {
+          color: #334155;
+        }
+
+        [data-theme="light"] .fare-row span {
+          color: #334155;
+        }
+
+        [data-theme="light"] .fare-row strong {
+          color: #0f172a;
         }
 
         .advance-row {
           background: var(--bg-deep);
           border-left: 3px solid var(--cyan-primary);
           padding: 0.5rem 0.75rem;
+        }
+
+        [data-theme="light"] .advance-row {
+          background: #f1f5f9;
         }
 
         .hold-guarantee-note {
@@ -914,13 +945,16 @@ export const BookingPage = () => {
 
         .hold-guarantee-note strong {
           display: block;
-          color: #ffffff;
+          color: var(--text-primary);
           margin-bottom: 0.2rem;
         }
 
-        .hold-guarantee-note p {
-          color: var(--text-secondary);
-          line-height: 1.4;
+        [data-theme="light"] .hold-guarantee-note strong {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .hold-guarantee-note p {
+          color: #334155;
         }
 
         @media (max-width: 1024px) {
