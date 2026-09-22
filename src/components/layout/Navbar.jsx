@@ -81,13 +81,15 @@ export const Navbar = () => {
       <header className={`navbar-root ${scrolled ? 'scrolled' : ''}`}>
         <div className="container nav-container">
           {/* Brand Logo */}
-          <Link to="/" className="brand-logo" aria-label="HyperDrive Arena Home">
-            <div className="logo-badge-icon">
-              <Zap size={18} className="logo-icon-svg" />
-            </div>
+          <Link to="/" className="brand-logo" aria-label="Battleship Gaming Zone Home">
+            <img 
+              src="/images/battleship_logo.jpg" 
+              alt="Battleship Gaming Zone Logo" 
+              className="brand-logo-img" 
+            />
             <div className="logo-text-stack">
-              <span className="logo-brand-main">HYPERDRIVE</span>
-              <span className="logo-brand-sub">ARENA ATELIER • HYDERABAD</span>
+              <span className="logo-brand-main">BATTLESHIP</span>
+              <span className="logo-brand-sub">GAMING ZONE • HYDERABAD</span>
             </div>
           </Link>
 
@@ -363,20 +365,20 @@ export const Navbar = () => {
           flex-shrink: 0;
         }
 
-        .logo-badge-icon {
-          width: 32px;
-          height: 32px;
+        .brand-logo-img {
+          width: 44px;
+          height: 44px;
           border-radius: 50%;
-          background: #ffffff;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: #07090d;
+          object-fit: cover;
+          border: 1.5px solid #00f0ff;
+          box-shadow: 0 0 14px rgba(0, 240, 255, 0.4);
+          flex-shrink: 0;
+          transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
-        [data-theme="light"] .logo-badge-icon {
-          background: #090d16;
-          color: #ffffff;
+        .brand-logo:hover .brand-logo-img {
+          transform: scale(1.08);
+          box-shadow: 0 0 22px rgba(0, 240, 255, 0.7);
         }
 
         .logo-text-stack {

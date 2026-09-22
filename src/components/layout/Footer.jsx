@@ -51,13 +51,18 @@ export const Footer = () => {
           {/* Brand Info */}
           <div className="forge-f-col brand-col">
             <div className="forge-f-logo">
-              <div className="forge-logo-icon">
-                <Zap size={16} color="#07090d" />
+              <img 
+                src="/images/battleship_logo.jpg" 
+                alt="Battleship Gaming Zone Logo" 
+                className="forge-f-logo-img" 
+              />
+              <div className="forge-f-logo-text">
+                <span className="forge-logo-txt">BATTLESHIP</span>
+                <span className="forge-logo-sub">GAMING ZONE • HYDERABAD</span>
               </div>
-              <span className="forge-logo-txt">HYPERDRIVE ATELIER</span>
             </div>
             <p className="forge-brand-manifesto">
-              Bespoke physical entertainment built on adrenaline and distinction. Hyderabad’s premier commercial arena for 360° electric drift, 2-tier laser missions, UV bowling, and hydraulic VR.
+              Hyderabad’s premier entertainment & gaming arena for 360° electric drift, 2-tier laser missions, UV bowling, and hydraulic motion pods.
             </p>
             <div className="forge-socials">
               <a href="https://instagram.com" target="_blank" rel="noreferrer" aria-label="Instagram" className="forge-social-link">
@@ -203,26 +208,45 @@ export const Footer = () => {
         .forge-f-logo {
           display: flex;
           align-items: center;
-          gap: 0.6rem;
+          gap: 0.75rem;
           margin-bottom: 1.25rem;
         }
 
-        .forge-logo-icon {
-          width: 28px;
-          height: 28px;
-          border-radius: 6px;
-          background: #ffffff;
+        .forge-f-logo-img {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          object-fit: cover;
+          border: 1.5px solid #00f0ff;
+          box-shadow: 0 0 14px rgba(0, 240, 255, 0.4);
+          flex-shrink: 0;
+        }
+
+        .forge-f-logo-text {
           display: flex;
-          align-items: center;
-          justify-content: center;
+          flex-direction: column;
         }
 
         .forge-logo-txt {
           font-family: var(--font-display);
           font-weight: 800;
-          letter-spacing: 0.04em;
+          letter-spacing: 0.06em;
           color: #ffffff;
-          font-size: 1.05rem;
+          font-size: 1.1rem;
+          line-height: 1.1;
+        }
+
+        .forge-logo-sub {
+          font-family: var(--font-mono);
+          font-size: 0.55rem;
+          letter-spacing: 0.12em;
+          color: var(--text-muted);
+          text-transform: uppercase;
+          margin-top: 2px;
+        }
+
+        [data-theme="light"] .forge-logo-txt {
+          color: #0f172a;
         }
 
         .forge-brand-manifesto {
