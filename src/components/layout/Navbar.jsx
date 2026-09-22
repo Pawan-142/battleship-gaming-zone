@@ -110,23 +110,26 @@ export const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <nav className="desktop-nav-menu" aria-label="Main Navigation">
-            <NavLink to="/games" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              • ATTRACTIONS
+            <NavLink to="/" end className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+              ARENA
             </NavLink>
             <NavLink to="/story" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} style={{ color: '#00f0ff' }}>
-              • 3D STORY
+              ⚡ 3D STORY
+            </NavLink>
+            <NavLink to="/games" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+              ATTRACTIONS
             </NavLink>
             <NavLink to="/packages" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              • COMBO PASSES
+              COMBO PASSES
             </NavLink>
             <NavLink to="/gallery" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              • GALLERY
+              GALLERY
             </NavLink>
             <NavLink to="/about" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              • FACILITY
+              FACILITY
             </NavLink>
             <NavLink to="/contact" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              • CONCIERGE
+              CONCIERGE
             </NavLink>
           </nav>
 
@@ -158,7 +161,7 @@ export const Navbar = () => {
             {/* Book Now Primary Button */}
             <Link to="/booking" className="forge-nav-cta">
               <BorderTrail size={40} duration={3} />
-              <span>BOOK PASS ↗</span>
+              <span>BOOK PASS</span>
             </Link>
 
             {/* Mobile Hamburger Toggle */}

@@ -81,179 +81,112 @@ export const HomePage = () => {
   return (
     <div className="home-page-root">
       {/* =========================================================================
-          ANORENT-INSPIRED CYBER-CHROME HERO STAGE
+          HERO SECTION - CINEMATIC ARCHITECTURAL COMMERCIAL STAGE
           ========================================================================= */}
-      <section className="anorent-hero-stage">
-        {/* Specular Liquid Chrome Ambient Glows */}
-        <div className="anorent-chrome-backdrop">
-          <div className="chrome-liquid-blob blob-1" />
-          <div className="chrome-liquid-blob blob-2" />
-          <div className="chrome-grid-overlay" />
-          
-          {/* Cyber Art Visual Layer matching the Anorent editorial composition */}
-          <div className="anorent-hero-visual-layer">
-            <img 
-              src="/images/hero_cyber_chrome.jpg" 
-              alt="Battleship Cyber Visual" 
-              className="anorent-hero-character-img"
-            />
-            <div className="anorent-visual-ambient-mask" />
-          </div>
+      <section className="commercial-hero">
+        {/* Atmospheric Vignette & Smooth Parallax Media */}
+        <div className="hero-backdrop-container">
+          <ParallaxImage 
+            src="/images/venue-entrance.jpg" 
+            alt="HyperDrive Arena Entrance"
+            speed={0.15}
+            className="hero-parallax-bg"
+          />
+          <div className="hero-cyber-overlay" />
         </div>
 
-        <div className="container anorent-hero-container">
-          
-          {/* Main 2-Column Split matching the reference */}
-          <div className="anorent-hero-grid">
-            
-            {/* Left Column: Hero Title, Subtitle, Lime CTA & Holographic Stamp */}
-            <div className="anorent-left-content">
-              
-              {/* Top Cyber Bullet */}
-              <div className="anorent-eyebrow-row">
-                <span className="anorent-bullet-dot" />
-                <span className="anorent-eyebrow-text">PHYSICAL GAMING & ENTERTAINMENT ARENA</span>
-                <span className="anorent-star-glyph">✦</span>
+        {/* Foreground Content & 3D Interactive Card */}
+        <div className="container hero-content-block">
+          <div className="hero-grid-split">
+            <div className="hero-left-col">
+              {/* Live Flagship Tag */}
+              <div className="hero-flagship-tag cursor-pointer" onClick={() => setIsLocationModalOpen(true)}>
+                <span className="pulse-mono-dot" />
+                <span>HYDERABAD ARENA • <strong>{currentBranch.shortName.toUpperCase()}</strong></span>
+                <span className="switch-branch-link">CHANGE ARENA ›</span>
               </div>
 
-              {/* Huge Futuristic Display Wordmark */}
-              <h1 className="anorent-brand-title">
-                BATTLESHIP<span className="anorent-reg-mark">®</span>
+              <h1 className="hero-title-commercial">
+                <TextEffect per="word" as="span" preset="fade-in-blur" delay={0.1}>
+                  REAL PHYSICAL ARENA.
+                </TextEffect>
+                <br />
+                <span className="gradient-text-pure">
+                  <TextEffect per="word" as="span" preset="fade-in-blur" delay={0.4}>
+                    ZERO SCREEN FATIGUE.
+                  </TextEffect>
+                </span>
               </h1>
 
-              {/* Clean Modern Uppercase Subtitle */}
-              <h2 className="anorent-subtitle">
-                CRAFTING PHYSICAL EXPERIENCES THAT INSPIRE THE FUTURE
-              </h2>
+              <p className="hero-desc-commercial">
+                High-voltage 360° electric bumper drift pods, 2-tier infrared laser combat, UV glow bowling, and 9D hydraulic VR simulators across 35,000+ sq.ft in Hyderabad.
+              </p>
 
-              {/* Action Button & Explanatory Blurb */}
-              <div className="anorent-action-block">
-                <MagneticButton strength={0.25}>
-                  <Link to="/games" className="anorent-cta-pill">
-                    <div className="anorent-lime-circle">
-                      <ArrowRight size={18} />
-                    </div>
-                    <span>VIEW ATTRACTIONS</span>
+              <div className="hero-cta-group">
+                <MagneticButton strength={0.3}>
+                  <Link to="/booking" className="btn btn-cyber btn-cyber-primary btn-lg relative overflow-hidden">
+                    <BorderTrail size={50} duration={3} />
+                    <Calendar size={18} />
+                    <span>BOOK YOUR EXPERIENCE</span>
                   </Link>
                 </MagneticButton>
-
-                <p className="anorent-blurb-text">
-                  Specializing in bold physical battlegrounds, 360° electric bumper drift, 2-tier laser missions, and next-gen gaming.
-                </p>
+                <MagneticButton strength={0.2}>
+                  <Link to="/games" className="btn btn-cyber btn-cyber-outline btn-lg">
+                    <span>EXPLORE ALL 6 ATTRACTIONS</span>
+                    <ArrowRight size={18} />
+                  </Link>
+                </MagneticButton>
               </div>
 
-              {/* Holographic Circular Stamp Badge */}
-              <div className="anorent-holo-badge-wrap">
-                <div className="anorent-holo-stamp">
-                  <div className="holo-inner-ring">
-                    <span className="holo-center-icon">
-                      <Zap size={18} />
-                    </span>
-                    <span className="holo-top-text">AVAILABLE</span>
-                    <span className="holo-year">2026</span>
-                    <span className="holo-sub-text">HYD ARENAS</span>
-                  </div>
+              {/* HUD Stats Row with SlidingNumber Counters */}
+              <div className="hud-metrics-row">
+                <div className="hud-stat-item">
+                  <span className="hud-stat-val">
+                    <SlidingNumber value={35} suffix="K+" />
+                  </span>
+                  <span className="hud-stat-lbl">SQ.FT ARENA SPACE</span>
                 </div>
-
-                {/* Micro tech indicators */}
-                <div className="anorent-tech-meta">
-                  <span className="tech-coord">⌖ 17.4483° N, 78.3915° E</span>
-                  <span className="tech-ref">SYS-ARENA // REV-04</span>
+                <div className="hud-stat-item">
+                  <span className="hud-stat-val">
+                    <SlidingNumber value={6} />
+                  </span>
+                  <span className="hud-stat-lbl">PHYSICAL BATTLEGROUNDS</span>
                 </div>
-              </div>
-
-              {/* Bottom Trusted Venues Bar */}
-              <div className="anorent-trust-bar">
-                <span className="trust-lbl">LOCATED AT PREMIER HUBS:</span>
-                <div className="trust-brands-row">
-                  <span className="trust-chip cursor-pointer" onClick={() => setIsLocationModalOpen(true)}>
-                    INORBIT MALL (HITECH)
+                <div className="hud-stat-item">
+                  <span className="hud-stat-val">
+                    <SlidingNumber value={100} prefix="₹" />
                   </span>
-                  <span className="trust-sep">/</span>
-                  <span className="trust-chip cursor-pointer" onClick={() => setIsLocationModalOpen(true)}>
-                    SARATH CITY (KONDAPUR)
-                  </span>
-                  <span className="trust-sep">/</span>
-                  <span className="trust-chip">
-                    VALET DINER & SUITES
-                  </span>
+                  <span className="hud-stat-lbl">INSTANT ADVANCE HOLD</span>
                 </div>
               </div>
-
             </div>
 
-            {/* Right Column: Floating Vertical Attraction Showcase Cards */}
-            <div className="anorent-right-showcase">
-              
-              {/* Top Status Header */}
-              <div className="anorent-showcase-header">
-                <div className="showcase-status-left">
-                  <span className="status-label-small">AVAILABLE</span>
-                  <span className="status-label-main">FOR SQUAD MISSIONS</span>
+            {/* Hero Right 3D Interactive Media Card */}
+            <div className="hero-right-col">
+              <TiltCard
+                tiltDegree={10}
+                scale={1.03}
+                glare={true}
+                className="hero-feature-preview glass-card relative overflow-hidden"
+              >
+                <BorderTrail size={80} duration={4} />
+                <div className="preview-media-holder">
+                  <img src="/images/laser-blast.jpg" alt="Laser Combat" className="preview-img-active" />
+                  <div className="preview-badge-chip">
+                    <span className="badge badge-atelier">FEATURED ATTRACTION</span>
+                  </div>
                 </div>
-                <div className="showcase-status-right">
-                  <Compass size={16} className="icon-crosshair" />
-                  <span>HYDERABAD LIVE</span>
+                <div className="preview-info-strip">
+                  <div>
+                    <span className="preview-lbl">LIVE ARENA STATUS</span>
+                    <h4 className="preview-title">Laser Blast: 2-Tier Arena</h4>
+                  </div>
+                  <Link to="/booking?game=laser-blast" className="btn btn-cyber btn-cyber-primary btn-sm">
+                    PLAY NOW
+                  </Link>
                 </div>
-              </div>
-
-              {/* Vertical Stack of 3 Rounded Preview Cards with Chrome Borders */}
-              <div className="anorent-cards-stack">
-                
-                {/* 01: Electric Bumper Drift */}
-                <Link to="/games/bumper-cars" className="anorent-preview-card">
-                  <div className="card-media-box">
-                    <img src="/images/bumper-cars.jpg" alt="Electric Bumper Drift" />
-                    <div className="card-glass-vignette" />
-                  </div>
-                  <div className="card-floating-badge">
-                    <span>ELECTRIC DRIFT</span>
-                  </div>
-                  <div className="card-arrow-indicator">
-                    <ArrowRight size={14} />
-                  </div>
-                </Link>
-
-                {/* 02: 2-Tier Laser Blast */}
-                <Link to="/games/laser-blast" className="anorent-preview-card">
-                  <div className="card-media-box">
-                    <img src="/images/laser-blast.jpg" alt="2-Tier Laser Blast Arena" />
-                    <div className="card-glass-vignette" />
-                  </div>
-                  <div className="card-floating-badge">
-                    <span>TACTICAL COMBAT</span>
-                  </div>
-                  <div className="card-arrow-indicator">
-                    <ArrowRight size={14} />
-                  </div>
-                </Link>
-
-                {/* 03: UV Glow Bowling */}
-                <Link to="/games/hyper-bowling" className="anorent-preview-card">
-                  <div className="card-media-box">
-                    <img src="/images/hyper-bowling.jpg" alt="UV Glow Bowling Lanes" />
-                    <div className="card-glass-vignette" />
-                  </div>
-                  <div className="card-floating-badge">
-                    <span>GLOW BOWLING</span>
-                  </div>
-                  <div className="card-arrow-indicator">
-                    <ArrowRight size={14} />
-                  </div>
-                </Link>
-
-              </div>
-
-              {/* Micro Barcode & Reference Tag */}
-              <div className="anorent-showcase-footer">
-                <div className="mini-barcode">
-                  <span className="bar b1" /><span className="bar b2" /><span className="bar b3" /><span className="bar b1" /><span className="bar b4" /><span className="bar b2" /><span className="bar b1" />
-                </div>
-                <span className="barcode-ref">BAT-HYD-2026-HQ</span>
-              </div>
-
+              </TiltCard>
             </div>
-
           </div>
 
           {/* Quick-Booking Floating Island Dock */}
@@ -315,17 +248,17 @@ export const HomePage = () => {
 
             <div className="dock-action-item">
               <MagneticButton strength={0.2} style={{ width: '100%' }}>
-                <Link
-                  to={`/booking?game=${dockGame}&date=${dockDate}&players=${dockPlayers}&branch=${currentBranch.id}`}
-                  className="btn btn-cyber btn-cyber-primary btn-block"
+                <Link 
+                  to={`/booking?game=${dockGame}&branch=${currentBranch.id}&date=${dockDate}&players=${dockPlayers}`}
+                  className="btn btn-cyber btn-cyber-primary btn-block btn-dock-cta relative overflow-hidden"
                 >
-                  <Calendar size={16} />
-                  <span>INSTANT PASS (FROM ₹100)</span>
+                  <BorderTrail size={50} duration={3} />
+                  <Zap size={16} />
+                  <span>RESERVE PASS (₹100 HOLD)</span>
                 </Link>
               </MagneticButton>
             </div>
           </div>
-
         </div>
       </section>
 
