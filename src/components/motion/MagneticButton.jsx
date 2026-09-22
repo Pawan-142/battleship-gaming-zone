@@ -4,15 +4,16 @@ import { motion, useMotionValue, useSpring } from 'framer-motion';
 export const MagneticButton = ({ 
   children, 
   className = "", 
-  strength = 0.25,
+  strength = 0.28,
   onClick,
+  style = {},
   ...props 
 }) => {
   const buttonRef = useRef(null);
   const x = useMotionValue(0);
   const y = useMotionValue(0);
 
-  const springConfig = { damping: 15, stiffness: 180, mass: 0.2 };
+  const springConfig = { damping: 18, stiffness: 240, mass: 0.2 };
   const springX = useSpring(x, springConfig);
   const springY = useSpring(y, springConfig);
 
@@ -41,17 +42,14 @@ export const MagneticButton = ({
       style={{
         x: springX,
         y: springY,
-        display: 'inline-block'
+        display: 'inline-flex',
+        ...style
       }}
-      className="magnetic-wrapper"
+      className={`magnetic-wrapper ${className}`}
+      onClick={onClick}
+      {...props}
     >
-      <button 
-        className={className} 
-        onClick={onClick}
-        {...props}
-      >
-        {children}
-      </button>
+      {children}
     </motion.div>
   );
 };

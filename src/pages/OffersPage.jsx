@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { offersData } from '../data/offersData';
 import { useLocation } from '../context/LocationContext';
-import { Copy, Check, Clock, Calendar } from 'lucide-react';
+import { TiltCard } from '../components/motion/TiltCard';
+import { MagneticButton } from '../components/motion/MagneticButton';
+import { TextEffect } from '../components/motion/TextEffect';
+import { Copy, Check, Clock, Calendar, Zap, Sparkles } from 'lucide-react';
 
 export const OffersPage = () => {
   const { currentBranch } = useLocation();
@@ -24,7 +28,9 @@ export const OffersPage = () => {
           </div>
           <span className="section-tag amber">VERIFIED PROMO CODES</span>
           <h1 className="page-hero-title">
-            ACTIVE ARENA <span className="gradient-text-amber">PROMOTIONS</span>
+            <TextEffect per="word" preset="fade-in-blur">
+              Active Arena Promotions & Passes
+            </TextEffect>
           </h1>
           <p className="page-hero-desc">
             Save on your next squad battle, weekend family outing, or student rush hours with our verified instant promo codes.
@@ -36,55 +42,67 @@ export const OffersPage = () => {
       <section className="section-padding">
         <div className="container">
           <div className="grid-2">
-            {offersData.map((offer) => (
-              <div key={offer.code} className="glass-card offer-card-u">
-                <div className="offer-top-row">
-                  <span className="badge badge-magenta">{offer.badge}</span>
-                  <span className="validity-txt">
-                    <Clock size={13} /> {offer.validity}
-                  </span>
-                </div>
-
-                <h3 className="offer-name-u">{offer.title}</h3>
-                <p className="offer-desc-u">{offer.description}</p>
-
-                <div className="offer-meta-chips-u">
-                  <span className="m-chip">Applies to: {offer.applicableFor}</span>
-                  <span className="m-chip">Min Spend: ₹{offer.minSpend}</span>
-                </div>
-
-                <div className="offer-code-bar">
-                  <div className="code-col">
-                    <span className="lbl-micro">PROMO CODE</span>
-                    <strong className="code-big">{offer.code}</strong>
+            {offersData.map((offer, idx) => (
+              <motion.div
+                key={offer.code}
+                initial={{ opacity: 0, y: 24 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: idx * 0.08 }}
+              >
+                <TiltCard tiltDegree={6} glare={true} className="glass-card offer-card-u">
+                  <div className="offer-top-row">
+                    <span className="badge badge-atelier">{offer.badge}</span>
+                    <span className="validity-txt">
+                      <Clock size={13} /> {offer.validity}
+                    </span>
                   </div>
 
-                  <button
-                    onClick={() => handleCopy(offer.code)}
-                    className="btn btn-glass btn-sm"
-                  >
-                    {copiedCode === offer.code ? (
-                      <>
-                        <Check size={14} className="icon-emerald" /> Copied
-                      </>
-                    ) : (
-                      <>
-                        <Copy size={14} /> Copy Code
-                      </>
-                    )}
-                  </button>
-                </div>
+                  <h3 className="offer-name-u">{offer.title}</h3>
+                  <p className="offer-desc-u">{offer.description}</p>
 
-                <div className="offer-footer-u">
-                  <span className="terms-micro">ℹ {offer.terms}</span>
-                  <Link
-                    to={`/booking?branch=${currentBranch.id}`}
-                    className="btn btn-primary btn-sm"
-                  >
-                    BOOK WITH OFFER
-                  </Link>
-                </div>
-              </div>
+                  <div className="offer-meta-chips-u">
+                    <span className="m-chip">Applies to: {offer.applicableFor}</span>
+                    <span className="m-chip">Min Spend: ₹{offer.minSpend}</span>
+                  </div>
+
+                  <div className="offer-code-bar">
+                    <div className="code-col">
+                      <span className="lbl-micro">PROMO CODE</span>
+                      <strong className="code-big">{offer.code}</strong>
+                    </div>
+
+                    <MagneticButton strength={0.2}>
+                      <button
+                        onClick={() => handleCopy(offer.code)}
+                        className="btn btn-glass btn-sm"
+                      >
+                        {copiedCode === offer.code ? (
+                          <>
+                            <Check size={14} className="icon-emerald" /> Copied
+                          </>
+                        ) : (
+                          <>
+                            <Copy size={14} /> Copy Code
+                          </>
+                        )}
+                      </button>
+                    </MagneticButton>
+                  </div>
+
+                  <div className="offer-footer-u">
+                    <span className="terms-micro">ℹ {offer.terms}</span>
+                    <MagneticButton strength={0.2}>
+                      <Link
+                        to={`/booking?branch=${currentBranch.id}&promo=${offer.code}`}
+                        className="btn btn-cyber btn-cyber-primary btn-sm"
+                      >
+                        BOOK WITH OFFER
+                      </Link>
+                    </MagneticButton>
+                  </div>
+                </TiltCard>
+              </motion.div>
             ))}
           </div>
         </div>

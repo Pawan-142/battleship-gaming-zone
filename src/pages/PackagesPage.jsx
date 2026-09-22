@@ -7,6 +7,7 @@ import { formatCurrency } from '../utils/formatters';
 import { TiltCard } from '../components/motion/TiltCard';
 import { TextEffect } from '../components/motion/TextEffect';
 import { BorderTrail } from '../components/motion/BorderTrail';
+import { MagneticButton } from '../components/motion/MagneticButton';
 import { 
   CheckCircle2, 
   Users, 
@@ -120,14 +121,16 @@ export const PackagesPage = () => {
                     {/* Footer Action */}
                     <div className="pkg-footer-row">
                       <span className="pkg-terms">ℹ {pkg.terms}</span>
-                      <Link
-                        to={`/booking?package=${pkg.id}&branch=${currentBranch.id}`}
-                        className="forge-book-pass-btn"
-                      >
-                        <BorderTrail size={35} />
-                        <span>RESERVE PASS</span>
-                        <ArrowUpRight size={15} />
-                      </Link>
+                      <MagneticButton strength={0.2}>
+                        <Link
+                          to={`/booking?package=${pkg.id}&branch=${currentBranch.id}`}
+                          className="forge-book-pass-btn"
+                        >
+                          <BorderTrail size={35} />
+                          <span>RESERVE PASS</span>
+                          <ArrowUpRight size={15} />
+                        </Link>
+                      </MagneticButton>
                     </div>
                   </div>
                 </TiltCard>
@@ -144,10 +147,12 @@ export const PackagesPage = () => {
                 <p>We curate private championship brackets for 20 to 300+ guests in Hyderabad with private DJ soundscapes, custom trophy ceremonies, and executive dining.</p>
               </div>
             </div>
-            <Link to="/contact" className="forge-corp-btn">
-              <span>REQUEST CORPORATE PROPOSAL</span>
-              <ArrowUpRight size={16} />
-            </Link>
+            <MagneticButton strength={0.2}>
+              <Link to="/contact" className="forge-corp-btn">
+                <span>REQUEST CORPORATE PROPOSAL</span>
+                <ArrowUpRight size={16} />
+              </Link>
+            </MagneticButton>
           </div>
         </div>
       </section>

@@ -18,7 +18,9 @@ import {
   AnimatedGroup,
   TransitionPanel,
   SmoothParallax,
-  ParallaxImage
+  ParallaxImage,
+  TiltCard,
+  MagneticButton
 } from '../components/motion';
 import { 
   Zap, 
@@ -121,15 +123,19 @@ export const HomePage = () => {
               </p>
 
               <div className="hero-cta-group">
-                <Link to="/booking" className="btn btn-cyber btn-cyber-primary btn-lg relative overflow-hidden">
-                  <BorderTrail size={50} duration={3} />
-                  <Calendar size={18} />
-                  <span>BOOK YOUR EXPERIENCE</span>
-                </Link>
-                <Link to="/games" className="btn btn-cyber btn-cyber-outline btn-lg">
-                  <span>EXPLORE ALL 6 ATTRACTIONS</span>
-                  <ArrowRight size={18} />
-                </Link>
+                <MagneticButton strength={0.3}>
+                  <Link to="/booking" className="btn btn-cyber btn-cyber-primary btn-lg relative overflow-hidden">
+                    <BorderTrail size={50} duration={3} />
+                    <Calendar size={18} />
+                    <span>BOOK YOUR EXPERIENCE</span>
+                  </Link>
+                </MagneticButton>
+                <MagneticButton strength={0.2}>
+                  <Link to="/games" className="btn btn-cyber btn-cyber-outline btn-lg">
+                    <span>EXPLORE ALL 6 ATTRACTIONS</span>
+                    <ArrowRight size={18} />
+                  </Link>
+                </MagneticButton>
               </div>
 
               {/* HUD Stats Row with SlidingNumber Counters */}
@@ -157,9 +163,10 @@ export const HomePage = () => {
 
             {/* Hero Right 3D Interactive Media Card */}
             <div className="hero-right-col">
-              <ParallaxCard
-                maxTilt={12}
+              <TiltCard
+                tiltDegree={10}
                 scale={1.03}
+                glare={true}
                 className="hero-feature-preview glass-card relative overflow-hidden"
               >
                 <BorderTrail size={80} duration={4} />
@@ -178,7 +185,7 @@ export const HomePage = () => {
                     PLAY NOW
                   </Link>
                 </div>
-              </ParallaxCard>
+              </TiltCard>
             </div>
           </div>
 
@@ -240,14 +247,16 @@ export const HomePage = () => {
             </div>
 
             <div className="dock-action-item">
-              <Link 
-                to={`/booking?game=${dockGame}&branch=${currentBranch.id}&date=${dockDate}&players=${dockPlayers}`}
-                className="btn btn-cyber btn-cyber-primary btn-block btn-dock-cta relative overflow-hidden"
-              >
-                <BorderTrail size={50} duration={3} />
-                <Zap size={16} />
-                <span>RESERVE PASS (₹100 HOLD)</span>
-              </Link>
+              <MagneticButton strength={0.2} style={{ width: '100%' }}>
+                <Link 
+                  to={`/booking?game=${dockGame}&branch=${currentBranch.id}&date=${dockDate}&players=${dockPlayers}`}
+                  className="btn btn-cyber btn-cyber-primary btn-block btn-dock-cta relative overflow-hidden"
+                >
+                  <BorderTrail size={50} duration={3} />
+                  <Zap size={16} />
+                  <span>RESERVE PASS (₹100 HOLD)</span>
+                </Link>
+              </MagneticButton>
             </div>
           </div>
         </div>
@@ -361,20 +370,24 @@ export const HomePage = () => {
                     </div>
 
                     <div className="stage-action-row">
-                      <Link
-                        to={`/booking?game=${game.slug}&branch=${currentBranch.id}`}
-                        className="btn btn-cyber btn-cyber-primary btn-lg flex-1"
-                      >
-                        <Calendar size={18} />
-                        <span>BOOK {game.name.split(':')[0].toUpperCase()}</span>
-                      </Link>
-                      <Link
-                        to={`/games/${game.slug}`}
-                        className="btn btn-cyber btn-cyber-outline btn-lg"
-                      >
-                        <span>FULL SPECS & RULES</span>
-                        <ArrowRight size={16} />
-                      </Link>
+                      <MagneticButton strength={0.2} style={{ flex: 1 }}>
+                        <Link
+                          to={`/booking?game=${game.slug}&branch=${currentBranch.id}`}
+                          className="btn btn-cyber btn-cyber-primary btn-lg w-full"
+                        >
+                          <Calendar size={18} />
+                          <span>BOOK {game.name.split(':')[0].toUpperCase()}</span>
+                        </Link>
+                      </MagneticButton>
+                      <MagneticButton strength={0.15}>
+                        <Link
+                          to={`/games/${game.slug}`}
+                          className="btn btn-cyber btn-cyber-outline btn-lg"
+                        >
+                          <span>FULL SPECS & RULES</span>
+                          <ArrowRight size={16} />
+                        </Link>
+                      </MagneticButton>
                     </div>
                   </div>
                 </div>
@@ -428,41 +441,41 @@ export const HomePage = () => {
               },
             }}
           >
-            <ParallaxCard maxTilt={8} scale={1.02} className="zone-card glass-card">
+            <TiltCard tiltDegree={8} scale={1.03} glare={true} className="zone-card glass-card">
               <span className="zone-num">ZONE A</span>
               <h4>⚡ Electric Bumper Drift Arena</h4>
               <p>Reinforced pneumatic shock track with 8 high-torque 360° spin vehicles and floor-induction charging.</p>
-            </ParallaxCard>
+            </TiltCard>
 
-            <ParallaxCard maxTilt={8} scale={1.02} className="zone-card glass-card">
+            <TiltCard tiltDegree={8} scale={1.03} glare={true} className="zone-card glass-card">
               <span className="zone-num">ZONE B</span>
               <h4>🎯 2-Tier Laser Combat Maze</h4>
               <p>Elevated sniper bridges, fog-filled corridors, and glowing team bases with sub-millisecond haptic scoring.</p>
-            </ParallaxCard>
+            </TiltCard>
 
-            <ParallaxCard maxTilt={8} scale={1.02} className="zone-card glass-card">
+            <TiltCard tiltDegree={8} scale={1.03} glare={true} className="zone-card glass-card">
               <span className="zone-num">ZONE C</span>
               <h4>🎳 UV Glow Bowling Lanes</h4>
               <p>Polished synthetic tournament lanes with projection scoring animations and dedicated leather lounge seating.</p>
-            </ParallaxCard>
+            </TiltCard>
 
-            <ParallaxCard maxTilt={8} scale={1.02} className="zone-card glass-card">
+            <TiltCard tiltDegree={8} scale={1.03} glare={true} className="zone-card glass-card">
               <span className="zone-num">ZONE D</span>
               <h4>🥽 9D VR Motion Pod Bay</h4>
               <p>Multi-axis hydraulic motion eggs with synchronized wind, rumble, and 4K stereoscopic headsets.</p>
-            </ParallaxCard>
+            </TiltCard>
 
-            <ParallaxCard maxTilt={8} scale={1.02} className="zone-card glass-card">
+            <TiltCard tiltDegree={8} scale={1.03} glare={true} className="zone-card glass-card">
               <span className="zone-num">ZONE E</span>
               <h4>🕹 Smart-Tap Arcade Alley</h4>
               <p>Over 60+ ticket redemption machines, superbike racers, and prize redemption boutique.</p>
-            </ParallaxCard>
+            </TiltCard>
 
-            <ParallaxCard maxTilt={8} scale={1.02} className="zone-card glass-card">
+            <TiltCard tiltDegree={8} scale={1.03} glare={true} className="zone-card glass-card">
               <span className="zone-num">ZONE F</span>
               <h4>🍔 Fuel Diner & Party Suites</h4>
               <p>Artisan pizzas, loaded nachos, mocktail bar, and soundproof private suites for birthdays & town halls.</p>
-            </ParallaxCard>
+            </TiltCard>
           </AnimatedGroup>
         </div>
       </section>
@@ -486,7 +499,7 @@ export const HomePage = () => {
 
           <div className="packages-commercial-grid">
             {packagesData.slice(0, 3).map((pkg) => (
-              <ParallaxCard key={pkg.id} maxTilt={6} scale={1.02} className="glass-card commercial-pkg-card">
+              <TiltCard key={pkg.id} tiltDegree={6} scale={1.02} glare={true} className="glass-card commercial-pkg-card">
                 <div className="pkg-card-top-media">
                   <img src={pkg.image} alt={pkg.name} className="pkg-card-img" />
                   <span className="badge badge-atelier pkg-badge-corner">{pkg.badge}</span>
@@ -517,16 +530,18 @@ export const HomePage = () => {
                   </div>
 
                   <div className="pkg-card-actions">
-                    <Link
-                      to={`/booking?package=${pkg.id}&branch=${currentBranch.id}`}
-                      className="btn btn-cyber btn-cyber-primary btn-block"
-                    >
-                      <Calendar size={15} />
-                      <span>BOOK THIS PASS</span>
-                    </Link>
+                    <MagneticButton strength={0.2} style={{ width: '100%' }}>
+                      <Link
+                        to={`/booking?package=${pkg.id}&branch=${currentBranch.id}`}
+                        className="btn btn-cyber btn-cyber-primary btn-block"
+                      >
+                        <Calendar size={15} />
+                        <span>BOOK THIS PASS</span>
+                      </Link>
+                    </MagneticButton>
                   </div>
                 </div>
-              </ParallaxCard>
+              </TiltCard>
             ))}
           </div>
         </div>
@@ -547,7 +562,7 @@ export const HomePage = () => {
 
           <div className="branch-cards-grid">
             {branches.map((branch) => (
-              <ParallaxCard key={branch.id} maxTilt={6} scale={1.01} className="glass-card branch-commercial-card">
+              <TiltCard key={branch.id} tiltDegree={6} scale={1.01} glare={true} className="glass-card branch-commercial-card">
                 <div className="branch-card-header">
                   <div className="b-flag-icon">
                     <MapPin size={24} />
@@ -577,24 +592,28 @@ export const HomePage = () => {
                 </div>
 
                 <div className="branch-card-actions">
-                  <Link
-                    to={`/booking?branch=${branch.id}`}
-                    className="btn btn-cyber btn-cyber-primary flex-1"
-                  >
-                    <Calendar size={15} />
-                    <span>BOOK AT THIS ARENA</span>
-                  </Link>
-                  <a
-                    href={`https://maps.google.com/?q=${encodeURIComponent(branch.address)}`}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="btn btn-cyber btn-cyber-outline"
-                  >
-                    <span>DIRECTIONS</span>
-                    <ExternalLink size={14} />
-                  </a>
+                  <MagneticButton strength={0.2} style={{ flex: 1 }}>
+                    <Link
+                      to={`/booking?branch=${branch.id}`}
+                      className="btn btn-cyber btn-cyber-primary w-full"
+                    >
+                      <Calendar size={15} />
+                      <span>BOOK AT THIS ARENA</span>
+                    </Link>
+                  </MagneticButton>
+                  <MagneticButton strength={0.15}>
+                    <a
+                      href={`https://maps.google.com/?q=${encodeURIComponent(branch.address)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-cyber btn-cyber-outline"
+                    >
+                      <span>DIRECTIONS</span>
+                      <ExternalLink size={14} />
+                    </a>
+                  </MagneticButton>
                 </div>
-              </ParallaxCard>
+              </TiltCard>
             ))}
           </div>
         </div>

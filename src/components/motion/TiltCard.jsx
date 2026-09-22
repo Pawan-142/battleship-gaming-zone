@@ -1,11 +1,12 @@
 import React, { useRef, useState } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion, useMotionValue, useSpring, useTransform, useMotionTemplate } from 'framer-motion';
 
 export const TiltCard = ({ 
   children, 
   className = "", 
-  tiltDegree = 12, 
+  tiltDegree = 10, 
   glare = true,
+  scale = 1.02,
   onClick 
 }) => {
   const cardRef = useRef(null);
@@ -14,11 +15,13 @@ export const TiltCard = ({
   const mouseX = useMotionValue(0.5);
   const mouseY = useMotionValue(0.5);
 
-  const springConfig = { damping: 20, stiffness: 300, mass: 0.5 };
+  const springConfig = { damping: 25, stiffness: 280, mass: 0.4 };
   const rotateX = useSpring(useTransform(mouseY, [0, 1], [tiltDegree, -tiltDegree]), springConfig);
   const rotateY = useSpring(useTransform(mouseX, [0, 1], [-tiltDegree, tiltDegree]), springConfig);
   const glareX = useSpring(useTransform(mouseX, [0, 1], [0, 100]), springConfig);
   const glareY = useSpring(useTransform(mouseY, [0, 1], [0, 100]), springConfig);
+
+  const glareBackground = useMotionTemplate`radial-gradient(circle 320px at ${glareX}% ${glareY}%, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.04) 40%, rgba(255, 255, 255, 0) 80%)`;
 
   const handleMouseMove = (e) => {
     if (!cardRef.current) return;
@@ -48,8 +51,9 @@ export const TiltCard = ({
       onMouseLeave={handleMouseLeave}
       onClick={onClick}
       style={{
-        perspective: 1000,
+        perspective: 1200,
         transformStyle: 'preserve-3d',
+        position: 'relative',
       }}
     >
       <motion.div
@@ -58,12 +62,15 @@ export const TiltCard = ({
           rotateX,
           rotateY,
           transformStyle: 'preserve-3d',
+          position: 'relative',
+          height: '100%',
+          width: '100%',
         }}
-        whileHover={{ scale: 1.02 }}
-        transition={{ type: 'spring', stiffness: 400, damping: 25 }}
+        whileHover={{ scale }}
+        transition={{ type: 'spring', stiffness: 350, damping: 22 }}
       >
         {children}
-        {glare && isHovered && (
+        {glare && (
           <motion.div
             className="tilt-card-glare"
             style={{
@@ -71,12 +78,11 @@ export const TiltCard = ({
               inset: 0,
               pointerEvents: 'none',
               borderRadius: 'inherit',
-              background: `radial-gradient(circle at ${glareX.get()}% ${glareY.get()}%, rgba(255, 255, 255, 0.12) 0%, rgba(255, 255, 255, 0) 60%)`,
-              zIndex: 10,
+              background: glareBackground,
+              zIndex: 15,
             }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
+            animate={{ opacity: isHovered ? 1 : 0 }}
+            transition={{ duration: 0.2 }}
           />
         )}
       </motion.div>

@@ -1,5 +1,5 @@
 import React, { useRef } from 'react';
-import { motion, useScroll, useTransform, useSpring } from 'motion/react';
+import { motion, useScroll, useTransform, useSpring } from 'framer-motion';
 
 /**
  * Forge Automotive Style - Smooth Scroll Parallax Layer

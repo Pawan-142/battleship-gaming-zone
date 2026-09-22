@@ -88,35 +88,41 @@ export const ScrollytellingCarPage = () => {
   });
 
   const smoothProgress = useSpring(scrollYProgress, {
-    stiffness: 90,
-    damping: 24,
-    mass: 0.3
+    stiffness: 75,
+    damping: 28,
+    mass: 0.25
   });
+
+  // Dynamic 3D cinematic camera transforms driven by scroll progress
+  const cameraRotateY = useTransform(smoothProgress, [0, 0.25, 0.5, 0.75, 1], [0, 3, -3, 2, 0]);
+  const cameraRotateX = useTransform(smoothProgress, [0, 0.25, 0.5, 0.75, 1], [0, -2, 2.5, -1.5, 0]);
+  const cameraPerspective = useTransform(smoothProgress, [0, 0.5, 1], [1200, 1000, 1200]);
 
   // Top-level transform hooks for 4 photorealistic stages
   // Stage 1: Hero reveal
   const stage1Opacity = useTransform(smoothProgress, [0, 0.22, 0.28], [1, 1, 0]);
-  const stage1Scale = useTransform(smoothProgress, [0, 0.28], [1, 1.12]);
+  const stage1Scale = useTransform(smoothProgress, [0, 0.28], [1, 1.14]);
   const card1Opacity = useTransform(smoothProgress, [0, 0.05, 0.20, 0.25], [1, 1, 1, 0]);
-  const card1X = useTransform(smoothProgress, [0, 0.05, 0.20, 0.25], [0, 0, 0, -50]);
+  const card1X = useTransform(smoothProgress, [0, 0.05, 0.20, 0.25], [0, 0, 0, -60]);
 
   // Stage 2: Drift Apex & Collision
   const stage2Opacity = useTransform(smoothProgress, [0.24, 0.29, 0.48, 0.53], [0, 1, 1, 0]);
-  const stage2Scale = useTransform(smoothProgress, [0.24, 0.53], [1.15, 1]);
+  const stage2Scale = useTransform(smoothProgress, [0.24, 0.53], [1.18, 1]);
+  const stage2Rotate = useTransform(smoothProgress, [0.25, 0.38, 0.50], [-1.5, 1.5, -0.5]);
   const card2Opacity = useTransform(smoothProgress, [0.27, 0.32, 0.45, 0.50], [0, 1, 1, 0]);
-  const card2X = useTransform(smoothProgress, [0.27, 0.32, 0.45, 0.50], [50, 0, 0, 50]);
+  const card2X = useTransform(smoothProgress, [0.27, 0.32, 0.45, 0.50], [60, 0, 0, 60]);
 
   // Stage 3: Cockpit Interior Detail
   const stage3Opacity = useTransform(smoothProgress, [0.49, 0.54, 0.73, 0.78], [0, 1, 1, 0]);
-  const stage3Scale = useTransform(smoothProgress, [0.49, 0.78], [1.02, 1.15]);
+  const stage3Scale = useTransform(smoothProgress, [0.49, 0.78], [1.02, 1.18]);
   const card3Opacity = useTransform(smoothProgress, [0.52, 0.57, 0.70, 0.75], [0, 1, 1, 0]);
-  const card3X = useTransform(smoothProgress, [0.52, 0.57, 0.70, 0.75], [-50, 0, 0, -50]);
+  const card3X = useTransform(smoothProgress, [0.52, 0.57, 0.70, 0.75], [-60, 0, 0, -60]);
 
   // Stage 4: Grand Arena Celebration & Booking CTA
   const stage4Opacity = useTransform(smoothProgress, [0.74, 0.79, 1], [0, 1, 1]);
-  const stage4Scale = useTransform(smoothProgress, [0.74, 1], [1.08, 1]);
+  const stage4Scale = useTransform(smoothProgress, [0.74, 1], [1.10, 1]);
   const card4Opacity = useTransform(smoothProgress, [0.78, 0.84, 1], [0, 1, 1]);
-  const card4Y = useTransform(smoothProgress, [0.78, 0.84, 1], [40, 0, 0]);
+  const card4Y = useTransform(smoothProgress, [0.78, 0.84, 1], [50, 0, 0]);
 
   // Indicator fade out
   const scrollIndicatorOpacity = useTransform(smoothProgress, [0, 0.08], [1, 0]);
@@ -320,17 +326,24 @@ export const ScrollytellingCarPage = () => {
         <div className="scrolly-sticky-stage" style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
           
           {/* ================================================================= */}
-          {/* PHOTOREALISTIC MULTI-STAGE CROSSFADE CANVAS */}
+          {/* PHOTOREALISTIC MULTI-STAGE CROSSFADE CANVAS WITH 3D PERSPECTIVE */}
           {/* ================================================================= */}
-          <div className="scrolly-visual-stage" style={{
-            position: 'absolute',
-            inset: 0,
-            width: '100%',
-            height: '100%',
-            zIndex: 1,
-            backgroundColor: '#020305',
-            overflow: 'hidden',
-          }}>
+          <motion.div 
+            className="scrolly-visual-stage" 
+            style={{
+              position: 'absolute',
+              inset: 0,
+              width: '100%',
+              height: '100%',
+              zIndex: 1,
+              backgroundColor: '#020305',
+              overflow: 'hidden',
+              perspective: '1200px',
+              rotateX: cameraRotateX,
+              rotateY: cameraRotateY,
+              transformStyle: 'preserve-3d',
+            }}
+          >
 
             {/* STAGE 1: Hero Beauty Pose */}
             <motion.div style={{
@@ -359,6 +372,7 @@ export const ScrollytellingCarPage = () => {
               inset: 0,
               opacity: blueprintMode ? 0.15 : stage2Opacity,
               scale: stage2Scale,
+              rotate: stage2Rotate,
               transformOrigin: 'center center',
               zIndex: 3,
             }}>
@@ -449,7 +463,7 @@ export const ScrollytellingCarPage = () => {
               )}
             </AnimatePresence>
 
-            {/* INTERACTIVE HOTSPOT PINS (Stage 1) */}
+            {/* INTERACTIVE HOTSPOT PINS (Stage 1) WITH SONAR RADAR RIPPLES */}
             {!blueprintMode && (
               <motion.div 
                 style={{
@@ -471,27 +485,44 @@ export const ScrollytellingCarPage = () => {
                       pointerEvents: 'auto',
                     }}
                   >
-                    <button
-                      type="button"
-                      onClick={() => setActiveHotspot(activeHotspot === spot.id ? null : spot.id)}
-                      style={{
-                        width: '32px',
-                        height: '32px',
-                        borderRadius: '50%',
-                        background: 'rgba(10, 15, 25, 0.85)',
-                        border: `2px solid ${activeTheme.hex}`,
-                        color: activeTheme.hex,
-                        display: 'flex',
-                        alignItems: 'center',
-                        justifyContent: 'center',
-                        cursor: 'pointer',
-                        boxShadow: `0 0 16px ${activeTheme.glow}`,
-                        transition: 'all 0.25s ease',
-                      }}
-                      title={spot.title}
-                    >
-                      <Crosshair size={15} />
-                    </button>
+                    {/* Pulsing Sonar Ripple Ring */}
+                    <div style={{ position: 'relative' }}>
+                      <div 
+                        className="hotspot-sonar-ping" 
+                        style={{
+                          position: 'absolute',
+                          inset: '-10px',
+                          borderRadius: '50%',
+                          border: `1.5px solid ${activeTheme.hex}`,
+                          opacity: 0.6,
+                          pointerEvents: 'none',
+                        }} 
+                      />
+
+                      <button
+                        type="button"
+                        onClick={() => setActiveHotspot(activeHotspot === spot.id ? null : spot.id)}
+                        style={{
+                          width: '34px',
+                          height: '34px',
+                          borderRadius: '50%',
+                          background: 'rgba(8, 12, 22, 0.9)',
+                          border: `2px solid ${activeTheme.hex}`,
+                          color: activeTheme.hex,
+                          display: 'flex',
+                          alignItems: 'center',
+                          justifyContent: 'center',
+                          cursor: 'pointer',
+                          boxShadow: `0 0 18px ${activeTheme.glow}`,
+                          transition: 'all 0.25s ease',
+                          position: 'relative',
+                          zIndex: 2,
+                        }}
+                        title={spot.title}
+                      >
+                        <Crosshair size={16} />
+                      </button>
+                    </div>
 
                     {/* Hotspot Card Tooltip */}
                     <AnimatePresence>
@@ -558,7 +589,7 @@ export const ScrollytellingCarPage = () => {
               pointerEvents: 'none',
               zIndex: 9,
             }} />
-          </div>
+          </motion.div>
 
           {/* ================================================================= */}
           {/* STORY CARDS (APPLE / PORSCHE EDITORIAL TYPOGRAPHY) */}

@@ -535,6 +535,21 @@
   100% { opacity: 0; transform: translate(-50%, 12px); }
 }
 
+@keyframes radar-ping {
+  0% {
+    transform: scale(0.9);
+    opacity: 0.8;
+  }
+  70%, 100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.hotspot-sonar-ping {
+  animation: radar-ping 2.2s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
 @media (max-width: 900px) {
   .scrolly-nav-bar {
     padding: 1rem 1.25rem;
