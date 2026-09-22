@@ -1,9 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { motion } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
 import { packagesData } from '../data/packagesData';
 import { formatCurrency } from '../utils/formatters';
-import { ParallaxCard } from '../components/common/ParallaxCard';
+import { TiltCard } from '../components/motion/TiltCard';
 import { TextEffect } from '../components/motion/TextEffect';
 import { BorderTrail } from '../components/motion/BorderTrail';
 import { 
@@ -54,75 +55,83 @@ export const PackagesPage = () => {
         <div className="container">
           <div className="forge-packages-stack">
             {packagesData.map((pkg, idx) => (
-              <ParallaxCard key={pkg.id} maxTilt={4} scale={1.01} className="forge-package-card">
-                {/* Left Media */}
-                <div className="pkg-media-col">
-                  <img src={pkg.image} alt={pkg.name} className="pkg-img" loading="lazy" />
-                  <div className="pkg-media-overlay" />
-                  <span className="pkg-badge-index">TIER 0{idx + 1} // {pkg.category.toUpperCase()}</span>
-                </div>
+              <motion.div
+                key={pkg.id}
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.45, delay: idx * 0.1 }}
+              >
+                <TiltCard tiltDegree={4} className="forge-package-card">
+                  {/* Left Media */}
+                  <div className="pkg-media-col">
+                    <img src={pkg.image} alt={pkg.name} className="pkg-img" loading="lazy" />
+                    <div className="pkg-media-overlay" />
+                    <span className="pkg-badge-index">TIER 0{idx + 1} // {pkg.category.toUpperCase()}</span>
+                  </div>
 
-                {/* Right Info Body */}
-                <div className="pkg-info-col">
-                  <div className="pkg-header-row">
-                    <div>
-                      <span className="pkg-eyebrow">{pkg.badge}</span>
-                      <h2 className="pkg-title">{pkg.name}</h2>
-                      <p className="pkg-tagline">{pkg.tagline}</p>
-                    </div>
-
-                    <div className="pkg-price-box">
-                      <span className="orig-price">{formatCurrency(pkg.originalPricePerPerson)}</span>
-                      <div className="current-price">
-                        {formatCurrency(pkg.pricePerPerson)} <span className="per-p">/ player</span>
+                  {/* Right Info Body */}
+                  <div className="pkg-info-col">
+                    <div className="pkg-header-row">
+                      <div>
+                        <span className="pkg-eyebrow">{pkg.badge}</span>
+                        <h2 className="pkg-title">{pkg.name}</h2>
+                        <p className="pkg-tagline">{pkg.tagline}</p>
                       </div>
-                      <span className="savings-chip">{pkg.savingsDisplay}</span>
-                    </div>
-                  </div>
 
-                  {/* Specs Pill Bar */}
-                  <div className="pkg-specs-bar">
-                    <div className="pkg-spec-item">
-                      <Users size={13} className="spec-icon" />
-                      <span>{pkg.idealFor}</span>
-                    </div>
-                    <div className="pkg-spec-item">
-                      <Clock size={13} className="spec-icon" />
-                      <span>{pkg.durationDisplay}</span>
-                    </div>
-                    <div className="pkg-spec-item">
-                      <ShieldCheck size={13} className="spec-icon" />
-                      <span>₹100 Advance Hold</span>
-                    </div>
-                  </div>
-
-                  {/* Inclusions List */}
-                  <div className="pkg-inclusions-box">
-                    <span className="inc-title">INCLUDED ATTRACTIONS & MISSIONS:</span>
-                    <div className="inc-grid">
-                      {pkg.includedExperiences.map((inc, i) => (
-                        <div key={i} className="inc-row">
-                          <CheckCircle2 size={14} className="inc-icon" />
-                          <span><strong>{inc.name}</strong> • {inc.qty}</span>
+                      <div className="pkg-price-box">
+                        <span className="orig-price">{formatCurrency(pkg.originalPricePerPerson)}</span>
+                        <div className="current-price">
+                          {formatCurrency(pkg.pricePerPerson)} <span className="per-p">/ player</span>
                         </div>
-                      ))}
+                        <span className="savings-chip">{pkg.savingsDisplay}</span>
+                      </div>
+                    </div>
+
+                    {/* Specs Pill Bar */}
+                    <div className="pkg-specs-bar">
+                      <div className="pkg-spec-item">
+                        <Users size={13} className="spec-icon" />
+                        <span>{pkg.idealFor}</span>
+                      </div>
+                      <div className="pkg-spec-item">
+                        <Clock size={13} className="spec-icon" />
+                        <span>{pkg.durationDisplay}</span>
+                      </div>
+                      <div className="pkg-spec-item">
+                        <ShieldCheck size={13} className="spec-icon" />
+                        <span>₹100 Advance Hold</span>
+                      </div>
+                    </div>
+
+                    {/* Inclusions List */}
+                    <div className="pkg-inclusions-box">
+                      <span className="inc-title">INCLUDED ATTRACTIONS & MISSIONS:</span>
+                      <div className="inc-grid">
+                        {pkg.includedExperiences.map((inc, i) => (
+                          <div key={i} className="inc-row">
+                            <CheckCircle2 size={14} className="inc-icon" />
+                            <span><strong>{inc.name}</strong> • {inc.qty}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Footer Action */}
+                    <div className="pkg-footer-row">
+                      <span className="pkg-terms">ℹ {pkg.terms}</span>
+                      <Link
+                        to={`/booking?package=${pkg.id}&branch=${currentBranch.id}`}
+                        className="forge-book-pass-btn"
+                      >
+                        <BorderTrail size={35} />
+                        <span>RESERVE PASS</span>
+                        <ArrowUpRight size={15} />
+                      </Link>
                     </div>
                   </div>
-
-                  {/* Footer Action */}
-                  <div className="pkg-footer-row">
-                    <span className="pkg-terms">ℹ {pkg.terms}</span>
-                    <Link
-                      to={`/booking?package=${pkg.id}&branch=${currentBranch.id}`}
-                      className="forge-book-pass-btn"
-                    >
-                      <BorderTrail size={35} />
-                      <span>RESERVE PASS</span>
-                      <ArrowUpRight size={15} />
-                    </Link>
-                  </div>
-                </div>
-              </ParallaxCard>
+                </TiltCard>
+              </motion.div>
             ))}
           </div>
 

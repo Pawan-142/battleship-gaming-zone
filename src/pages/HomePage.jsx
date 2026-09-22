@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
 import { gamesData } from '../data/gamesData';
 import { packagesData } from '../data/packagesData';
@@ -265,18 +266,37 @@ export const HomePage = () => {
             </p>
           </InView>
 
-          {/* Attraction Tab Switcher */}
+          {/* Attraction Tab Switcher with Motion Layout Indicator */}
           <div className="attraction-nav-bar">
-            {gamesData.map((game) => (
-              <button
-                key={game.id}
-                className={`attraction-tab-btn ${activeExpTab === game.id ? 'active' : ''}`}
-                onClick={() => setActiveExpTab(game.id)}
-              >
-                <span className="tab-cat-mini">{game.category}</span>
-                <span className="tab-game-title">{game.name.split(':')[0]}</span>
-              </button>
-            ))}
+            {gamesData.map((game) => {
+              const isActive = activeExpTab === game.id;
+              return (
+                <button
+                  key={game.id}
+                  className={`attraction-tab-btn ${isActive ? 'active' : ''}`}
+                  onClick={() => setActiveExpTab(game.id)}
+                  style={{ position: 'relative' }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeAttractionTab"
+                      className="active-tab-glow"
+                      transition={{ type: 'spring', stiffness: 450, damping: 35 }}
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: 'rgba(255, 255, 255, 0.1)',
+                        border: '1px solid rgba(255, 255, 255, 0.3)',
+                        borderRadius: 'var(--radius-sm)',
+                        zIndex: 0,
+                      }}
+                    />
+                  )}
+                  <span className="tab-cat-mini" style={{ position: 'relative', zIndex: 1 }}>{game.category}</span>
+                  <span className="tab-game-title" style={{ position: 'relative', zIndex: 1 }}>{game.name.split(':')[0]}</span>
+                </button>
+              );
+            })}
           </div>
 
           {/* Active Attraction Interactive Display Stage with Motion TransitionPanel */}
