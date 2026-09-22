@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { galleryCategories, galleryItems } from '../data/galleryData';
 import { Lightbox } from '../components/common/Lightbox';
-import { ParallaxCard } from '../components/common/ParallaxCard';
+import { TiltCard } from '../components/motion/TiltCard';
 import { TextEffect } from '../components/motion/TextEffect';
 import { Eye, ArrowUpRight } from 'lucide-react';
 
@@ -40,17 +41,37 @@ export const GalleryPage = () => {
             An authentic photographic look inside our 35,000 sq.ft physical entertainment arena in Hyderabad. High-octane electric bumper drift tracks, 2-tier infrared laser combat, UV glow bowling lanes, and private VIP lounges.
           </p>
 
-          {/* Minimalist Filter Pills */}
+          {/* Minimalist Filter Pills with Motion Layout Indicator */}
           <div className="forge-gallery-filters">
-            {galleryCategories.map(cat => (
-              <button
-                key={cat}
-                className={`forge-cat-pill ${selectedCategory === cat ? 'active' : ''}`}
-                onClick={() => setSelectedCategory(cat)}
-              >
-                {cat.toUpperCase()}
-              </button>
-            ))}
+            {galleryCategories.map(cat => {
+              const isActive = selectedCategory === cat;
+              return (
+                <button
+                  key={cat}
+                  className={`forge-cat-pill ${isActive ? 'active' : ''}`}
+                  onClick={() => setSelectedCategory(cat)}
+                  style={{ position: 'relative' }}
+                >
+                  {isActive && (
+                    <motion.div
+                      layoutId="activeGalleryPill"
+                      className="active-pill-bg"
+                      transition={{ type: 'spring', stiffness: 450, damping: 35 }}
+                      style={{
+                        position: 'absolute',
+                        inset: 0,
+                        background: '#ffffff',
+                        borderRadius: '9999px',
+                        zIndex: 0,
+                      }}
+                    />
+                  )}
+                  <span style={{ position: 'relative', zIndex: 1, color: isActive ? '#07090e' : 'inherit', fontWeight: isActive ? 600 : 400 }}>
+                    {cat.toUpperCase()}
+                  </span>
+                </button>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -63,35 +84,44 @@ export const GalleryPage = () => {
             <span className="mono-tag">CLICK ANY FRAME FOR EXPANDED 4K VIEW</span>
           </div>
 
-          <div className="forge-gallery-grid">
-            {filteredItems.map((item, idx) => (
-              <ParallaxCard
-                key={item.id}
-                maxTilt={6}
-                scale={1.015}
-                className="forge-gallery-card cursor-pointer"
-                onClick={() => setLightboxIndex(idx)}
-              >
-                <div className="gallery-media-wrap">
-                  <img src={item.image} alt={item.title} className="gallery-img" loading="lazy" />
-                  <div className="gallery-vignette" />
-                  
-                  <div className="gallery-top-badge">
-                    <span className="mono-idx">0{idx + 1} // {item.category.toUpperCase()}</span>
-                  </div>
+          <motion.div layout className="forge-gallery-grid">
+            <AnimatePresence mode="popLayout">
+              {filteredItems.map((item, idx) => (
+                <motion.div
+                  key={item.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.94, y: 15 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.94, y: 15 }}
+                  transition={{ duration: 0.35, delay: idx * 0.04 }}
+                >
+                  <TiltCard
+                    tiltDegree={8}
+                    className="forge-gallery-card cursor-pointer"
+                    onClick={() => setLightboxIndex(idx)}
+                  >
+                    <div className="gallery-media-wrap">
+                      <img src={item.image} alt={item.title} className="gallery-img" loading="lazy" />
+                      <div className="gallery-vignette" />
+                      
+                      <div className="gallery-top-badge">
+                        <span className="mono-idx">0{idx + 1} // {item.category.toUpperCase()}</span>
+                      </div>
 
-                  <div className="gallery-bottom-info">
-                    <h3 className="g-title">{item.title}</h3>
-                    <p className="g-sub">{item.subtitle}</p>
-                    <div className="g-expand-pill">
-                      <Eye size={12} />
-                      <span>EXPAND FRAME</span>
+                      <div className="gallery-bottom-info">
+                        <h3 className="g-title">{item.title}</h3>
+                        <p className="g-sub">{item.subtitle}</p>
+                        <div className="g-expand-pill">
+                          <Eye size={12} />
+                          <span>EXPAND FRAME</span>
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                </div>
-              </ParallaxCard>
-            ))}
-          </div>
+                  </TiltCard>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
 

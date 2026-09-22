@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation as useRouterLocation } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from '../../context/LocationContext';
 import { useBooking } from '../../context/BookingContext';
 import { useTheme } from '../../context/ThemeContext';
@@ -172,52 +173,73 @@ export const Navbar = () => {
         </div>
 
         {/* Mobile Navigation Drawer */}
-        {isMobileMenuOpen && (
-          <div className="mobile-nav-drawer animate-fade-down">
-            <div className="mobile-branch-row" onClick={() => { setIsLocationModalOpen(true); setIsMobileMenuOpen(false); }}>
-              <div className="mob-branch-info">
-                <MapPin size={16} className="icon-cyan" />
-                <div>
-                  <span className="mob-b-lbl">ACTIVE ARENA:</span>
-                  <strong className="mob-b-val">{currentBranch.name}</strong>
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div 
+              className="mobile-nav-drawer"
+              initial={{ opacity: 0, y: -20, height: 0 }}
+              animate={{ opacity: 1, y: 0, height: 'auto' }}
+              exit={{ opacity: 0, y: -20, height: 0 }}
+              transition={{ type: 'spring', stiffness: 350, damping: 30 }}
+            >
+              <div className="mobile-branch-row" onClick={() => { setIsLocationModalOpen(true); setIsMobileMenuOpen(false); }}>
+                <div className="mob-branch-info">
+                  <MapPin size={16} className="icon-cyan" />
+                  <div>
+                    <span className="mob-b-lbl">ACTIVE ARENA:</span>
+                    <strong className="mob-b-val">{currentBranch.name}</strong>
+                  </div>
                 </div>
+                <span className="btn btn-glass btn-xs">CHANGE</span>
               </div>
-              <span className="btn btn-glass btn-xs">CHANGE</span>
-            </div>
 
-            <div className="mobile-links-list">
-              <NavLink to="/" end className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                <span>ARENA HOME</span>
-              </NavLink>
-              <NavLink to="/games" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                <span>ALL 6 ATTRACTIONS</span>
-              </NavLink>
-              <NavLink to="/packages" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                <span>COMBO PASSES</span>
-              </NavLink>
-              <NavLink to="/gallery" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                <span>ARENA GALLERY</span>
-              </NavLink>
-              <NavLink to="/about" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                <span>ARENA SPECS & SAFETY</span>
-              </NavLink>
-              <NavLink to="/contact" className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
-                <span>HOURS & LOCATION</span>
-              </NavLink>
-            </div>
-
-            <div className="mobile-cta-box">
-              <Link 
-                to="/booking" 
-                className="btn btn-cyber btn-cyber-primary btn-block btn-lg"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <motion.div 
+                className="mobile-links-list"
+                initial="hidden"
+                animate="visible"
+                variants={{
+                  hidden: { opacity: 0 },
+                  visible: {
+                    opacity: 1,
+                    transition: { staggerChildren: 0.06 }
+                  }
+                }}
               >
-                <Calendar size={18} />
-                <span>BOOK ATTRACTIONS (FROM ₹100)</span>
-              </Link>
-            </div>
-          </div>
-        )}
+                {[
+                  { to: "/", label: "ARENA HOME" },
+                  { to: "/games", label: "ALL 6 ATTRACTIONS" },
+                  { to: "/packages", label: "COMBO PASSES" },
+                  { to: "/gallery", label: "ARENA GALLERY" },
+                  { to: "/about", label: "ARENA SPECS & SAFETY" },
+                  { to: "/contact", label: "HOURS & LOCATION" },
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    variants={{
+                      hidden: { opacity: 0, x: -15 },
+                      visible: { opacity: 1, x: 0 }
+                    }}
+                  >
+                    <NavLink to={item.to} end={item.to === "/"} className="mobile-nav-link" onClick={() => setIsMobileMenuOpen(false)}>
+                      <span>{item.label}</span>
+                    </NavLink>
+                  </motion.div>
+                ))}
+              </motion.div>
+
+              <div className="mobile-cta-box">
+                <Link 
+                  to="/booking" 
+                  className="btn btn-cyber btn-cyber-primary btn-block btn-lg"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  <Calendar size={18} />
+                  <span>BOOK ATTRACTIONS (FROM ₹100)</span>
+                </Link>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       <style>{`

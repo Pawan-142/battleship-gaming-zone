@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
 import { useBooking } from '../context/BookingContext';
 import { gamesData } from '../data/gamesData';
@@ -190,22 +191,30 @@ export const BookingPage = () => {
                     </button>
                   </div>
 
-                  <div className="items-selector-grid">
-                    {(bookingType === 'game' ? gamesData : packagesData).map(item => (
-                      <div
-                        key={item.id}
-                        className={`item-choice-card ${selectedItemId === item.id ? 'active' : ''}`}
-                        onClick={() => setSelectedItemId(item.id)}
-                      >
-                        <img src={item.heroImage || item.image} alt={item.name} className="item-thumb-u" />
-                        <div className="item-txt">
-                          <span className="cat-tiny">{item.category}</span>
-                          <strong>{item.name}</strong>
-                          <span className="item-rate">{formatCurrency(item.pricePerPerson)} / player</span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+                  <motion.div layout className="items-selector-grid">
+                    <AnimatePresence mode="popLayout">
+                      {(bookingType === 'game' ? gamesData : packagesData).map(item => (
+                        <motion.div
+                          key={item.id}
+                          layout
+                          initial={{ opacity: 0, scale: 0.95 }}
+                          animate={{ opacity: 1, scale: 1 }}
+                          exit={{ opacity: 0, scale: 0.95 }}
+                          whileHover={{ scale: 1.02 }}
+                          whileTap={{ scale: 0.98 }}
+                          className={`item-choice-card ${selectedItemId === item.id ? 'active' : ''}`}
+                          onClick={() => setSelectedItemId(item.id)}
+                        >
+                          <img src={item.heroImage || item.image} alt={item.name} className="item-thumb-u" />
+                          <div className="item-txt">
+                            <span className="cat-tiny">{item.category}</span>
+                            <strong>{item.name}</strong>
+                            <span className="item-rate">{formatCurrency(item.pricePerPerson)} / player</span>
+                          </div>
+                        </motion.div>
+                      ))}
+                    </AnimatePresence>
+                  </motion.div>
                 </div>
 
                 {/* Step 3: Date */}
@@ -220,15 +229,17 @@ export const BookingPage = () => {
                       const dateStr = getFutureDateString(days);
                       const isSelected = selectedDate === dateStr;
                       return (
-                        <button
+                        <motion.button
                           key={days}
                           type="button"
+                          whileHover={{ scale: 1.04 }}
+                          whileTap={{ scale: 0.96 }}
                           className={`date-chip-btn ${isSelected ? 'active' : ''}`}
                           onClick={() => setSelectedDate(dateStr)}
                         >
                           <span className="d-label">{days === 0 ? 'Today' : days === 1 ? 'Tomorrow' : new Date(dateStr).toLocaleDateString('en-IN', { weekday: 'short' })}</span>
                           <span className="d-val">{new Date(dateStr).toLocaleDateString('en-IN', { day: 'numeric', month: 'short' })}</span>
-                        </button>
+                        </motion.button>
                       );
                     })}
                   </div>
@@ -251,10 +262,12 @@ export const BookingPage = () => {
                       const isSoldOut = avail.isSoldOut || avail.availableSeats < playersCount;
 
                       return (
-                        <button
+                        <motion.button
                           key={slot.id}
                           type="button"
                           disabled={isSoldOut}
+                          whileHover={!isSoldOut ? { scale: 1.05 } : {}}
+                          whileTap={!isSoldOut ? { scale: 0.95 } : {}}
                           className={`slot-cell ${isSelected ? 'selected' : ''}`}
                           onClick={() => setSelectedSlotId(slot.id)}
                         >
@@ -262,7 +275,7 @@ export const BookingPage = () => {
                           <span className="slot-c">
                             {isSoldOut ? 'Sold Out' : `${avail.availableSeats} spots`}
                           </span>
-                        </button>
+                        </motion.button>
                       );
                     })}
                   </div>

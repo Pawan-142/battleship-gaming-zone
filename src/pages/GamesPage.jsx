@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
 import { gamesData } from '../data/gamesData';
 import { formatCurrency } from '../utils/formatters';
-import { ParallaxCard } from '../components/common/ParallaxCard';
+import { TiltCard } from '../components/motion/TiltCard';
 import { TextEffect } from '../components/motion/TextEffect';
 import { BorderTrail } from '../components/motion/BorderTrail';
 import { 
@@ -74,15 +75,35 @@ export const GamesPage = () => {
             </div>
 
             <div className="forge-category-pills">
-              {categories.map((cat) => (
-                <button
-                  key={cat}
-                  className={`forge-cat-pill ${selectedCategory === cat ? 'active' : ''}`}
-                  onClick={() => setSelectedCategory(cat)}
-                >
-                  {cat.toUpperCase()}
-                </button>
-              ))}
+              {categories.map((cat) => {
+                const isActive = selectedCategory === cat;
+                return (
+                  <button
+                    key={cat}
+                    className={`forge-cat-pill ${isActive ? 'active' : ''}`}
+                    onClick={() => setSelectedCategory(cat)}
+                    style={{ position: 'relative' }}
+                  >
+                    {isActive && (
+                      <motion.div
+                        layoutId="activeCategoryPill"
+                        className="active-pill-bg"
+                        transition={{ type: 'spring', stiffness: 450, damping: 35 }}
+                        style={{
+                          position: 'absolute',
+                          inset: 0,
+                          background: '#ffffff',
+                          borderRadius: '9999px',
+                          zIndex: 0,
+                        }}
+                      />
+                    )}
+                    <span style={{ position: 'relative', zIndex: 1, color: isActive ? '#07090e' : 'inherit', fontWeight: isActive ? 600 : 400 }}>
+                      {cat.toUpperCase()}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -101,75 +122,89 @@ export const GamesPage = () => {
             </span>
           </div>
 
-          <div className="forge-games-grid">
-            {filteredGames.map((game, idx) => (
-              <ParallaxCard key={game.id} maxTilt={6} scale={1.015} className="forge-attraction-card">
-                {/* Media Container */}
-                <div className="card-media-wrapper">
-                  <img src={game.heroImage} alt={game.name} className="card-img" loading="lazy" />
-                  <div className="media-overlay-vignette" />
-                  
-                  <div className="card-floating-header">
-                    <span className="forge-index-badge">0{idx + 1} // {game.category.toUpperCase()}</span>
-                    <span className="forge-rating-badge">
-                      <Star size={11} fill="#ffffff" color="#ffffff" />
-                      <span>{game.rating}</span>
-                    </span>
-                  </div>
+          <motion.div 
+            layout
+            className="forge-games-grid"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredGames.map((game, idx) => (
+                <motion.div
+                  key={game.id}
+                  layout
+                  initial={{ opacity: 0, scale: 0.94, y: 20 }}
+                  animate={{ opacity: 1, scale: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.94, y: 15 }}
+                  transition={{ duration: 0.35, delay: idx * 0.05 }}
+                >
+                  <TiltCard tiltDegree={8} className="forge-attraction-card">
+                    {/* Media Container */}
+                    <div className="card-media-wrapper">
+                      <img src={game.heroImage} alt={game.name} className="card-img" loading="lazy" />
+                      <div className="media-overlay-vignette" />
+                      
+                      <div className="card-floating-header">
+                        <span className="forge-index-badge">0{idx + 1} // {game.category.toUpperCase()}</span>
+                        <span className="forge-rating-badge">
+                          <Star size={11} fill="#ffffff" color="#ffffff" />
+                          <span>{game.rating}</span>
+                        </span>
+                      </div>
 
-                  <div className="card-floating-price">
-                    <span className="from-lbl">PASS FROM</span>
-                    <strong className="amt-val">{formatCurrency(game.pricePerPerson)}</strong>
-                  </div>
-                </div>
-
-                {/* Card Content Body */}
-                <div className="card-body">
-                  <div className="card-title-row">
-                    <h3 className="attraction-title">{game.name}</h3>
-                    <span className="badge-flame">
-                      <Zap size={12} /> {game.badge}
-                    </span>
-                  </div>
-
-                  <p className="attraction-desc">{game.shortDesc}</p>
-
-                  {/* Specification Table */}
-                  <div className="specs-matrix">
-                    <div className="spec-cell">
-                      <Clock size={14} className="spec-icon" />
-                      <div className="spec-meta">
-                        <span className="spec-label">SESSION</span>
-                        <span className="spec-value">{game.durationDisplay}</span>
+                      <div className="card-floating-price">
+                        <span className="from-lbl">PASS FROM</span>
+                        <strong className="amt-val">{formatCurrency(game.pricePerPerson)}</strong>
                       </div>
                     </div>
 
-                    <div className="spec-cell">
-                      <Users size={14} className="spec-icon" />
-                      <div className="spec-meta">
-                        <span className="spec-label">CAPACITY</span>
-                        <span className="spec-value">{game.playersDisplay}</span>
+                    {/* Card Content Body */}
+                    <div className="card-body">
+                      <div className="card-title-row">
+                        <h3 className="attraction-title">{game.name}</h3>
+                        <span className="badge-flame">
+                          <Zap size={12} /> {game.badge}
+                        </span>
+                      </div>
+
+                      <p className="attraction-desc">{game.shortDesc}</p>
+
+                      {/* Specification Table */}
+                      <div className="specs-matrix">
+                        <div className="spec-cell">
+                          <Clock size={14} className="spec-icon" />
+                          <div className="spec-meta">
+                            <span className="spec-label">SESSION</span>
+                            <span className="spec-value">{game.durationDisplay}</span>
+                          </div>
+                        </div>
+
+                        <div className="spec-cell">
+                          <Users size={14} className="spec-icon" />
+                          <div className="spec-meta">
+                            <span className="spec-label">CAPACITY</span>
+                            <span className="spec-value">{game.playersDisplay}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Actions */}
+                      <div className="card-actions">
+                        <Link to={`/games/${game.slug}`} className="forge-ghost-btn">
+                          <span>SPECIFICATIONS</span>
+                          <ArrowUpRight size={14} />
+                        </Link>
+                        <Link 
+                          to={`/booking?game=${game.slug}&branch=${currentBranch.id}`}
+                          className="forge-solid-btn"
+                        >
+                          <span>RESERVE PASS</span>
+                        </Link>
                       </div>
                     </div>
-                  </div>
-
-                  {/* Actions */}
-                  <div className="card-actions">
-                    <Link to={`/games/${game.slug}`} className="forge-ghost-btn">
-                      <span>SPECIFICATIONS</span>
-                      <ArrowUpRight size={14} />
-                    </Link>
-                    <Link 
-                      to={`/booking?game=${game.slug}&branch=${currentBranch.id}`}
-                      className="forge-solid-btn"
-                    >
-                      <span>RESERVE PASS</span>
-                    </Link>
-                  </div>
-                </div>
-              </ParallaxCard>
-            ))}
-          </div>
+                  </TiltCard>
+                </motion.div>
+              ))}
+            </AnimatePresence>
+          </motion.div>
         </div>
       </section>
 

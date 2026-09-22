@@ -7,5 +7,5 @@ export { SlidingNumber } from './SlidingNumber';
 export { AnimatedGroup } from './AnimatedGroup';
 export { TransitionPanel } from './TransitionPanel';
 export { SmoothParallax, ParallaxImage } from './SmoothParallax';
-
-
+export { TiltCard } from './TiltCard';
+export { MagneticButton } from './MagneticButton';
