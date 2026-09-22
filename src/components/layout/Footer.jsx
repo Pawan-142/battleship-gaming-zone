@@ -133,7 +133,7 @@ export const Footer = () => {
         {/* Bottom Legal Bar */}
         <div className="forge-footer-bottom">
           <div className="forge-copy">
-            © {new Date().getFullYear()} HYPERDRIVE ARENA ENTERTAINMENT INDIA PVT. LTD. ALL RIGHTS RESERVED.
+            © {new Date().getFullYear()} BATTLESHIP GAMING ZONE ARENA ENTERTAINMENT INDIA PVT. LTD. ALL RIGHTS RESERVED.
           </div>
           <div className="forge-legals">
             <Link to="/cancellation-policy">CANCELLATION POLICY</Link>
@@ -243,10 +243,6 @@ export const Footer = () => {
           color: var(--text-muted);
           text-transform: uppercase;
           margin-top: 2px;
-        }
-
-        [data-theme="light"] .forge-logo-txt {
-          color: #0f172a;
         }
 
         .forge-brand-manifesto {
@@ -390,6 +386,97 @@ export const Footer = () => {
 
         .forge-legals a:hover {
           color: #ffffff;
+        }
+
+        /* ==========================================================
+           LIGHT MODE OVERRIDES FOR FOOTER
+           ========================================================== */
+        [data-theme="light"] .forge-footer-root {
+          background: #ffffff;
+          border-top: 1px solid rgba(15, 23, 42, 0.1);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-footer-banner {
+          background: #f8fafc;
+          border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .forge-banner-item h4 {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-banner-item p {
+          color: #475569;
+        }
+
+        [data-theme="light"] .forge-b-icon {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-logo-txt {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-logo-sub {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .forge-brand-manifesto {
+          color: #475569;
+        }
+
+        [data-theme="light"] .forge-col-tag {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .forge-f-nav a {
+          color: #475569;
+        }
+
+        [data-theme="light"] .forge-f-nav a:hover {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-b-box {
+          background: #f8fafc;
+          border: 1px solid rgba(15, 23, 42, 0.1);
+        }
+
+        [data-theme="light"] .forge-b-title {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-b-addr {
+          color: #475569;
+        }
+
+        [data-theme="light"] .forge-sub-link {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-social-link {
+          color: #475569;
+        }
+
+        [data-theme="light"] .forge-social-link:hover {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-footer-bottom {
+          border-top: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .forge-copy {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .forge-legals a {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .forge-legals a:hover {
+          color: #0f172a;
         }
 
         @media (max-width: 1024px) {
