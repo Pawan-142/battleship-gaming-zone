@@ -1,0 +1,559 @@
+/* ==========================================================================
+   SCROLLYTELLING CAR SHOWCASE - APPLE / PORSCHE STYLE CINEMATIC EXPERIENCE
+   ========================================================================== */
+
+.scrolly-root {
+  background-color: #05070b;
+  color: #ffffff;
+  font-family: var(--font-body, 'Inter', sans-serif);
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Floating Navigation Header */
+.scrolly-nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: 1.25rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(180deg, rgba(5, 7, 11, 0.85) 0%, rgba(5, 7, 11, 0) 100%);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.scrolly-back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: #94a3b8;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.25s ease;
+}
+
+.scrolly-back-link:hover {
+  color: #ffffff;
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.25);
+  transform: translateX(-3px);
+}
+
+.scrolly-nav-center {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.scrolly-brand-badge {
+  font-family: var(--font-display, sans-serif);
+  font-weight: 700;
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  color: #ffffff;
+  text-transform: uppercase;
+}
+
+.scrolly-edition-chip {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 4px;
+  background: rgba(0, 240, 255, 0.15);
+  border: 1px solid rgba(0, 240, 255, 0.35);
+  color: #00f0ff;
+  letter-spacing: 0.1em;
+}
+
+.scrolly-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.scrolly-sound-btn {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #94a3b8;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.scrolly-sound-btn.active {
+  color: #00f0ff;
+  border-color: rgba(0, 240, 255, 0.5);
+  background: rgba(0, 240, 255, 0.12);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+}
+
+.scrolly-reserve-btn {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  padding: 0.55rem 1.25rem;
+  background: #ffffff;
+  color: #07090e;
+  border-radius: 9999px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.scrolly-reserve-btn:hover {
+  background: #e2e8f0;
+  transform: scale(1.04);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Chapter Progress Scrub Bar (Right Side) */
+.scrolly-chapter-tracker {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.chapter-dot-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-direction: row-reverse;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 0;
+}
+
+.chapter-indicator-pip {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.chapter-dot-item.active .chapter-indicator-pip {
+  width: 12px;
+  height: 12px;
+  background: var(--active-accent, #00f0ff);
+  border-color: #ffffff;
+  box-shadow: 0 0 14px var(--active-accent, #00f0ff);
+}
+
+.chapter-label-pill {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  opacity: 0;
+  transform: translateX(10px);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.chapter-dot-item:hover .chapter-label-pill,
+.chapter-dot-item.active .chapter-label-pill {
+  opacity: 1;
+  transform: translateX(0);
+  color: #ffffff;
+}
+
+/* Main Multi-Screen Track (450vh scroll canvas) */
+.scrolly-stage-track {
+  height: 480vh;
+  position: relative;
+}
+
+/* The Fixed 100vh Sticky Viewport Stage */
+.scrolly-sticky-stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Radial Glow & Background Grid Matrix */
+.scrolly-bg-ambient {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background: 
+    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.08) 0%, rgba(5, 7, 11, 0) 65%),
+    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+  background-size: 100% 100%, 60px 60px, 60px 60px;
+}
+
+/* Central Stage Vehicle Arena */
+.scrolly-vehicle-platform {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  max-width: 1100px;
+  height: 520px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Pod Platform Ground Floor Glow */
+.scrolly-floor-pedestal {
+  position: absolute;
+  bottom: 20px;
+  width: 80%;
+  height: 60px;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, var(--active-glow, rgba(0, 240, 255, 0.35)) 0%, rgba(0,0,0,0) 70%);
+  filter: blur(25px);
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+
+/* Vehicle Layer Container */
+.scrolly-car-media-box {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.scrolly-car-img {
+  max-width: 90%;
+  max-height: 85%;
+  object-fit: contain;
+  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.85));
+  user-select: none;
+  pointer-events: none;
+}
+
+/* Floating Interactive Hotspot Callout Pins */
+.scrolly-hotspot {
+  position: absolute;
+  z-index: 30;
+  cursor: pointer;
+}
+
+.hotspot-beacon {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(0, 240, 255, 0.2);
+  border: 1.5px solid #00f0ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  animation: beaconPulse 2s infinite ease-in-out;
+}
+
+.hotspot-beacon::after {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+@keyframes beaconPulse {
+  0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.6); }
+  70% { box-shadow: 0 0 0 12px rgba(0, 240, 255, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
+}
+
+.hotspot-popover {
+  position: absolute;
+  bottom: calc(100% + 12px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: 220px;
+  padding: 0.85rem 1rem;
+  background: rgba(10, 15, 25, 0.92);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 8px;
+  backdrop-filter: blur(16px);
+  pointer-events: none;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.hotspot-popover strong {
+  display: block;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  color: #00f0ff;
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.05em;
+}
+
+.hotspot-popover p {
+  font-size: 0.72rem;
+  color: #cbd5e1;
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Floating Story Cards (Synchronized with Scroll Timeline) */
+.scrolly-story-card {
+  position: absolute;
+  z-index: 25;
+  max-width: 420px;
+  padding: 1.75rem 2rem;
+  background: rgba(14, 19, 29, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 14px;
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  pointer-events: auto;
+}
+
+.scrolly-story-card.pos-left {
+  left: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.scrolly-story-card.pos-right {
+  right: 6%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.scrolly-story-card.pos-bottom {
+  bottom: 8%;
+  left: 50%;
+  transform: translateX(-50%);
+  max-width: 650px;
+  width: 90%;
+}
+
+.story-eyebrow {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  color: var(--active-accent, #00f0ff);
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.story-title {
+  font-family: var(--font-display, sans-serif);
+  font-size: 1.85rem;
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #ffffff;
+  margin: 0 0 0.75rem;
+}
+
+.story-desc {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: #94a3b8;
+  margin: 0 0 1.25rem;
+}
+
+.story-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.75rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 1rem;
+}
+
+.metric-cell {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-val {
+  font-family: var(--font-mono, monospace);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.metric-lbl {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+/* Bottom Telemetry HUD Matrix (Real-time Scroll Speed & Vehicle State) */
+.scrolly-hud-dock {
+  position: absolute;
+  bottom: 1.5rem;
+  left: 2rem;
+  z-index: 30;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  background: rgba(10, 15, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.6rem 1.25rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(16px);
+}
+
+.hud-pill-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.7rem;
+  color: #94a3b8;
+}
+
+.hud-pill-item strong {
+  color: #ffffff;
+}
+
+.hud-pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #10b981;
+  box-shadow: 0 0 8px #10b981;
+}
+
+/* Color Customizer Palette */
+.scrolly-color-picker {
+  position: absolute;
+  top: 6rem;
+  left: 2rem;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(10, 15, 25, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.75rem;
+  border-radius: 12px;
+  backdrop-filter: blur(16px);
+}
+
+.picker-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.1em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.picker-swatches {
+  display: flex;
+  gap: 0.4rem;
+}
+
+.swatch-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.swatch-btn.active {
+  border-color: #ffffff;
+  transform: scale(1.15);
+  box-shadow: 0 0 10px currentColor;
+}
+
+/* Scroll Prompt Indicator */
+.scrolly-scroll-indicator {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: #64748b;
+  text-transform: uppercase;
+  pointer-events: none;
+}
+
+.mouse-scroll-icon {
+  width: 18px;
+  height: 28px;
+  border: 1.5px solid rgba(255, 255, 255, 0.3);
+  border-radius: 10px;
+  position: relative;
+}
+
+.mouse-scroll-icon::after {
+  content: '';
+  position: absolute;
+  top: 5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 3px;
+  height: 6px;
+  background: #00f0ff;
+  border-radius: 2px;
+  animation: mouseWheel 1.6s infinite ease-in-out;
+}
+
+@keyframes mouseWheel {
+  0% { opacity: 1; transform: translate(-50%, 0); }
+  100% { opacity: 0; transform: translate(-50%, 10px); }
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .scrolly-story-card.pos-left,
+  .scrolly-story-card.pos-right {
+    left: 1.5rem;
+    right: 1.5rem;
+    top: auto;
+    bottom: 5rem;
+    transform: none;
+    max-width: 100%;
+  }
+
+  .scrolly-chapter-tracker {
+    display: none;
+  }
+
+  .scrolly-hud-dock {
+    display: none;
+  }
+}

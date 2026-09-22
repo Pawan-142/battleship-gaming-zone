@@ -29,6 +29,7 @@ import { MyBookingPage } from './pages/MyBookingPage';
 import { StaffPosPage } from './pages/StaffPosPage';
 import { CancellationPolicyPage, TermsPage, PrivacyPolicyPage } from './pages/PolicyPages';
 import { BattleshipBumperCarsPage } from './pages/BattleshipBumperCarsPage';
+import { ScrollytellingCarPage } from './pages/ScrollytellingCarPage';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -44,7 +45,7 @@ const ScrollToTop = () => {
 // Main App Layout Wrapper
 const AppContent = () => {
   const { pathname } = useLocation();
-  const isStandaloneExperience = pathname === '/bumper-cars' || pathname === '/battleship';
+  const isStandaloneExperience = pathname === '/bumper-cars' || pathname === '/battleship' || pathname === '/story' || pathname === '/scrollytelling';
   const isPosPage = pathname.startsWith('/admin') || pathname.startsWith('/staff');
 
   return (
@@ -62,6 +63,10 @@ const AppContent = () => {
           <Route path="/games" element={<GamesPage />} />
           <Route path="/games/:slug" element={<GameDetailPage />} />
           
+          {/* Apple/Porsche-style Scrollytelling Story Showcase */}
+          <Route path="/story" element={<ScrollytellingCarPage />} />
+          <Route path="/scrollytelling" element={<ScrollytellingCarPage />} />
+
           {/* Battleship Bumper Cars Experience */}
           <Route path="/bumper-cars" element={<BattleshipBumperCarsPage />} />
           <Route path="/battleship" element={<BattleshipBumperCarsPage />} />

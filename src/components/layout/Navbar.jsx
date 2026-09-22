@@ -111,6 +111,9 @@ export const Navbar = () => {
             <NavLink to="/" end className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
               ARENA
             </NavLink>
+            <NavLink to="/story" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} style={{ color: '#00f0ff' }}>
+              ⚡ 3D STORY
+            </NavLink>
             <NavLink to="/games" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
               ATTRACTIONS
             </NavLink>
@@ -207,6 +210,7 @@ export const Navbar = () => {
               >
                 {[
                   { to: "/", label: "ARENA HOME" },
+                  { to: "/story", label: "⚡ 3D SCROLLYTELLING STORY" },
                   { to: "/games", label: "ALL 6 ATTRACTIONS" },
                   { to: "/packages", label: "COMBO PASSES" },
                   { to: "/gallery", label: "ARENA GALLERY" },
