@@ -440,7 +440,7 @@ export const ScrollytellingCarPage = () => {
   // SCROLL-DRIVEN 3D VEHICLE & CAMERA CHOREOGRAPHY
   // ---------------------------------------------------------------------------
   useEffect(() => {
-    return smoothProgress.onChange((p) => {
+    const unsubscribe = smoothProgress.on("change", (p) => {
       if (!car1Ref.current || !car2Ref.current || !cameraRef.current) return;
 
       const car1 = car1Ref.current;
@@ -621,6 +621,8 @@ export const ScrollytellingCarPage = () => {
         camera.lookAt(0, 0.5, 16.0);
       }
     });
+
+    return () => unsubscribe();
   }, [smoothProgress, isAudioActive]);
 
   // Audio Toggle Function
