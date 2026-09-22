@@ -554,7 +554,7 @@ export const HomePage = () => {
         <div className="container">
           <InView className="section-header center">
             <span className="section-tag">2 FLAGSHIP ARENAS</span>
-            <h2 className="section-title">VISIT HYPERDRIVE HYDERABAD</h2>
+            <h2 className="section-title">VISIT BATTLESHIP ARENAS HYDERABAD</h2>
             <p className="section-desc">
               Situated inside Hyderabad's premier entertainment malls with ample basement parking, metro connectivity, and 100% air-conditioned physical arenas.
             </p>
@@ -562,7 +562,12 @@ export const HomePage = () => {
 
           <div className="branch-cards-grid">
             {branches.map((branch) => (
-              <TiltCard key={branch.id} tiltDegree={6} scale={1.01} glare={true} className="glass-card branch-commercial-card">
+              <motion.div 
+                key={branch.id} 
+                className="glass-card branch-commercial-card"
+                whileHover={{ y: -4 }}
+                transition={{ duration: 0.25 }}
+              >
                 <div className="branch-card-header">
                   <div className="b-flag-icon">
                     <MapPin size={24} />
@@ -613,7 +618,7 @@ export const HomePage = () => {
                     </a>
                   </MagneticButton>
                 </div>
-              </TiltCard>
+              </motion.div>
             ))}
           </div>
         </div>

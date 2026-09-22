@@ -15,7 +15,7 @@ export const locationsHierarchy = [
             branches: [
               {
                 id: "hyd-hitech",
-                name: "HyperDrive Flagship - Hitech City",
+                name: "Battleship Flagship - Hitech City",
                 shortName: "Hitech City",
                 city: "Hyderabad",
                 state: "Telangana",
@@ -23,7 +23,7 @@ export const locationsHierarchy = [
                 landmark: "Opposite Durgam Cheruvu Lake View Deck",
                 phone: "+91 40 4859 9000",
                 whatsapp: "+91 98490 88221",
-                email: "hitech@hyperdrivearena.com",
+                email: "hitech@battleshiparena.in",
                 openingHours: "11:00 AM - 11:30 PM (Mon-Sun)",
                 coordinates: { lat: 17.4339, lng: 78.3869 },
                 googleMapsUrl: "https://maps.google.com/?q=Inorbit+Mall+Hitech+City+Hyderabad",
@@ -53,7 +53,7 @@ export const locationsHierarchy = [
               },
               {
                 id: "hyd-gachibowli",
-                name: "HyperDrive Arena - Gachibowli",
+                name: "Battleship Arena - Gachibowli",
                 shortName: "Gachibowli / Kondapur",
                 city: "Hyderabad",
                 state: "Telangana",
@@ -61,7 +61,7 @@ export const locationsHierarchy = [
                 landmark: "Near Kothaguda Junction",
                 phone: "+91 40 4920 7700",
                 whatsapp: "+91 98490 88222",
-                email: "gachibowli@hyperdrivearena.com",
+                email: "gachibowli@battleshiparena.in",
                 openingHours: "11:00 AM - 11:00 PM (Mon-Sun)",
                 coordinates: { lat: 17.4578, lng: 78.3638 },
                 googleMapsUrl: "https://maps.google.com/?q=Sarath+City+Capital+Mall+Kondapur+Hyderabad",
