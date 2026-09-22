@@ -260,7 +260,9 @@ export const Navbar = () => {
 
         .live-broadcast-ticker {
           height: 32px;
-          background: #040609;
+          background: rgba(4, 6, 10, 0.75);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
           color: #94a3b8;
           font-family: var(--font-mono);
           font-size: 0.68rem;
@@ -268,7 +270,7 @@ export const Navbar = () => {
           text-transform: uppercase;
           overflow: hidden;
           white-space: nowrap;
-          border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.08);
           display: flex;
           align-items: center;
           position: relative;
@@ -276,7 +278,9 @@ export const Navbar = () => {
         }
 
         [data-theme="light"] .live-broadcast-ticker {
-          background: #f1f5f9;
+          background: rgba(241, 245, 249, 0.75);
+          backdrop-filter: blur(16px);
+          -webkit-backdrop-filter: blur(16px);
           color: #475569;
           border-bottom-color: rgba(15, 23, 42, 0.08);
         }
@@ -320,30 +324,37 @@ export const Navbar = () => {
           background: #64748b;
         }
 
+        /* Glassmorphism Header */
         .navbar-root {
           height: 70px;
-          background: rgba(7, 9, 13, 0.92);
-          backdrop-filter: blur(20px);
-          -webkit-backdrop-filter: blur(20px);
-          border-bottom: 1px solid var(--border-subtle);
+          background: rgba(8, 12, 20, 0.68);
+          backdrop-filter: blur(28px) saturate(180%);
+          -webkit-backdrop-filter: blur(28px) saturate(180%);
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
           display: flex;
           align-items: center;
-          transition: all 0.25s ease;
+          transition: all 0.3s ease;
         }
 
         [data-theme="light"] .navbar-root {
-          background: rgba(255, 255, 255, 0.96);
-          border-bottom-color: rgba(15, 23, 42, 0.08);
+          background: rgba(255, 255, 255, 0.75);
+          backdrop-filter: blur(28px) saturate(180%);
+          -webkit-backdrop-filter: blur(28px) saturate(180%);
+          border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+          box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.85);
         }
 
         .navbar-root.scrolled {
-          background: rgba(5, 7, 10, 0.98);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+          background: rgba(6, 9, 16, 0.84);
+          border-bottom-color: rgba(255, 255, 255, 0.14);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
         }
 
         [data-theme="light"] .navbar-root.scrolled {
-          background: rgba(255, 255, 255, 0.98);
-          box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+          background: rgba(255, 255, 255, 0.88);
+          border-bottom-color: rgba(15, 23, 42, 0.12);
+          box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
         }
 
         .nav-container {
@@ -412,25 +423,36 @@ export const Navbar = () => {
           display: flex;
           align-items: center;
           gap: 0.5rem;
-          background: rgba(255, 255, 255, 0.03);
-          border: 1px solid var(--border-subtle);
+          background: rgba(255, 255, 255, 0.05);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255, 255, 255, 0.12);
           padding: 0.35rem 0.85rem;
           border-radius: var(--radius-pill);
           cursor: pointer;
           color: #ffffff;
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
           transition: all 0.2s ease;
           outline: none;
         }
 
         [data-theme="light"] .location-switcher-btn {
-          background: #f8fafc;
-          border-color: rgba(15, 23, 42, 0.12);
+          background: rgba(15, 23, 42, 0.04);
+          border-color: rgba(15, 23, 42, 0.1);
           color: #090d16;
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.8);
         }
 
         .location-switcher-btn:hover {
-          border-color: rgba(255, 255, 255, 0.35);
-          background: rgba(255, 255, 255, 0.06);
+          border-color: rgba(0, 240, 255, 0.4);
+          background: rgba(255, 255, 255, 0.1);
+          box-shadow: 0 0 14px rgba(0, 240, 255, 0.2);
+        }
+
+        [data-theme="light"] .location-switcher-btn:hover {
+          border-color: rgba(15, 23, 42, 0.25);
+          background: rgba(15, 23, 42, 0.08);
+          box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
         }
 
         .icon-loc {
