@@ -709,25 +709,54 @@ export const BookingPage = () => {
           gap: 2rem;
         }
 
+        [data-theme="light"] .item-choice-card {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.12);
+        }
+
+        [data-theme="light"] .item-txt strong {
+          color: #0f172a;
+        }
+
         .counter-btn-wrap {
           display: flex;
           align-items: center;
           gap: 0.75rem;
-          background: var(--bg-deep);
+          background: var(--bg-surface-2);
           border: 1px solid var(--border-strong);
           border-radius: var(--radius-xs);
           padding: 0.35rem;
+        }
+
+        [data-theme="light"] .counter-btn-wrap {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.18);
+          box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
         }
 
         .btn-counter {
           width: 36px;
           height: 36px;
           background: var(--bg-elevated);
-          border: none;
-          color: #ffffff;
+          border: 1px solid var(--border-strong);
+          color: var(--text-primary);
           border-radius: var(--radius-xs);
           font-size: 1.2rem;
           cursor: pointer;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-weight: 700;
+        }
+
+        [data-theme="light"] .btn-counter {
+          background: #f1f5f9;
+          border-color: rgba(15, 23, 42, 0.15);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .btn-counter:hover:not(:disabled) {
+          background: #e2e8f0;
         }
 
         .val-counter {
@@ -736,7 +765,58 @@ export const BookingPage = () => {
           font-weight: 800;
           min-width: 36px;
           text-align: center;
-          color: #ffffff;
+          color: var(--text-primary);
+        }
+
+        [data-theme="light"] .val-counter {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .d-val {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .d-label {
+          color: #475569;
+        }
+
+        [data-theme="light"] .date-chip-btn {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.14);
+        }
+
+        [data-theme="light"] .slot-cell {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.14);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .slot-t {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .slot-c {
+          color: #475569;
+        }
+
+        [data-theme="light"] .branch-pick-card {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.12);
+        }
+
+        [data-theme="light"] .branch-pick-card strong {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .type-btn-u {
+          background: #f1f5f9;
+          color: #475569;
+        }
+
+        [data-theme="light"] .type-btn-u.active {
+          background: #ffffff;
+          color: #0f172a;
+          box-shadow: 0 2px 8px rgba(0,0,0,0.06);
         }
 
         .counter-helper {
