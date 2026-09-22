@@ -115,6 +115,47 @@ export const CountdownTimer = ({ expiresAt, onExpire }) => {
           color: #ffffff;
         }
 
+        [data-theme="light"] .countdown-container {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.12);
+          box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+        }
+
+        [data-theme="light"] .countdown-container.urgent {
+          background: #fff1f2;
+          border-color: #f43f5e;
+        }
+
+        [data-theme="light"] .countdown-icon-wrap {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .countdown-container.urgent .countdown-icon-wrap {
+          color: #e11d48;
+        }
+
+        [data-theme="light"] .hold-title {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .countdown-container.urgent .hold-title {
+          color: #be123c;
+        }
+
+        [data-theme="light"] .hold-desc {
+          color: #475569;
+        }
+
+        [data-theme="light"] .digit-box {
+          background: #0f172a;
+          color: #ffffff;
+          border-color: #0f172a;
+        }
+
+        [data-theme="light"] .colon {
+          color: #0f172a;
+        }
+
         @media (max-width: 640px) {
           .countdown-container {
             flex-direction: column;
