@@ -255,33 +255,50 @@ export const ScrollytellingCarPage = () => {
         {/* The 100vh Sticky Viewport */}
         <div className="scrolly-sticky-stage" style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
           
-          {/* Fullscreen Video Scrubbing Canvas */}
+          {/* Fullscreen Video / Visual Scrubbing Stage */}
           <div className="scrolly-video-wrapper" style={{
             position: 'absolute',
             inset: 0,
             width: '100%',
             height: '100%',
             zIndex: 1,
-            backgroundColor: '#000000',
+            backgroundColor: '#05070b',
+            overflow: 'hidden',
           }}>
             <video
               ref={videoRef}
-              src="/images/arcade-pass.jpg" // High-res poster fallback
+              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
               poster="/images/bumper-cars.jpg"
               preload="auto"
               muted
               playsInline
+              loop
+              autoPlay
               onLoadedMetadata={handleLoadedMetadata}
               style={{
                 width: '100%',
                 height: '100%',
                 objectFit: 'cover',
-                opacity: 0.92,
-                filter: 'contrast(1.1) brightness(0.95)',
+                opacity: 0.88,
+                filter: 'contrast(1.15) brightness(0.95)',
               }}
-            >
-              <source src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4" type="video/mp4" />
-            </video>
+            />
+
+            {/* High-Resolution Hero Backdrop Fallback */}
+            <img 
+              src="/images/bumper-cars.jpg" 
+              alt="Bumper Cars Arena"
+              style={{
+                position: 'absolute',
+                inset: 0,
+                width: '100%',
+                height: '100%',
+                objectFit: 'cover',
+                zIndex: 0,
+                opacity: 0.4,
+                filter: 'blur(2px)'
+              }}
+            />
 
             {/* Cinematic Gradient Vignettes */}
             <div style={{
