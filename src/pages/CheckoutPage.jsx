@@ -7,6 +7,7 @@ import { getBranchById } from '../data/branchesData';
 import { validateCoupon } from '../data/offersData';
 import { formatCurrency, formatDateDisplay } from '../utils/formatters';
 import { CountdownTimer } from '../components/common/CountdownTimer';
+import { MockGatewayModal } from '../components/common/MockGatewayModal';
 import { 
   initiateRazorpayPayment, 
   getRazorpayKey, 
@@ -39,6 +40,7 @@ export const CheckoutPage = () => {
   const navigate = useNavigate();
   const { activeHold, releaseSlotHold, confirmBookingPayment } = useBooking();
 
+  const [showMockGateway, setShowMockGateway] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('RAZORPAY_POPUP');
   const [upiId, setUpiId] = useState('');
   const [selectedUpiApp, setSelectedUpiApp] = useState('gpay');
@@ -293,26 +295,47 @@ export const CheckoutPage = () => {
                   Click below to open the secure Razorpay payment modal with live or sandbox credentials. Your physical game station is guaranteed for <strong>{formatDateDisplay(activeHold.date)} at {activeHold.timeSlotText}</strong>.
                 </p>
 
-                <button
-                  type="button"
-                  onClick={handleRazorpayGatewayPay}
-                  disabled={isProcessing}
-                  className="btn btn-cyber btn-cyber-primary btn-lg"
-                  style={{
-                    width: '100%',
-                    padding: '1rem 1.5rem',
-                    fontSize: '1rem',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    gap: '10px'
-                  }}
-                >
-                  <Lock size={18} />
-                  <span>
-                    {isProcessing ? 'INITIALIZING SECURE GATEWAY...' : `PAY ${formatCurrency(advanceAmount)} VIA RAZORPAY`}
-                  </span>
-                </button>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                  <button
+                    type="button"
+                    onClick={() => setShowMockGateway(true)}
+                    className="btn btn-cyber btn-cyber-primary btn-lg"
+                    style={{
+                      width: '100%',
+                      padding: '1rem 1.5rem',
+                      fontSize: '1rem',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '10px'
+                    }}
+                  >
+                    <Zap size={18} />
+                    <span>PAY {formatCurrency(advanceAmount)} VIA RAZORPAY MOCK GATEWAY</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    onClick={handleRazorpayGatewayPay}
+                    disabled={isProcessing}
+                    style={{
+                      background: 'rgba(255, 255, 255, 0.05)',
+                      border: '1px solid rgba(255, 255, 255, 0.15)',
+                      color: '#94a3b8',
+                      fontSize: '0.78rem',
+                      padding: '0.5rem',
+                      borderRadius: '8px',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      gap: '6px'
+                    }}
+                  >
+                    <ExternalLink size={13} />
+                    <span>{isProcessing ? 'Connecting...' : 'Or launch official Razorpay standard popup window'}</span>
+                  </button>
+                </div>
               </div>
 
               {/* SECONDARY / DIRECT TABBED SIMULATOR */}
@@ -807,6 +830,25 @@ export const CheckoutPage = () => {
           </div>
         </div>
       )}
+
+      {/* Interactive Mock Razorpay Gateway Sandbox Modal */}
+      <MockGatewayModal
+        isOpen={showMockGateway}
+        onClose={() => setShowMockGateway(false)}
+        amount={advanceAmount}
+        itemName={item.name}
+        customer={activeHold.customerInfo || {}}
+        onSuccess={(paymentData) => {
+          setShowMockGateway(false);
+          completeTransaction({
+            paymentMethod: paymentData.method,
+            paymentTransactionId: paymentData.razorpay_payment_id
+          });
+        }}
+        onFailure={(err) => {
+          console.warn("Mock payment failure:", err);
+        }}
+      />
 
       <style>{`
         .checkout-grid-u {
