@@ -1,28 +1,28 @@
 /* ==========================================================================
-   SCROLLYTELLING CAR SHOWCASE - APPLE / PORSCHE STYLE CINEMATIC EXPERIENCE
+   SCROLLYTELLING SHOWCASE - LUXURY AUTOMOTIVE EDITORIAL (APPLE / PORSCHE STYLE)
    ========================================================================== */
 
 .scrolly-root {
-  background-color: #05070b;
+  background-color: #030508;
   color: #ffffff;
   font-family: var(--font-body, 'Inter', sans-serif);
   min-height: 100vh;
   position: relative;
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
-/* Floating Navigation Header */
+/* Floating Navigation Bar */
 .scrolly-nav-bar {
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
   z-index: 100;
-  padding: 1.25rem 2rem;
+  padding: 1.25rem 2.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: linear-gradient(180deg, rgba(5, 7, 11, 0.85) 0%, rgba(5, 7, 11, 0) 100%);
+  background: linear-gradient(180deg, rgba(3, 5, 8, 0.9) 0%, rgba(3, 5, 8, 0) 100%);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
 }
@@ -32,21 +32,21 @@
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-mono, monospace);
-  font-size: 0.8rem;
-  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
   color: #94a3b8;
   text-decoration: none;
-  padding: 0.5rem 1rem;
+  padding: 0.5rem 1.1rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   transition: all 0.25s ease;
 }
 
 .scrolly-back-link:hover {
   color: #ffffff;
   background: rgba(255, 255, 255, 0.12);
-  border-color: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateX(-3px);
 }
 
@@ -60,7 +60,7 @@
   font-family: var(--font-display, sans-serif);
   font-weight: 700;
   font-size: 0.95rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   color: #ffffff;
   text-transform: uppercase;
 }
@@ -70,9 +70,9 @@
   font-size: 0.65rem;
   padding: 0.2rem 0.6rem;
   border-radius: 4px;
-  background: rgba(0, 240, 255, 0.15);
+  background: rgba(0, 240, 255, 0.12);
   border: 1px solid rgba(0, 240, 255, 0.35);
-  color: #00f0ff;
+  color: var(--active-accent, #00f0ff);
   letter-spacing: 0.1em;
 }
 
@@ -82,35 +82,14 @@
   gap: 1rem;
 }
 
-.scrolly-sound-btn {
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  color: #94a3b8;
-  width: 38px;
-  height: 38px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.scrolly-sound-btn.active {
-  color: #00f0ff;
-  border-color: rgba(0, 240, 255, 0.5);
-  background: rgba(0, 240, 255, 0.12);
-  box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
-}
-
 .scrolly-reserve-btn {
   font-family: var(--font-mono, monospace);
   font-size: 0.75rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   font-weight: 600;
-  padding: 0.55rem 1.25rem;
+  padding: 0.55rem 1.4rem;
   background: #ffffff;
-  color: #07090e;
+  color: #030508;
   border-radius: 9999px;
   text-decoration: none;
   transition: all 0.25s ease;
@@ -119,10 +98,10 @@
 .scrolly-reserve-btn:hover {
   background: #e2e8f0;
   transform: scale(1.04);
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.35);
 }
 
-/* Chapter Progress Scrub Bar (Right Side) */
+/* Chapter Progress Pip Indicators (Right Side) */
 .scrolly-chapter-tracker {
   position: fixed;
   right: 2rem;
@@ -159,7 +138,7 @@
   height: 12px;
   background: var(--active-accent, #00f0ff);
   border-color: #ffffff;
-  box-shadow: 0 0 14px var(--active-accent, #00f0ff);
+  box-shadow: 0 0 16px var(--active-accent, #00f0ff);
 }
 
 .chapter-label-pill {
@@ -181,13 +160,58 @@
   color: #ffffff;
 }
 
-/* Main Multi-Screen Track (450vh scroll canvas) */
+/* Color Palette Swatches */
+.scrolly-color-picker {
+  position: fixed;
+  top: 6.5rem;
+  left: 2rem;
+  z-index: 30;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  background: rgba(10, 15, 25, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.75rem 1rem;
+  border-radius: 14px;
+  backdrop-filter: blur(16px);
+}
+
+.picker-title {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.6rem;
+  letter-spacing: 0.12em;
+  color: #64748b;
+  text-transform: uppercase;
+}
+
+.picker-swatches {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.swatch-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  padding: 0;
+}
+
+.swatch-btn.active {
+  border-color: #ffffff;
+  transform: scale(1.2);
+  box-shadow: 0 0 12px currentColor;
+}
+
+/* 400vh Scroll Track */
 .scrolly-stage-track {
-  height: 480vh;
+  height: 420vh;
   position: relative;
 }
 
-/* The Fixed 100vh Sticky Viewport Stage */
+/* Sticky Viewport */
 .scrolly-sticky-stage {
   position: sticky;
   top: 0;
@@ -199,140 +223,124 @@
   justify-content: center;
 }
 
-/* Radial Glow & Background Grid Matrix */
-.scrolly-bg-ambient {
+/* Visual Layers Stage */
+.scrolly-media-stage {
   position: absolute;
   inset: 0;
-  pointer-events: none;
-  z-index: 1;
-  background: 
-    radial-gradient(circle at 50% 50%, rgba(0, 240, 255, 0.08) 0%, rgba(5, 7, 11, 0) 65%),
-    linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-  background-size: 100% 100%, 60px 60px, 60px 60px;
-}
-
-/* Central Stage Vehicle Arena */
-.scrolly-vehicle-platform {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  max-width: 1100px;
-  height: 520px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Pod Platform Ground Floor Glow */
-.scrolly-floor-pedestal {
-  position: absolute;
-  bottom: 20px;
-  width: 80%;
-  height: 60px;
-  border-radius: 50%;
-  background: radial-gradient(ellipse at center, var(--active-glow, rgba(0, 240, 255, 0.35)) 0%, rgba(0,0,0,0) 70%);
-  filter: blur(25px);
-  pointer-events: none;
-  transition: all 0.5s ease;
-}
-
-/* Vehicle Layer Container */
-.scrolly-car-media-box {
-  position: relative;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  z-index: 1;
 }
 
-.scrolly-car-img {
-  max-width: 90%;
-  max-height: 85%;
-  object-fit: contain;
-  filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.85));
-  user-select: none;
+.stage-layer-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+/* Ambient Radial Vignette & Grid Lines */
+.scrolly-ambient-vignette {
+  position: absolute;
+  inset: 0;
+  z-index: 5;
   pointer-events: none;
+  background: 
+    radial-gradient(circle at center, rgba(0, 0, 0, 0.15) 0%, rgba(3, 5, 8, 0.85) 85%),
+    linear-gradient(180deg, rgba(3, 5, 8, 0.6) 0%, transparent 20%, transparent 80%, rgba(3, 5, 8, 0.95) 100%);
 }
 
-/* Floating Interactive Hotspot Callout Pins */
+.scrolly-floor-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 35vh;
+  z-index: 6;
+  pointer-events: none;
+  background: radial-gradient(ellipse 70% 40% at 50% 100%, var(--active-glow, rgba(0, 240, 255, 0.4)) 0%, rgba(0,0,0,0) 80%);
+  transition: background 0.5s ease;
+}
+
+/* Interactive Hotspot Beacons */
 .scrolly-hotspot {
   position: absolute;
-  z-index: 30;
+  z-index: 25;
   cursor: pointer;
 }
 
 .hotspot-beacon {
-  width: 24px;
-  height: 24px;
+  width: 28px;
+  height: 28px;
   border-radius: 50%;
   background: rgba(0, 240, 255, 0.2);
-  border: 1.5px solid #00f0ff;
+  border: 1.5px solid var(--active-accent, #00f0ff);
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
-  animation: beaconPulse 2s infinite ease-in-out;
+  animation: beaconPing 2s infinite ease-in-out;
 }
 
 .hotspot-beacon::after {
   content: '';
-  width: 6px;
-  height: 6px;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background: #ffffff;
 }
 
-@keyframes beaconPulse {
-  0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.6); }
-  70% { box-shadow: 0 0 0 12px rgba(0, 240, 255, 0); }
+@keyframes beaconPing {
+  0% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0.7); }
+  70% { box-shadow: 0 0 0 14px rgba(0, 240, 255, 0); }
   100% { box-shadow: 0 0 0 0 rgba(0, 240, 255, 0); }
 }
 
 .hotspot-popover {
   position: absolute;
-  bottom: calc(100% + 12px);
+  bottom: calc(100% + 14px);
   left: 50%;
   transform: translateX(-50%);
-  width: 220px;
-  padding: 0.85rem 1rem;
-  background: rgba(10, 15, 25, 0.92);
+  width: 240px;
+  padding: 1rem 1.1rem;
+  background: rgba(10, 15, 25, 0.95);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  border-radius: 8px;
-  backdrop-filter: blur(16px);
+  border-radius: 10px;
+  backdrop-filter: blur(20px);
   pointer-events: none;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
 }
 
 .hotspot-popover strong {
   display: block;
   font-family: var(--font-mono, monospace);
   font-size: 0.75rem;
-  color: #00f0ff;
-  margin-bottom: 0.25rem;
-  letter-spacing: 0.05em;
+  color: var(--active-accent, #00f0ff);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.08em;
 }
 
 .hotspot-popover p {
-  font-size: 0.72rem;
+  font-size: 0.75rem;
   color: #cbd5e1;
-  line-height: 1.4;
+  line-height: 1.45;
   margin: 0;
 }
 
-/* Floating Story Cards (Synchronized with Scroll Timeline) */
+/* Floating Story Cards */
 .scrolly-story-card {
   position: absolute;
-  z-index: 25;
-  max-width: 420px;
-  padding: 1.75rem 2rem;
-  background: rgba(14, 19, 29, 0.75);
+  z-index: 20;
+  max-width: 440px;
+  padding: 2rem 2.25rem;
+  background: rgba(10, 15, 25, 0.8);
   border: 1px solid rgba(255, 255, 255, 0.15);
-  border-radius: 14px;
+  border-radius: 16px;
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7);
   pointer-events: auto;
 }
 
@@ -352,43 +360,43 @@
   bottom: 8%;
   left: 50%;
   transform: translateX(-50%);
-  max-width: 650px;
+  max-width: 680px;
   width: 90%;
 }
 
 .story-eyebrow {
   font-family: var(--font-mono, monospace);
   font-size: 0.7rem;
-  letter-spacing: 0.15em;
+  letter-spacing: 0.18em;
   color: var(--active-accent, #00f0ff);
   text-transform: uppercase;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.6rem;
   display: block;
 }
 
 .story-title {
   font-family: var(--font-display, sans-serif);
-  font-size: 1.85rem;
+  font-size: 2.1rem;
   font-weight: 700;
-  line-height: 1.15;
+  line-height: 1.12;
   letter-spacing: -0.02em;
   color: #ffffff;
-  margin: 0 0 0.75rem;
+  margin: 0 0 0.85rem;
 }
 
 .story-desc {
-  font-size: 0.88rem;
-  line-height: 1.6;
+  font-size: 0.92rem;
+  line-height: 1.65;
   color: #94a3b8;
-  margin: 0 0 1.25rem;
+  margin: 0 0 1.5rem;
 }
 
 .story-metrics-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 0.75rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  padding-top: 1rem;
+  gap: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.25rem;
 }
 
 .metric-cell {
@@ -398,32 +406,33 @@
 
 .metric-val {
   font-family: var(--font-mono, monospace);
-  font-size: 1.15rem;
+  font-size: 1.25rem;
   font-weight: 700;
   color: #ffffff;
 }
 
 .metric-lbl {
   font-size: 0.65rem;
-  letter-spacing: 0.08em;
+  letter-spacing: 0.1em;
   color: #64748b;
   text-transform: uppercase;
+  margin-top: 0.2rem;
 }
 
-/* Bottom Telemetry HUD Matrix (Real-time Scroll Speed & Vehicle State) */
+/* Bottom Telemetry HUD Dock */
 .scrolly-hud-dock {
   position: absolute;
-  bottom: 1.5rem;
-  left: 2rem;
+  bottom: 1.75rem;
+  left: 2.5rem;
   z-index: 30;
   display: flex;
   align-items: center;
   gap: 1.5rem;
-  background: rgba(10, 15, 25, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.6rem 1.25rem;
+  background: rgba(10, 15, 25, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.65rem 1.4rem;
   border-radius: 9999px;
-  backdrop-filter: blur(16px);
+  backdrop-filter: blur(20px);
 }
 
 .hud-pill-item {
@@ -431,7 +440,7 @@
   align-items: center;
   gap: 0.5rem;
   font-family: var(--font-mono, monospace);
-  font-size: 0.7rem;
+  font-size: 0.72rem;
   color: #94a3b8;
 }
 
@@ -447,52 +456,41 @@
   box-shadow: 0 0 8px #10b981;
 }
 
-/* Color Customizer Palette */
-.scrolly-color-picker {
+/* Auto-Scrub & Progress Controller (Bottom Right) */
+.scrolly-playback-dock {
   position: absolute;
-  top: 6rem;
-  left: 2rem;
+  bottom: 1.75rem;
+  right: 2.5rem;
   z-index: 30;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  background: rgba(10, 15, 25, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  padding: 0.75rem;
-  border-radius: 12px;
-  backdrop-filter: blur(16px);
+  align-items: center;
+  gap: 1rem;
+  background: rgba(10, 15, 25, 0.75);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 0.65rem 1.4rem;
+  border-radius: 9999px;
+  backdrop-filter: blur(20px);
 }
 
-.picker-title {
-  font-family: var(--font-mono, monospace);
-  font-size: 0.6rem;
-  letter-spacing: 0.1em;
-  color: #64748b;
-  text-transform: uppercase;
-}
-
-.picker-swatches {
+.playback-btn {
+  background: none;
+  border: none;
+  color: #ffffff;
   display: flex;
-  gap: 0.4rem;
-}
-
-.swatch-btn {
-  width: 22px;
-  height: 22px;
-  border-radius: 50%;
-  border: 2px solid transparent;
+  align-items: center;
+  gap: 0.5rem;
   cursor: pointer;
-  transition: all 0.2s ease;
-  padding: 0;
+  font-family: var(--font-mono, monospace);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  transition: color 0.2s ease;
 }
 
-.swatch-btn.active {
-  border-color: #ffffff;
-  transform: scale(1.15);
-  box-shadow: 0 0 10px currentColor;
+.playback-btn:hover {
+  color: var(--active-accent, #00f0ff);
 }
 
-/* Scroll Prompt Indicator */
+/* Scroll Cue Prompt */
 .scrolly-scroll-indicator {
   position: absolute;
   bottom: 2rem;
@@ -502,58 +500,60 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: 0.5rem;
   font-family: var(--font-mono, monospace);
-  font-size: 0.65rem;
+  font-size: 0.68rem;
   letter-spacing: 0.2em;
-  color: #64748b;
+  color: #94a3b8;
   text-transform: uppercase;
   pointer-events: none;
 }
 
 .mouse-scroll-icon {
-  width: 18px;
-  height: 28px;
-  border: 1.5px solid rgba(255, 255, 255, 0.3);
-  border-radius: 10px;
+  width: 20px;
+  height: 30px;
+  border: 1.5px solid rgba(255, 255, 255, 0.35);
+  border-radius: 12px;
   position: relative;
 }
 
 .mouse-scroll-icon::after {
   content: '';
   position: absolute;
-  top: 5px;
+  top: 6px;
   left: 50%;
   transform: translateX(-50%);
   width: 3px;
   height: 6px;
-  background: #00f0ff;
+  background: var(--active-accent, #00f0ff);
   border-radius: 2px;
-  animation: mouseWheel 1.6s infinite ease-in-out;
+  animation: mouseWheelScrub 1.8s infinite ease-in-out;
 }
 
-@keyframes mouseWheel {
+@keyframes mouseWheelScrub {
   0% { opacity: 1; transform: translate(-50%, 0); }
-  100% { opacity: 0; transform: translate(-50%, 10px); }
+  100% { opacity: 0; transform: translate(-50%, 12px); }
 }
 
-/* Responsive adjustments */
 @media (max-width: 900px) {
+  .scrolly-nav-bar {
+    padding: 1rem 1.25rem;
+  }
+
   .scrolly-story-card.pos-left,
   .scrolly-story-card.pos-right {
-    left: 1.5rem;
-    right: 1.5rem;
+    left: 1.25rem;
+    right: 1.25rem;
     top: auto;
     bottom: 5rem;
     transform: none;
     max-width: 100%;
+    padding: 1.5rem;
   }
 
-  .scrolly-chapter-tracker {
-    display: none;
-  }
-
-  .scrolly-hud-dock {
+  .scrolly-chapter-tracker,
+  .scrolly-hud-dock,
+  .scrolly-color-picker {
     display: none;
   }
 }

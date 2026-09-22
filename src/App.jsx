@@ -64,8 +64,8 @@ const AppContent = () => {
           <Route path="/games/:slug" element={<GameDetailPage />} />
           
           {/* Apple/Porsche-style Scrollytelling Story Showcase */}
-          <Route path="/story" element={<BattleshipBumperCarsPage />} />
-          <Route path="/scrollytelling" element={<BattleshipBumperCarsPage />} />
+          <Route path="/story" element={<ScrollytellingCarPage />} />
+          <Route path="/scrollytelling" element={<ScrollytellingCarPage />} />
 
           {/* Battleship Bumper Cars Experience */}
           <Route path="/bumper-cars" element={<BattleshipBumperCarsPage />} />

@@ -1,6 +1,6 @@
-import React, { useRef, useState, useEffect, useCallback } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, useScroll, useSpring, AnimatePresence } from 'framer-motion';
+import { motion, useScroll, useSpring, useTransform, AnimatePresence } from 'framer-motion';
 import { 
   ArrowLeft, 
   Volume2, 
@@ -15,42 +15,71 @@ import {
   ShieldCheck, 
   Calendar, 
   ChevronRight, 
-  Maximize2,
   Sparkles,
   Layers,
-  Crosshair
+  Crosshair,
+  Info
 } from 'lucide-react';
 import { BorderTrail } from '../components/motion/BorderTrail';
 import './Scrollytelling.css';
 
-// High-Definition Cinematic Automotive Racing Video Sources
-const VIDEO_SOURCES = [
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4",
-  "https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
-];
-
 // Color Theme accents for the HUD & glowing telemetry
 const THEMES = [
-  { id: 'cyan', name: 'Cyber Neon Cyan', hex: '#00f0ff', glow: 'rgba(0, 240, 255, 0.4)' },
-  { id: 'crimson', name: 'Porsche Carmine Red', hex: '#ff0055', glow: 'rgba(255, 0, 85, 0.4)' },
-  { id: 'gold', name: 'Solar Titanium Gold', hex: '#f59e0b', glow: 'rgba(245, 158, 11, 0.4)' },
-  { id: 'emerald', name: 'Hyper Racing Green', hex: '#10b981', glow: 'rgba(16, 185, 129, 0.4)' },
+  { id: 'cyan', name: 'Cyber Neon Cyan', hex: '#00f0ff', glow: 'rgba(0, 240, 255, 0.45)' },
+  { id: 'crimson', name: 'Porsche Carmine Red', hex: '#ff0055', glow: 'rgba(255, 0, 85, 0.45)' },
+  { id: 'gold', name: 'Solar Titanium Gold', hex: '#f59e0b', glow: 'rgba(245, 158, 11, 0.45)' },
+  { id: 'emerald', name: 'Hyper Racing Green', hex: '#10b981', glow: 'rgba(16, 185, 129, 0.45)' },
+];
+
+// Interactive Technical Hotspots
+const HOTSPOTS = [
+  {
+    id: 'bumper',
+    x: '48%',
+    y: '78%',
+    title: 'Nitrogen Impact Collar',
+    subtitle: 'Pressurized elastomer tube absorbing 94% kinetic collision force.',
+    spec: '3.2 Bar Dynamic Pressure'
+  },
+  {
+    id: 'cockpit',
+    x: '52%',
+    y: '46%',
+    title: 'Tactical Pilot Pod',
+    subtitle: 'Ergonomic bucket seat with dual micro-switch drift joysticks.',
+    spec: '5-Point Safety Restraint'
+  },
+  {
+    id: 'motor',
+    x: '28%',
+    y: '68%',
+    title: 'Dual 48V Brushless Motors',
+    subtitle: 'Independent rear-wheel torque vectoring with instantaneous response.',
+    spec: '8,000 Max RPM / 0.02s'
+  },
+  {
+    id: 'canopy',
+    x: '68%',
+    y: '32%',
+    title: 'Carbon Composite Cowl',
+    subtitle: 'Lightweight aerospace shell with low center-of-mass ballast.',
+    spec: '0.22 Drag Coeff'
+  }
 ];
 
 export const ScrollytellingCarPage = () => {
   const containerRef = useRef(null);
-  const videoRef = useRef(null);
   const [activeTheme, setActiveTheme] = useState(THEMES[0]);
-  const [videoDuration, setVideoDuration] = useState(15);
-  const [isVideoLoaded, setIsVideoLoaded] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(false);
   const [isAudioActive, setIsAudioActive] = useState(false);
   const [activeChapter, setActiveChapter] = useState(1);
   const [activeHotspot, setActiveHotspot] = useState(null);
+  const [blueprintMode, setBlueprintMode] = useState(false);
 
-  // Audio Synth references
+  // Web Audio Synth references
   const audioCtxRef = useRef(null);
   const oscRef = useRef(null);
+  const gainRef = useRef(null);
 
   // Scroll Progress Tracking across 450vh scroll track
   const { scrollYProgress } = useScroll({
@@ -64,7 +93,38 @@ export const ScrollytellingCarPage = () => {
     mass: 0.3
   });
 
-  // Calculate live telemetry numbers
+  // Top-level transform hooks for 4 photorealistic stages
+  // Stage 1: Hero reveal
+  const stage1Opacity = useTransform(smoothProgress, [0, 0.22, 0.28], [1, 1, 0]);
+  const stage1Scale = useTransform(smoothProgress, [0, 0.28], [1, 1.12]);
+  const card1Opacity = useTransform(smoothProgress, [0, 0.05, 0.20, 0.25], [1, 1, 1, 0]);
+  const card1X = useTransform(smoothProgress, [0, 0.05, 0.20, 0.25], [0, 0, 0, -50]);
+
+  // Stage 2: Drift Apex & Collision
+  const stage2Opacity = useTransform(smoothProgress, [0.24, 0.29, 0.48, 0.53], [0, 1, 1, 0]);
+  const stage2Scale = useTransform(smoothProgress, [0.24, 0.53], [1.15, 1]);
+  const card2Opacity = useTransform(smoothProgress, [0.27, 0.32, 0.45, 0.50], [0, 1, 1, 0]);
+  const card2X = useTransform(smoothProgress, [0.27, 0.32, 0.45, 0.50], [50, 0, 0, 50]);
+
+  // Stage 3: Cockpit Interior Detail
+  const stage3Opacity = useTransform(smoothProgress, [0.49, 0.54, 0.73, 0.78], [0, 1, 1, 0]);
+  const stage3Scale = useTransform(smoothProgress, [0.49, 0.78], [1.02, 1.15]);
+  const card3Opacity = useTransform(smoothProgress, [0.52, 0.57, 0.70, 0.75], [0, 1, 1, 0]);
+  const card3X = useTransform(smoothProgress, [0.52, 0.57, 0.70, 0.75], [-50, 0, 0, -50]);
+
+  // Stage 4: Grand Arena Celebration & Booking CTA
+  const stage4Opacity = useTransform(smoothProgress, [0.74, 0.79, 1], [0, 1, 1]);
+  const stage4Scale = useTransform(smoothProgress, [0.74, 1], [1.08, 1]);
+  const card4Opacity = useTransform(smoothProgress, [0.78, 0.84, 1], [0, 1, 1]);
+  const card4Y = useTransform(smoothProgress, [0.78, 0.84, 1], [40, 0, 0]);
+
+  // Indicator fade out
+  const scrollIndicatorOpacity = useTransform(smoothProgress, [0, 0.08], [1, 0]);
+
+  // Hotspots visibility during Stage 1
+  const hotspotsOpacity = useTransform(smoothProgress, [0, 0.18, 0.24], [1, 1, 0]);
+
+  // Dynamic Telemetry metrics
   const [telemetry, setTelemetry] = useState({
     speed: 0,
     rpm: 1200,
@@ -73,31 +133,15 @@ export const ScrollytellingCarPage = () => {
     progressPercent: 0
   });
 
-  // Handle Video Metadata Loaded
-  const handleLoadedMetadata = () => {
-    if (videoRef.current) {
-      setVideoDuration(videoRef.current.duration || 15);
-      setIsVideoLoaded(true);
-    }
-  };
-
-  // Synchronize video time with scroll progress
+  // Track scroll change for telemetry and audio modulation
   useEffect(() => {
     const unsubscribe = smoothProgress.on("change", (p) => {
       const clampedP = Math.max(0, Math.min(1, p));
-      
-      // Update video time
-      if (videoRef.current && videoRef.current.duration && !isAutoPlaying) {
-        const targetTime = clampedP * videoRef.current.duration;
-        if (Math.abs(videoRef.current.currentTime - targetTime) > 0.04) {
-          videoRef.current.currentTime = targetTime;
-        }
-      }
 
-      // Update Chapter index
-      if (clampedP < 0.25) setActiveChapter(1);
-      else if (clampedP < 0.50) setActiveChapter(2);
-      else if (clampedP < 0.75) setActiveChapter(3);
+      // Update active chapter index
+      if (clampedP < 0.26) setActiveChapter(1);
+      else if (clampedP < 0.51) setActiveChapter(2);
+      else if (clampedP < 0.76) setActiveChapter(3);
       else setActiveChapter(4);
 
       // Update Telemetry metrics
@@ -109,17 +153,17 @@ export const ScrollytellingCarPage = () => {
         progressPercent: Math.round(clampedP * 100)
       });
 
-      // Update Audio frequency with speed
+      // Modulate audio synth
       if (isAudioActive && oscRef.current && audioCtxRef.current) {
-        const freq = 55 + clampedP * 130;
-        oscRef.current.frequency.setTargetAtTime(freq, audioCtxRef.current.currentTime, 0.08);
+        const freq = 60 + clampedP * 140;
+        oscRef.current.frequency.setTargetAtTime(freq, audioCtxRef.current.currentTime, 0.06);
       }
     });
 
     return () => unsubscribe();
-  }, [smoothProgress, isAutoPlaying, isAudioActive]);
+  }, [smoothProgress, isAudioActive]);
 
-  // Auto-Play Feature
+  // Auto-Scrub Playback
   useEffect(() => {
     if (!isAutoPlaying || !containerRef.current) return;
     let curr = smoothProgress.get();
@@ -139,7 +183,10 @@ export const ScrollytellingCarPage = () => {
   const toggleAudio = () => {
     if (isAudioActive) {
       if (oscRef.current) {
-        try { oscRef.current.stop(); oscRef.current.disconnect(); } catch(e) {}
+        try { 
+          oscRef.current.stop(); 
+          oscRef.current.disconnect(); 
+        } catch(e) {}
       }
       setIsAudioActive(false);
     } else {
@@ -158,13 +205,15 @@ export const ScrollytellingCarPage = () => {
         gain.connect(ctx.destination);
         osc.start();
         oscRef.current = osc;
+        gainRef.current = gain;
         setIsAudioActive(true);
       } catch (err) {
-        console.warn('Audio not supported:', err);
+        console.warn('Audio synthesis not supported:', err);
       }
     }
   };
 
+  // Jump to specific story chapter
   const jumpToChapter = (frac) => {
     if (!containerRef.current) return;
     const totalHeight = containerRef.current.scrollHeight - window.innerHeight;
@@ -181,7 +230,7 @@ export const ScrollytellingCarPage = () => {
       style={{
         '--active-accent': activeTheme.hex,
         '--active-glow': activeTheme.glow,
-        backgroundColor: '#000000',
+        backgroundColor: '#030508',
         minHeight: '100vh',
       }}
     >
@@ -194,10 +243,25 @@ export const ScrollytellingCarPage = () => {
 
         <div className="scrolly-nav-center">
           <span className="scrolly-brand-badge">HYPERDRIVE ATELIER</span>
-          <span className="scrolly-edition-chip">4K SCROLLYTELLING</span>
+          <span className="scrolly-edition-chip">4K SCROLLYTELLING SHOWCASE</span>
         </div>
 
         <div className="scrolly-nav-actions">
+          {/* Blueprint Wireframe Switcher */}
+          <button
+            type="button"
+            className={`scrolly-sound-btn ${blueprintMode ? 'active' : ''}`}
+            onClick={() => setBlueprintMode(!blueprintMode)}
+            title="Toggle Technical Wireframe Blueprint"
+            style={{ fontSize: '0.75rem', gap: '5px', padding: '0 10px', width: 'auto' }}
+          >
+            <Layers size={14} />
+            <span style={{ display: 'inline', fontSize: '0.72rem' }}>
+              {blueprintMode ? 'PHOTO' : 'BLUEPRINT'}
+            </span>
+          </button>
+
+          {/* Sound Toggle */}
           <button 
             type="button" 
             className={`scrolly-sound-btn ${isAudioActive ? 'active' : ''}`}
@@ -217,9 +281,9 @@ export const ScrollytellingCarPage = () => {
       <nav className="scrolly-chapter-tracker" aria-label="Story Chapters">
         {[
           { num: 1, label: "01 // THE GENESIS", frac: 0.05 },
-          { num: 2, label: "02 // 360° DRIFT APEX", frac: 0.35 },
-          { num: 3, label: "03 // PILOT TELEMETRY", frac: 0.65 },
-          { num: 4, label: "04 // THE GRID COMMENCE", frac: 0.95 },
+          { num: 2, label: "02 // DRIFT APEX", frac: 0.35 },
+          { num: 3, label: "03 // PILOT COCKPIT", frac: 0.65 },
+          { num: 4, label: "04 // LAUNCH GRID", frac: 0.95 },
         ].map((c) => (
           <button
             key={c.num}
@@ -250,63 +314,237 @@ export const ScrollytellingCarPage = () => {
         </div>
       </div>
 
-      {/* 4. Main 450vh Scroll Track */}
+      {/* 4. Main 460vh Scroll Track */}
       <div className="scrolly-stage-track" style={{ height: '460vh' }}>
         {/* The 100vh Sticky Viewport */}
         <div className="scrolly-sticky-stage" style={{ position: 'sticky', top: 0, height: '100vh', overflow: 'hidden' }}>
           
-          {/* Fullscreen Video / Visual Scrubbing Stage */}
-          <div className="scrolly-video-wrapper" style={{
+          {/* ================================================================= */}
+          {/* PHOTOREALISTIC MULTI-STAGE CROSSFADE CANVAS */}
+          {/* ================================================================= */}
+          <div className="scrolly-visual-stage" style={{
             position: 'absolute',
             inset: 0,
             width: '100%',
             height: '100%',
             zIndex: 1,
-            backgroundColor: '#05070b',
+            backgroundColor: '#020305',
             overflow: 'hidden',
           }}>
-            <video
-              ref={videoRef}
-              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
-              poster="/images/bumper-cars.jpg"
-              preload="auto"
-              muted
-              playsInline
-              loop
-              autoPlay
-              onLoadedMetadata={handleLoadedMetadata}
-              style={{
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                opacity: 0.88,
-                filter: 'contrast(1.15) brightness(0.95)',
-              }}
-            />
 
-            {/* High-Resolution Hero Backdrop Fallback */}
-            <img 
-              src="/images/bumper-cars.jpg" 
-              alt="Bumper Cars Arena"
-              style={{
-                position: 'absolute',
-                inset: 0,
-                width: '100%',
-                height: '100%',
-                objectFit: 'cover',
-                zIndex: 0,
-                opacity: 0.4,
-                filter: 'blur(2px)'
-              }}
-            />
+            {/* STAGE 1: Hero Beauty Pose */}
+            <motion.div style={{
+              position: 'absolute',
+              inset: 0,
+              opacity: blueprintMode ? 0.15 : stage1Opacity,
+              scale: stage1Scale,
+              transformOrigin: 'center center',
+              zIndex: 2,
+            }}>
+              <img 
+                src="/images/battleship/battleship_bumper_hero_1790012986302.jpg" 
+                alt="HyperDrive Electric Bumper Car Hero Reveal"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  filter: 'contrast(1.1) brightness(0.95)',
+                }}
+              />
+            </motion.div>
+
+            {/* STAGE 2: High-Speed Collision & Drift Apex */}
+            <motion.div style={{
+              position: 'absolute',
+              inset: 0,
+              opacity: blueprintMode ? 0.15 : stage2Opacity,
+              scale: stage2Scale,
+              transformOrigin: 'center center',
+              zIndex: 3,
+            }}>
+              <img 
+                src="/images/battleship/battleship_bump_action_1790013025764.jpg" 
+                alt="360 Rotation Drift Collision Action"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  filter: 'contrast(1.15) brightness(0.92)',
+                }}
+              />
+            </motion.div>
+
+            {/* STAGE 3: Macro Cockpit Steering & Telemetry */}
+            <motion.div style={{
+              position: 'absolute',
+              inset: 0,
+              opacity: blueprintMode ? 0.15 : stage3Opacity,
+              scale: stage3Scale,
+              transformOrigin: 'center center',
+              zIndex: 4,
+            }}>
+              <img 
+                src="/images/battleship/battleship_cockpit_detail_1790013007746.jpg" 
+                alt="Tactical Cockpit Joystick Steering Wheel"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  filter: 'contrast(1.12) brightness(0.95)',
+                }}
+              />
+            </motion.div>
+
+            {/* STAGE 4: Grand Arena Lights & Podium Celebration */}
+            <motion.div style={{
+              position: 'absolute',
+              inset: 0,
+              opacity: blueprintMode ? 0.15 : stage4Opacity,
+              scale: stage4Scale,
+              transformOrigin: 'center center',
+              zIndex: 5,
+            }}>
+              <img 
+                src="/images/battleship/battleship_repeat_friends_1790013048961.jpg" 
+                alt="HyperDrive Arena Electric Grid Celebration"
+                style={{
+                  width: '100%',
+                  height: '100%',
+                  objectFit: 'cover',
+                  filter: 'contrast(1.1) brightness(0.95)',
+                }}
+              />
+            </motion.div>
+
+            {/* OPTIONAL BLUEPRINT TECHNICAL OVERLAY */}
+            <AnimatePresence>
+              {blueprintMode && (
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  style={{
+                    position: 'absolute',
+                    inset: 0,
+                    zIndex: 10,
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    background: 'rgba(2, 6, 15, 0.88)',
+                    backdropFilter: 'blur(12px)',
+                    padding: '2rem'
+                  }}
+                >
+                  <img
+                    src="/images/battleship/dodgem_full_technical_chart.png"
+                    alt="Technical Blueprint Specifications"
+                    style={{
+                      maxHeight: '75vh',
+                      maxWidth: '90vw',
+                      objectFit: 'contain',
+                      filter: `drop-shadow(0 0 30px ${activeTheme.glow})`
+                    }}
+                  />
+                </motion.div>
+              )}
+            </AnimatePresence>
+
+            {/* INTERACTIVE HOTSPOT PINS (Stage 1) */}
+            {!blueprintMode && (
+              <motion.div 
+                style={{
+                  position: 'absolute',
+                  inset: 0,
+                  zIndex: 15,
+                  pointerEvents: 'none',
+                  opacity: hotspotsOpacity,
+                }}
+              >
+                {HOTSPOTS.map((spot) => (
+                  <div
+                    key={spot.id}
+                    style={{
+                      position: 'absolute',
+                      left: spot.x,
+                      top: spot.y,
+                      transform: 'translate(-50%, -50%)',
+                      pointerEvents: 'auto',
+                    }}
+                  >
+                    <button
+                      type="button"
+                      onClick={() => setActiveHotspot(activeHotspot === spot.id ? null : spot.id)}
+                      style={{
+                        width: '32px',
+                        height: '32px',
+                        borderRadius: '50%',
+                        background: 'rgba(10, 15, 25, 0.85)',
+                        border: `2px solid ${activeTheme.hex}`,
+                        color: activeTheme.hex,
+                        display: 'flex',
+                        alignItems: 'center',
+                        justifyContent: 'center',
+                        cursor: 'pointer',
+                        boxShadow: `0 0 16px ${activeTheme.glow}`,
+                        transition: 'all 0.25s ease',
+                      }}
+                      title={spot.title}
+                    >
+                      <Crosshair size={15} />
+                    </button>
+
+                    {/* Hotspot Card Tooltip */}
+                    <AnimatePresence>
+                      {activeHotspot === spot.id && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10, scale: 0.9 }}
+                          animate={{ opacity: 1, y: 0, scale: 1 }}
+                          exit={{ opacity: 0, y: 10, scale: 0.9 }}
+                          style={{
+                            position: 'absolute',
+                            bottom: '42px',
+                            left: '50%',
+                            transform: 'translateX(-50%)',
+                            width: '240px',
+                            background: 'rgba(8, 12, 22, 0.95)',
+                            border: `1px solid ${activeTheme.hex}`,
+                            borderRadius: '12px',
+                            padding: '12px 14px',
+                            backdropFilter: 'blur(16px)',
+                            boxShadow: `0 12px 30px rgba(0,0,0,0.8), 0 0 20px ${activeTheme.glow}`,
+                            zIndex: 40,
+                            pointerEvents: 'auto',
+                          }}
+                        >
+                          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '4px' }}>
+                            <span style={{ fontFamily: 'JetBrains Mono, monospace', fontSize: '0.68rem', color: activeTheme.hex, letterSpacing: '0.08em' }}>
+                              SYSTEM SPEC
+                            </span>
+                            <span style={{ fontSize: '0.7rem', color: '#10b981', fontWeight: 600 }}>
+                              {spot.spec}
+                            </span>
+                          </div>
+                          <h4 style={{ margin: '0 0 4px', fontSize: '0.88rem', color: '#ffffff', fontWeight: 700 }}>
+                            {spot.title}
+                          </h4>
+                          <p style={{ margin: 0, fontSize: '0.74rem', color: '#94a3b8', lineHeight: 1.4 }}>
+                            {spot.subtitle}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ))}
+              </motion.div>
+            )}
 
             {/* Cinematic Gradient Vignettes */}
             <div style={{
               position: 'absolute',
               inset: 0,
-              background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0.85) 90%)',
+              background: 'radial-gradient(ellipse at center, rgba(0,0,0,0.15) 0%, rgba(2,4,8,0.85) 90%)',
               pointerEvents: 'none',
-              zIndex: 2,
+              zIndex: 8,
             }} />
 
             {/* Subtle Neon Underglow Floor Reflex */}
@@ -318,7 +556,7 @@ export const ScrollytellingCarPage = () => {
               height: '35vh',
               background: `radial-gradient(ellipse 70% 40% at 50% 100%, ${activeTheme.glow} 0%, rgba(0,0,0,0) 80%)`,
               pointerEvents: 'none',
-              zIndex: 3,
+              zIndex: 9,
             }} />
           </div>
 
@@ -331,8 +569,8 @@ export const ScrollytellingCarPage = () => {
             className="scrolly-story-card pos-left"
             style={{
               zIndex: 20,
-              opacity: useTransform(smoothProgress, [0, 0.05, 0.20, 0.25], [1, 1, 1, 0]),
-              x: useTransform(smoothProgress, [0, 0.05, 0.20, 0.25], [0, 0, 0, -40]),
+              opacity: card1Opacity,
+              x: card1X,
             }}
           >
             <span className="story-eyebrow">CHAPTER 01 // ARCHITECTURAL REVEAL</span>
@@ -357,8 +595,8 @@ export const ScrollytellingCarPage = () => {
             className="scrolly-story-card pos-right"
             style={{
               zIndex: 20,
-              opacity: useTransform(smoothProgress, [0.26, 0.30, 0.45, 0.50], [0, 1, 1, 0]),
-              x: useTransform(smoothProgress, [0.26, 0.30, 0.45, 0.50], [40, 0, 0, 40]),
+              opacity: card2Opacity,
+              x: card2X,
             }}
           >
             <span className="story-eyebrow">CHAPTER 02 // DUAL TORQUE VECTORING</span>
@@ -383,8 +621,8 @@ export const ScrollytellingCarPage = () => {
             className="scrolly-story-card pos-left"
             style={{
               zIndex: 20,
-              opacity: useTransform(smoothProgress, [0.52, 0.56, 0.70, 0.75], [0, 1, 1, 0]),
-              x: useTransform(smoothProgress, [0.52, 0.56, 0.70, 0.75], [-40, 0, 0, -40]),
+              opacity: card3Opacity,
+              x: card3X,
             }}
           >
             <span className="story-eyebrow">CHAPTER 03 // TACTICAL PILOT COCKPIT</span>
@@ -409,15 +647,15 @@ export const ScrollytellingCarPage = () => {
             className="scrolly-story-card pos-bottom"
             style={{
               zIndex: 20,
-              opacity: useTransform(smoothProgress, [0.80, 0.85, 1], [0, 1, 1]),
-              y: useTransform(smoothProgress, [0.80, 0.85, 1], [30, 0, 0]),
+              opacity: card4Opacity,
+              y: card4Y,
             }}
           >
             <BorderTrail size={50} duration={3} />
             <div style={{ textAlign: 'center' }}>
               <span className="story-eyebrow">CHAPTER 04 // ENTER THE BATTLEGROUND</span>
               <h2 className="story-title">READY TO TAKE THE WHEEL?</h2>
-              <p className="story-desc" style={{ maxWidth: '520px', margin: '0 auto 1.5rem' }}>
+              <p className="story-desc" style={{ maxWidth: '540px', margin: '0 auto 1.5rem' }}>
                 Hyderabad’s premier commercial arena with 8 active electric pods at Inorbit Mall & Sarath City Mall. Lock your session for just ₹100 deposit.
               </p>
               <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
@@ -502,11 +740,11 @@ export const ScrollytellingCarPage = () => {
           <motion.div 
             className="scrolly-scroll-indicator"
             style={{
-              opacity: useTransform(smoothProgress, [0, 0.10], [1, 0])
+              opacity: scrollIndicatorOpacity
             }}
           >
             <div className="mouse-scroll-icon" />
-            <span>SCROLL TO SCRUB 4K CINEMATIC</span>
+            <span>SCROLL DOWN TO ACCELERATE & DRIFT</span>
           </motion.div>
 
         </div>
