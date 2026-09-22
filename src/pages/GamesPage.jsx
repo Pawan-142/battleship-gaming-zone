@@ -645,6 +645,112 @@ export const GamesPage = () => {
           background: #f1f5f9 !important;
         }
 
+        /* ==========================================================
+           LIGHT MODE OVERRIDES FOR ATTRACTIONS
+           ========================================================== */
+        [data-theme="light"] .forge-games-root {
+          background: #f8fafc;
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-breadcrumbs .current {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-pill-tag {
+          background: rgba(15, 23, 42, 0.05);
+          border-color: rgba(15, 23, 42, 0.15);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .pulse-dot {
+          background: #0f172a;
+          box-shadow: 0 0 8px rgba(15, 23, 42, 0.4);
+        }
+
+        [data-theme="light"] .attraction-filter-btn {
+          background: #f1f5f9;
+          border-color: rgba(15, 23, 42, 0.12);
+          color: #475569;
+        }
+
+        [data-theme="light"] .attraction-filter-btn:hover {
+          background: #e2e8f0;
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .attraction-filter-btn.active {
+          background: #0f172a !important;
+          color: #ffffff !important;
+          border-color: #0f172a !important;
+        }
+
+        [data-theme="light"] .forge-attraction-card {
+          background: #ffffff !important;
+          border: 1px solid rgba(15, 23, 42, 0.12) !important;
+          box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.07), 0 0 1px 1px rgba(15, 23, 42, 0.05) !important;
+        }
+
+        [data-theme="light"] .card-floating-price {
+          background: rgba(255, 255, 255, 0.95);
+          border-color: rgba(15, 23, 42, 0.15);
+        }
+
+        [data-theme="light"] .card-floating-price .from-lbl {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .card-floating-price .amt-val {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .attraction-title {
+          color: #0f172a !important;
+        }
+
+        [data-theme="light"] .attraction-desc {
+          color: #475569;
+        }
+
+        [data-theme="light"] .specs-matrix {
+          border-top-color: rgba(15, 23, 42, 0.08);
+          border-bottom-color: rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .spec-label {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .spec-value {
+          color: #0f172a !important;
+        }
+
+        [data-theme="light"] .spec-icon {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .forge-ghost-btn {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.2);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-ghost-btn:hover {
+          background: #f1f5f9;
+          border-color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-solid-btn {
+          background: #0f172a !important;
+          color: #ffffff !important;
+          border: 1px solid #0f172a !important;
+          box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
+        }
+
+        [data-theme="light"] .forge-solid-btn:hover {
+          background: #1e293b !important;
+        }
+
         @media (max-width: 1024px) {
           .forge-games-grid {
             grid-template-columns: repeat(2, 1fr);

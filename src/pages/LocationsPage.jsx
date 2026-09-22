@@ -493,6 +493,81 @@ export const LocationsPage = () => {
           border: 1px solid var(--accent-cyan);
         }
 
+        /* ==========================================================
+           LIGHT MODE OVERRIDES FOR LOCATIONS & STUDIOS
+           ========================================================== */
+        [data-theme="light"] .forge-locations-root {
+          background: #f8fafc;
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-studio-card {
+          background: #ffffff !important;
+          border: 1px solid rgba(15, 23, 42, 0.12) !important;
+          box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.07), 0 0 1px 1px rgba(15, 23, 42, 0.05) !important;
+        }
+
+        [data-theme="light"] .forge-studio-card:hover {
+          box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.12) !important;
+          border-color: rgba(15, 23, 42, 0.25) !important;
+        }
+
+        [data-theme="light"] .studio-title {
+          color: #0f172a !important;
+        }
+
+        [data-theme="light"] .studio-address {
+          color: #475569;
+        }
+
+        [data-theme="light"] .studio-landmark {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .s-row {
+          color: #334155;
+        }
+
+        [data-theme="light"] .spec-icon {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .amenity-chip {
+          background: #f1f5f9;
+          border: 1px solid rgba(15, 23, 42, 0.1);
+          color: #475569;
+        }
+
+        [data-theme="light"] .forge-ghost-btn {
+          background: #ffffff;
+          border: 1px solid rgba(15, 23, 42, 0.18);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-ghost-btn:hover {
+          background: #f1f5f9;
+          border-color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-select-btn {
+          background: #0f172a !important;
+          color: #ffffff !important;
+        }
+
+        [data-theme="light"] .forge-select-btn:hover {
+          background: #1e293b !important;
+        }
+
+        [data-theme="light"] .status-badge.live {
+          color: #059669;
+          background: rgba(16, 185, 129, 0.1);
+          border: 1px solid rgba(16, 185, 129, 0.3);
+        }
+
+        [data-theme="light"] .dot-green {
+          background: #10b981;
+        }
+
         @media (max-width: 1024px) {
           .branches-atelier-grid {
             grid-template-columns: 1fr;

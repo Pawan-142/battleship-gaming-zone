@@ -482,6 +482,72 @@ export const AboutPage = () => {
           border-color: rgba(255, 255, 255, 0.3);
         }
 
+        /* ==========================================================
+           LIGHT MODE OVERRIDES FOR ABOUT PAGE
+           ========================================================== */
+        [data-theme="light"] .forge-about-root {
+          background: #f8fafc;
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .pillar-card {
+          background: #f8fafc;
+          border-color: rgba(15, 23, 42, 0.1);
+        }
+
+        [data-theme="light"] .pillar-card h4 {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .pillar-card p {
+          color: #475569;
+        }
+
+        [data-theme="light"] .standard-card {
+          background: #ffffff !important;
+          border: 1px solid rgba(15, 23, 42, 0.12) !important;
+          box-shadow: 0 8px 24px rgba(15, 23, 42, 0.05);
+        }
+
+        [data-theme="light"] .standard-card:hover {
+          border-color: rgba(15, 23, 42, 0.25) !important;
+          box-shadow: 0 16px 36px rgba(15, 23, 42, 0.1);
+        }
+
+        [data-theme="light"] .std-num {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .about-cta-banner {
+          background: #ffffff;
+          border: 1px solid rgba(15, 23, 42, 0.12);
+          box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+        }
+
+        [data-theme="light"] .about-cta-banner h3 {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .about-cta-banner p {
+          color: #475569;
+        }
+
+        [data-theme="light"] .forge-solid-btn {
+          background: #0f172a !important;
+          color: #ffffff !important;
+        }
+
+        [data-theme="light"] .forge-ghost-btn {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.2);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-ghost-btn:hover {
+          background: #f1f5f9;
+          border-color: #0f172a;
+        }
+
         @media (max-width: 1024px) {
           .forge-about-grid {
             grid-template-columns: 1fr;

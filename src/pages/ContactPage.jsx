@@ -1002,6 +1002,245 @@ export const ContactPage = () => {
           color: var(--text-secondary);
         }
 
+        /* ==========================================================
+           LIGHT MODE OVERRIDES FOR CONCIERGE & DESKS
+           ========================================================== */
+        [data-theme="light"] .forge-contact-root {
+          background: #f8fafc;
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-breadcrumb .current {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-pill-tag {
+          background: rgba(15, 23, 42, 0.05);
+          border: 1px solid rgba(15, 23, 42, 0.15);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .pulse-dot {
+          background: #0f172a;
+          box-shadow: 0 0 8px rgba(15, 23, 42, 0.4);
+        }
+
+        [data-theme="light"] .forge-title {
+          color: #0f172a !important;
+        }
+
+        [data-theme="light"] .forge-subtitle {
+          color: #475569;
+        }
+
+        [data-theme="light"] .forge-card {
+          background: #ffffff !important;
+          border: 1px solid rgba(15, 23, 42, 0.12) !important;
+          box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.07), 0 0 1px 1px rgba(15, 23, 42, 0.05) !important;
+        }
+
+        [data-theme="light"] .card-header-bar {
+          border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .mono-badge {
+          color: #475569;
+        }
+
+        [data-theme="light"] .mono-dim {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .status-live-chip {
+          color: #059669;
+        }
+
+        [data-theme="light"] .dot-green {
+          background: #10b981;
+          box-shadow: 0 0 6px rgba(16, 185, 129, 0.6);
+        }
+
+        [data-theme="light"] .studio-card {
+          background: #f8fafc !important;
+          border: 1px solid rgba(15, 23, 42, 0.1) !important;
+        }
+
+        [data-theme="light"] .studio-card:hover {
+          background: #ffffff !important;
+          border-color: rgba(15, 23, 42, 0.25) !important;
+          box-shadow: 0 6px 20px rgba(15, 23, 42, 0.06);
+        }
+
+        [data-theme="light"] .studio-index {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .studio-name {
+          color: #0f172a !important;
+        }
+
+        [data-theme="light"] .studio-map-btn {
+          background: #ffffff;
+          color: #0f172a;
+          border: 1px solid rgba(15, 23, 42, 0.15);
+        }
+
+        [data-theme="light"] .studio-map-btn:hover {
+          background: #0f172a;
+          color: #ffffff;
+          border-color: #0f172a;
+        }
+
+        [data-theme="light"] .studio-address {
+          color: #475569;
+        }
+
+        [data-theme="light"] .icon-gold {
+          color: #d97706;
+        }
+
+        [data-theme="light"] .studio-specs {
+          color: #64748b;
+          border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .forge-action-link {
+          background: #ffffff;
+          border: 1px solid rgba(15, 23, 42, 0.15);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-action-link:hover {
+          background: #0f172a;
+          color: #ffffff;
+          border-color: #0f172a;
+        }
+
+        [data-theme="light"] .whatsapp-link {
+          background: rgba(37, 211, 102, 0.1);
+          color: #15803d;
+          border-color: rgba(37, 211, 102, 0.3);
+        }
+
+        [data-theme="light"] .whatsapp-link:hover {
+          background: #16a34a;
+          color: #ffffff;
+          border-color: #16a34a;
+        }
+
+        [data-theme="light"] .forge-corp-banner {
+          background: #f8fafc !important;
+        }
+
+        [data-theme="light"] .icon-cyan-glow {
+          color: #0284c7;
+        }
+
+        [data-theme="light"] .corp-body h4 {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .corp-body p {
+          color: #475569;
+        }
+
+        [data-theme="light"] .corp-contact-row {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .inquiry-pill {
+          background: #f1f5f9;
+          border: 1px solid rgba(15, 23, 42, 0.12);
+          color: #475569;
+        }
+
+        [data-theme="light"] .inquiry-pill:hover {
+          background: #e2e8f0;
+          color: #0f172a;
+          border-color: rgba(15, 23, 42, 0.25);
+        }
+
+        [data-theme="light"] .inquiry-pill.active {
+          background: #0f172a !important;
+          color: #ffffff !important;
+          border-color: #0f172a !important;
+        }
+
+        [data-theme="light"] .forge-input-field label {
+          color: #475569;
+        }
+
+        [data-theme="light"] .forge-input-field input,
+        [data-theme="light"] .forge-input-field select,
+        [data-theme="light"] .forge-input-field textarea {
+          background: #ffffff !important;
+          border: 1px solid rgba(15, 23, 42, 0.18) !important;
+          color: #0f172a !important;
+        }
+
+        [data-theme="light"] .forge-input-field input::placeholder,
+        [data-theme="light"] .forge-input-field textarea::placeholder {
+          color: #94a3b8;
+        }
+
+        [data-theme="light"] .forge-input-field input:focus,
+        [data-theme="light"] .forge-input-field select:focus,
+        [data-theme="light"] .forge-input-field textarea:focus {
+          border-color: #0f172a !important;
+          box-shadow: 0 0 0 3px rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .forge-input-field select option {
+          background: #ffffff;
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-submit-btn {
+          background: #0f172a !important;
+          color: #ffffff !important;
+          box-shadow: 0 6px 20px rgba(15, 23, 42, 0.18);
+        }
+
+        [data-theme="light"] .forge-submit-btn:hover {
+          background: #1e293b !important;
+        }
+
+        [data-theme="light"] .privacy-note {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .forge-faq-section {
+          border-top-color: rgba(15, 23, 42, 0.1);
+        }
+
+        [data-theme="light"] .faq-header h2 {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-faq-list {
+          border-top-color: rgba(15, 23, 42, 0.1);
+        }
+
+        [data-theme="light"] .forge-faq-item {
+          border-bottom-color: rgba(15, 23, 42, 0.1);
+        }
+
+        [data-theme="light"] .forge-faq-item:hover {
+          background: rgba(15, 23, 42, 0.02);
+        }
+
+        [data-theme="light"] .faq-num {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .faq-q-text {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .faq-answer p {
+          color: #334155;
+        }
+
         @media (max-width: 1024px) {
           .forge-grid {
             grid-template-columns: 1fr;

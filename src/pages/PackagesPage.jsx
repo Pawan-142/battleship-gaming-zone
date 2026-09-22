@@ -541,6 +541,116 @@ export const PackagesPage = () => {
           border-color: rgba(255, 255, 255, 0.4);
         }
 
+        /* ==========================================================
+           LIGHT MODE OVERRIDES FOR COMBO PASSES
+           ========================================================== */
+        [data-theme="light"] .forge-packages-root {
+          background: #f8fafc;
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-breadcrumbs .current {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-pill-tag {
+          background: rgba(15, 23, 42, 0.05);
+          border-color: rgba(15, 23, 42, 0.15);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .pulse-dot {
+          background: #0f172a;
+          box-shadow: 0 0 8px rgba(15, 23, 42, 0.4);
+        }
+
+        [data-theme="light"] .forge-package-card {
+          background: #ffffff !important;
+          border: 1px solid rgba(15, 23, 42, 0.12) !important;
+          box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.07), 0 0 1px 1px rgba(15, 23, 42, 0.05) !important;
+        }
+
+        [data-theme="light"] .pkg-title {
+          color: #0f172a !important;
+        }
+
+        [data-theme="light"] .pkg-summary {
+          color: #475569;
+        }
+
+        [data-theme="light"] .meta-stats-strip {
+          background: #f8fafc;
+          border-top: 1px solid rgba(15, 23, 42, 0.08);
+          border-bottom: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .meta-stat .stat-v {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .meta-stat .stat-k {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .inc-header {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .inc-tag {
+          background: #f1f5f9;
+          border-color: rgba(15, 23, 42, 0.1);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .val-main {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .val-per {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .forge-book-pass-btn {
+          background: #0f172a !important;
+          color: #ffffff !important;
+          border: 1px solid #0f172a !important;
+          box-shadow: 0 4px 15px rgba(15, 23, 42, 0.15);
+        }
+
+        [data-theme="light"] .forge-book-pass-btn:hover {
+          background: #1e293b !important;
+        }
+
+        [data-theme="light"] .forge-corp-takeover {
+          background: #ffffff !important;
+          border: 1px solid rgba(15, 23, 42, 0.12) !important;
+          box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.07);
+        }
+
+        [data-theme="light"] .corp-left h3 {
+          color: #0f172a !important;
+        }
+
+        [data-theme="light"] .corp-left p {
+          color: #475569;
+        }
+
+        [data-theme="light"] .corp-icon {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-corp-btn {
+          background: #ffffff;
+          border: 1px solid rgba(15, 23, 42, 0.18);
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .forge-corp-btn:hover {
+          background: #0f172a;
+          color: #ffffff;
+          border-color: #0f172a;
+        }
+
         @media (max-width: 900px) {
           .forge-package-card {
             grid-template-columns: 1fr;
