@@ -74,42 +74,60 @@
    LIGHT MODE OVERRIDES
    ========================================================================== */
 [data-theme="light"] {
-  --bg-deep: #f8fafc;
+  --bg-deep: #f1f5f9;
   --bg-main: #ffffff;
+  --bg-surface: #ffffff;
   --bg-card: #ffffff;
-  --bg-card-hover: #f1f5f9;
+  --bg-card-hover: #f8fafc;
   --bg-elevated: #ffffff;
   --bg-surface-2: #f1f5f9;
   --bg-surface-3: #e2e8f0;
 
-  --cyan-primary: #090d16;
-  --cyan-hover: #1e293b;
-  --cyan-glow: rgba(9, 13, 22, 0.15);
-  --cyan-dim: rgba(9, 13, 22, 0.05);
+  --cyan-primary: #0088cc;
+  --cyan-hover: #0077b6;
+  --cyan-glow: rgba(0, 136, 204, 0.15);
+  --cyan-dim: rgba(0, 136, 204, 0.08);
 
-  --amber-primary: #334155;
-  --amber-hover: #0f172a;
-  --amber-glow: rgba(15, 23, 42, 0.15);
-  --amber-dim: rgba(15, 23, 42, 0.05);
+  --amber-primary: #d97706;
+  --amber-hover: #b45309;
+  --amber-glow: rgba(217, 119, 6, 0.15);
+  --amber-dim: rgba(217, 119, 6, 0.08);
 
-  --crimson-primary: #334155;
-  --crimson-glow: rgba(15, 23, 42, 0.15);
-  --crimson-dim: rgba(15, 23, 42, 0.05);
+  --crimson-primary: #e11d48;
+  --crimson-glow: rgba(225, 29, 72, 0.15);
+  --crimson-dim: rgba(225, 29, 72, 0.08);
 
-  --emerald-primary: #090d16;
-  --emerald-glow: rgba(9, 13, 22, 0.15);
-  --emerald-dim: rgba(9, 13, 22, 0.05);
+  --emerald-primary: #059669;
+  --emerald-glow: rgba(5, 150, 105, 0.15);
+  --emerald-dim: rgba(5, 150, 105, 0.08);
 
+  --text-main: #0f172a;
   --text-pure: #090d16;
   --text-primary: #0f172a;
-  --text-secondary: #475569;
+  --text-secondary: #334155;
   --text-muted: #64748b;
   --text-dim: #94a3b8;
 
-  --border-subtle: rgba(15, 23, 42, 0.08);
-  --border-strong: rgba(15, 23, 42, 0.18);
-  --border-cyan: rgba(15, 23, 42, 0.25);
-  --border-amber: rgba(15, 23, 42, 0.25);
+  --border-subtle: rgba(15, 23, 42, 0.12);
+  --border-strong: rgba(15, 23, 42, 0.22);
+  --border-cyan: rgba(0, 136, 204, 0.3);
+  --border-amber: rgba(217, 119, 6, 0.3);
+  --border-pink: rgba(225, 29, 72, 0.3);
+}
+
+[data-theme="light"] h1,
+[data-theme="light"] h2,
+[data-theme="light"] h3,
+[data-theme="light"] h4,
+[data-theme="light"] h5,
+[data-theme="light"] h6,
+[data-theme="light"] strong,
+[data-theme="light"] b {
+  color: #0f172a;
+}
+
+[data-theme="light"] p {
+  color: #334155;
 }
 
 /* Reset & Baseline */

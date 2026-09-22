@@ -181,6 +181,7 @@ export const ConfirmationPage = () => {
           grid-template-columns: 320px 1fr;
           padding: 0;
           overflow: hidden;
+          background: var(--bg-card);
         }
 
         .qr-ticket-side {
@@ -193,6 +194,12 @@ export const ConfirmationPage = () => {
           justify-content: center;
           gap: 1rem;
           text-align: center;
+          color: #ffffff;
+        }
+
+        [data-theme="light"] .qr-ticket-side {
+          background: #0b1120;
+          color: #ffffff;
         }
 
         .qr-helper-t {
@@ -200,11 +207,17 @@ export const ConfirmationPage = () => {
           color: var(--text-muted);
         }
 
+        [data-theme="light"] .qr-helper-t {
+          color: #94a3b8;
+        }
+
         .ticket-info-side {
           padding: 2.25rem;
           display: flex;
           flex-direction: column;
           gap: 1.25rem;
+          background: var(--bg-card);
+          color: var(--text-primary);
         }
 
         .t-header-top {
@@ -216,18 +229,22 @@ export const ConfirmationPage = () => {
         .lbl-micro {
           display: block;
           font-family: var(--font-mono);
-          font-size: 0.62rem;
+          font-size: 0.65rem;
           color: var(--text-muted);
           text-transform: uppercase;
+          font-weight: 700;
+          letter-spacing: 0.05em;
         }
 
         .ref-bold {
           font-family: var(--font-mono);
           font-size: 1.5rem;
+          color: var(--text-primary);
+          font-weight: 800;
         }
 
         .item-snippet-t {
-          background: var(--bg-deep);
+          background: var(--bg-surface-2);
           border: 1px solid var(--border-subtle);
           padding: 0.75rem 1rem;
           border-radius: var(--radius-xs);
@@ -245,6 +262,9 @@ export const ConfirmationPage = () => {
 
         .name-t {
           font-size: 1.1rem;
+          color: var(--text-primary);
+          font-weight: 700;
+          margin: 0;
         }
 
         .ticket-details-grid {
@@ -254,14 +274,45 @@ export const ConfirmationPage = () => {
         }
 
         .td-box {
-          background: var(--bg-deep);
+          background: var(--bg-surface-2);
           border: 1px solid var(--border-subtle);
-          padding: 0.75rem;
+          padding: 0.85rem;
           border-radius: var(--radius-xs);
           display: flex;
           align-items: flex-start;
+          gap: 0.6rem;
+          font-size: 0.82rem;
+          color: var(--text-primary);
+        }
+
+        .td-box strong {
+          color: var(--text-primary);
+          display: block;
+          margin-top: 2px;
+          font-weight: 700;
+          line-height: 1.35;
+        }
+
+        .fare-breakdown-box {
+          background: var(--bg-surface-2);
+          border: 1px solid var(--border-subtle);
+          border-radius: var(--radius-xs);
+          padding: 1rem;
+          display: flex;
+          flex-direction: column;
           gap: 0.5rem;
-          font-size: 0.8rem;
+          font-size: 0.85rem;
+        }
+
+        .fare-row {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          color: var(--text-secondary);
+        }
+
+        .fare-row strong {
+          color: var(--text-primary);
         }
 
         .t-actions-row {
