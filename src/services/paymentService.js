@@ -3,17 +3,26 @@
  * Handles Razorpay Standard Checkout SDK lifecycle, Sandbox Testing & Live Keys.
  */
 
-const DEFAULT_RAZORPAY_TEST_KEY = "rzp_test_1DP5mmOlF5G5ag"; // Official Razorpay Test Public Key
+// Configured from your MockGateway.com Dashboard
+const DEFAULT_RAZORPAY_TEST_KEY = "rzp_test_ZtZZQ7Ujq5TPLA";
+const DEFAULT_RAZORPAY_TEST_SECRET = "eL0LTbbT5gRs9xeoRPue";
 
 export const getRazorpayKey = () => {
   return localStorage.getItem('hyperdrive_rzp_key') || DEFAULT_RAZORPAY_TEST_KEY;
 };
 
-export const setRazorpayKey = (newKey) => {
+export const getRazorpaySecret = () => {
+  return localStorage.getItem('hyperdrive_rzp_secret') || DEFAULT_RAZORPAY_TEST_SECRET;
+};
+
+export const setRazorpayKey = (newKey, newSecret = "") => {
   if (newKey && newKey.trim()) {
     localStorage.setItem('hyperdrive_rzp_key', newKey.trim());
   } else {
     localStorage.removeItem('hyperdrive_rzp_key');
+  }
+  if (newSecret && newSecret.trim()) {
+    localStorage.setItem('hyperdrive_rzp_secret', newSecret.trim());
   }
 };
 
