@@ -248,20 +248,27 @@ export const PackagesPage = () => {
         }
 
         .forge-package-card {
+          width: 100%;
+          border-radius: var(--radius-sm);
+        }
+
+        .forge-package-card .tilt-card-inner {
           background: rgba(14, 19, 29, 0.5);
           border: 1px solid var(--border-subtle);
           border-radius: var(--radius-sm);
           overflow: hidden;
           display: grid;
-          grid-template-columns: 360px 1fr;
+          grid-template-columns: 380px 1fr;
           box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
           backdrop-filter: blur(16px);
-          transition: all 0.25s ease;
+          -webkit-backdrop-filter: blur(16px);
+          transition: border-color 0.25s ease, box-shadow 0.25s ease;
+          width: 100%;
         }
 
-        .forge-package-card:hover {
+        .forge-package-card:hover .tilt-card-inner {
           border-color: rgba(255, 255, 255, 0.25);
-          transform: translateY(-2px);
+          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.45);
         }
 
         .pkg-media-col {
@@ -564,49 +571,76 @@ export const PackagesPage = () => {
           box-shadow: 0 0 8px rgba(15, 23, 42, 0.4);
         }
 
-        [data-theme="light"] .forge-package-card {
+        [data-theme="light"] .forge-package-card .tilt-card-inner {
           background: #ffffff !important;
           border: 1px solid rgba(15, 23, 42, 0.12) !important;
           box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.07), 0 0 1px 1px rgba(15, 23, 42, 0.05) !important;
+        }
+
+        [data-theme="light"] .pkg-eyebrow {
+          color: #64748b;
         }
 
         [data-theme="light"] .pkg-title {
           color: #0f172a !important;
         }
 
-        [data-theme="light"] .pkg-summary {
+        [data-theme="light"] .pkg-tagline {
           color: #475569;
         }
 
-        [data-theme="light"] .meta-stats-strip {
-          background: #f8fafc;
+        [data-theme="light"] .orig-price {
+          color: #94a3b8;
+        }
+
+        [data-theme="light"] .current-price {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .per-p {
+          color: #64748b;
+        }
+
+        [data-theme="light"] .savings-chip {
+          background: #ecfdf5;
+          border-color: rgba(16, 185, 129, 0.3);
+          color: #059669;
+        }
+
+        [data-theme="light"] .pkg-specs-bar {
           border-top: 1px solid rgba(15, 23, 42, 0.08);
           border-bottom: 1px solid rgba(15, 23, 42, 0.08);
         }
 
-        [data-theme="light"] .meta-stat .stat-v {
+        [data-theme="light"] .pkg-spec-item {
+          color: #475569;
+        }
+
+        [data-theme="light"] .spec-icon {
           color: #0f172a;
         }
 
-        [data-theme="light"] .meta-stat .stat-k {
+        [data-theme="light"] .inc-title {
           color: #64748b;
         }
 
-        [data-theme="light"] .inc-header {
-          color: #64748b;
+        [data-theme="light"] .inc-row {
+          color: #334155;
         }
 
-        [data-theme="light"] .inc-tag {
-          background: #f1f5f9;
-          border-color: rgba(15, 23, 42, 0.1);
+        [data-theme="light"] .inc-row strong {
           color: #0f172a;
         }
 
-        [data-theme="light"] .val-main {
-          color: #0f172a;
+        [data-theme="light"] .inc-icon {
+          color: #059669;
         }
 
-        [data-theme="light"] .val-per {
+        [data-theme="light"] .pkg-footer-row {
+          border-top: 1px solid rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .pkg-terms {
           color: #64748b;
         }
 
@@ -652,7 +686,7 @@ export const PackagesPage = () => {
         }
 
         @media (max-width: 900px) {
-          .forge-package-card {
+          .forge-package-card .tilt-card-inner {
             grid-template-columns: 1fr;
           }
           .pkg-media-col {
