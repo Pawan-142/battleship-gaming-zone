@@ -155,7 +155,11 @@ body {
 
 [data-theme="light"] body {
   background-color: #f8fafc;
-  background-image: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  background-image: 
+    radial-gradient(at 10% 10%, rgba(0, 136, 204, 0.03) 0px, transparent 40%),
+    radial-gradient(at 90% 80%, rgba(217, 119, 6, 0.03) 0px, transparent 40%),
+    linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%);
+  color: #0f172a;
 }
 
 .main-content {
@@ -668,9 +672,13 @@ a {
   will-change: transform;
 }
 
-[data-theme="light"] .hero-bg-media {
-  opacity: 0.03;
-  filter: grayscale(100%) brightness(1.2);
+[data-theme="light"] .commercial-hero {
+  background: #f8fafc;
+}
+
+[data-theme="light"] .hero-backdrop-container {
+  opacity: 0.12;
+  filter: grayscale(100%) contrast(1.1) brightness(1.2);
 }
 
 .hero-cyber-overlay {
@@ -680,7 +688,7 @@ a {
 }
 
 [data-theme="light"] .hero-cyber-overlay {
-  background: linear-gradient(180deg, rgba(248, 250, 252, 0.92) 0%, rgba(241, 245, 249, 0.98) 100%);
+  background: radial-gradient(circle at 60% 30%, rgba(255,255,255,0.7) 0%, rgba(248,250,252,0.96) 60%, #f8fafc 100%);
 }
 
 .hero-radial-glow-cyan {
@@ -743,6 +751,45 @@ a {
 .hero-flagship-tag:hover {
   border-color: #ffffff;
   background: rgba(255, 255, 255, 0.08);
+}
+
+[data-theme="light"] .hero-flagship-tag {
+  background: #ffffff;
+  border-color: rgba(15, 23, 42, 0.12);
+  color: #0f172a;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.04);
+}
+
+[data-theme="light"] .hero-flagship-tag:hover {
+  background: #f1f5f9;
+  border-color: rgba(15, 23, 42, 0.25);
+}
+
+[data-theme="light"] .hud-stat-item {
+  background: #ffffff;
+  border: 1px solid rgba(15, 23, 42, 0.1);
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.03);
+}
+
+[data-theme="light"] .hud-stat-val {
+  color: #0f172a;
+}
+
+[data-theme="light"] .hud-stat-lbl {
+  color: #64748b;
+}
+
+[data-theme="light"] .preview-info-strip {
+  background: #ffffff;
+  border-top: 1px solid rgba(15, 23, 42, 0.1);
+}
+
+[data-theme="light"] .preview-title {
+  color: #0f172a;
+}
+
+[data-theme="light"] .preview-lbl {
+  color: #64748b;
 }
 
 .pulse-red-dot {
