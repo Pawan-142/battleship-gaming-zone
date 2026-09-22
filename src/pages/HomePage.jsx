@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
+import { useTheme } from '../context/ThemeContext';
 import { gamesData } from '../data/gamesData';
 import { packagesData } from '../data/packagesData';
 import { offersData } from '../data/offersData';
@@ -47,8 +48,8 @@ import {
 
 export const HomePage = () => {
   const { currentBranch, branches, setIsLocationModalOpen } = useLocation();
+  const { isDark } = useTheme();
   const [activeExpTab, setActiveExpTab] = useState(gamesData[0].id);
-  const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
   const [scrollY, setScrollY] = useState(0);
 
   // Quick Booking Dock Form State
@@ -58,6 +59,47 @@ export const HomePage = () => {
 
   const selectedGame = gamesData.find(g => g.id === activeExpTab) || gamesData[0];
 
+  // Smooth Staggered Animation Variants
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 24 },
+    visible: (custom = 0) => ({
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        delay: custom,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    })
+  };
+
+  const fadeInScale = {
+    hidden: { opacity: 0, scale: 0.94, y: 15 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      y: 0,
+      transition: {
+        duration: 0.9,
+        delay: 0.15,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    }
+  };
+
+  const cardSlideIn = {
+    hidden: { opacity: 0, x: 30 },
+    visible: (custom = 0) => ({
+      opacity: 1,
+      x: 0,
+      transition: {
+        duration: 0.75,
+        delay: custom,
+        ease: [0.16, 1, 0.3, 1]
+      }
+    })
+  };
+
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
@@ -66,131 +108,231 @@ export const HomePage = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const handleMouseMove = (e) => {
-    const { clientX, clientY, currentTarget } = e;
-    const { width, height, left, top } = currentTarget.getBoundingClientRect();
-    const x = ((clientX - left) / width - 0.5) * 2;
-    const y = ((clientY - top) / height - 0.5) * 2;
-    setMousePos({ x, y });
-  };
-
-  const handleMouseLeave = () => {
-    setMousePos({ x: 0, y: 0 });
-  };
-
   return (
     <div className="home-page-root">
       {/* =========================================================================
-          HERO SECTION - CINEMATIC ARCHITECTURAL COMMERCIAL STAGE
+          BATTLESHIP NEXT-GEN PHYSICAL GAMING HERO STAGE (SMOOTH CINEMATIC)
           ========================================================================= */}
-      <section className="commercial-hero">
-        {/* Atmospheric Vignette & Smooth Parallax Media */}
-        <div className="hero-backdrop-container">
-          <ParallaxImage 
-            src="/images/venue-entrance.jpg" 
-            alt="HyperDrive Arena Entrance"
-            speed={0.15}
-            className="hero-parallax-bg"
-          />
-          <div className="hero-cyber-overlay" />
+      <section className="anorent-hero-stage battleship-exact-hero">
+        {/* Full-bleed Dual-Layer Arena Backdrop with Smooth Cross-Fade Transition */}
+        <div className="anorent-chrome-backdrop battleship-arena-backdrop">
+          <div className="hero-arena-bg-layer">
+            <img 
+              src="/images/hero_battleship_arena_bg.jpg" 
+              alt="Battleship Dark Physical Gaming Arena" 
+              className={`hero-arena-bg-img hero-bg-dark ${isDark ? 'active-layer' : 'inactive-layer'}`}
+            />
+            <img 
+              src="/images/hero_battleship_arena_bg_light_v3.jpg" 
+              alt="Battleship Light Physical Gaming Arena" 
+              className={`hero-arena-bg-img hero-bg-light ${!isDark ? 'active-layer' : 'inactive-layer'}`}
+            />
+            <div className="hero-arena-vignette-overlay" />
+          </div>
         </div>
 
-        {/* Foreground Content & 3D Interactive Card */}
-        <div className="container hero-content-block">
-          <div className="hero-grid-split">
-            <div className="hero-left-col">
-              {/* Live Flagship Tag */}
-              <div className="hero-flagship-tag cursor-pointer" onClick={() => setIsLocationModalOpen(true)}>
-                <span className="pulse-mono-dot" />
-                <span>HYDERABAD ARENA • <strong>{currentBranch.shortName.toUpperCase()}</strong></span>
-                <span className="switch-branch-link">CHANGE ARENA ›</span>
-              </div>
+        <div className="container anorent-hero-container">
+          
+          {/* Main 2-Column Split matching the exact visual reference */}
+          <div className="anorent-hero-grid battleship-hero-grid">
+            
+            {/* Left Column: Hero Title, Subtitle, CTA & Coordinates */}
+            <div className="anorent-left-content battleship-left-content">
+              
+              {/* Top Cyber Bullet / Eyebrow */}
+              <motion.div 
+                className="anorent-eyebrow-row battleship-eyebrow-row"
+                initial="hidden"
+                animate="visible"
+                custom={0.05}
+                variants={fadeInUp}
+              >
+                <span className="eyebrow-dash">——</span>
+                <span className="anorent-eyebrow-text">PHYSICAL GAMING & ENTERTAINMENT ARENA</span>
+                <span className="eyebrow-dash">——</span>
+              </motion.div>
 
-              <h1 className="hero-title-commercial">
-                <TextEffect per="word" as="span" preset="fade-in-blur" delay={0.1}>
-                  REAL PHYSICAL ARENA.
-                </TextEffect>
-                <br />
-                <span className="gradient-text-pure">
-                  <TextEffect per="word" as="span" preset="fade-in-blur" delay={0.4}>
-                    ZERO SCREEN FATIGUE.
-                  </TextEffect>
-                </span>
-              </h1>
+              {/* Exact 3D Metallic Chrome Logo with Steering Helm & Anchor Crest */}
+              <motion.div 
+                className="battleship-brand-logo-hero"
+                initial="hidden"
+                animate="visible"
+                variants={fadeInScale}
+              >
+                <img 
+                  src={isDark ? "/images/battleship_chrome_cutout.png" : "/images/battleship_titan_black_cutout.png"} 
+                  alt="BATTLESHIP®" 
+                  className="battleship-chrome-logo-img" 
+                />
+              </motion.div>
 
-              <p className="hero-desc-commercial">
-                High-voltage 360° electric bumper drift pods, 2-tier infrared laser combat, UV glow bowling, and 9D hydraulic VR simulators across 35,000+ sq.ft in Hyderabad.
-              </p>
+              {/* Punchy 2-Line Display Headline */}
+              <motion.h2 
+                className="battleship-main-headline"
+                initial="hidden"
+                animate="visible"
+                custom={0.25}
+                variants={fadeInUp}
+              >
+                ENTER THE BATTLE.<br />
+                LIVE THE EXPERIENCE.
+              </motion.h2>
 
-              <div className="hero-cta-group">
-                <MagneticButton strength={0.3}>
-                  <Link to="/booking" className="btn btn-cyber btn-cyber-primary btn-lg relative overflow-hidden">
-                    <BorderTrail size={50} duration={3} />
-                    <Calendar size={18} />
-                    <span>BOOK YOUR EXPERIENCE</span>
-                  </Link>
-                </MagneticButton>
-                <MagneticButton strength={0.2}>
-                  <Link to="/games" className="btn btn-cyber btn-cyber-outline btn-lg">
-                    <span>EXPLORE ALL 6 ATTRACTIONS</span>
-                    <ArrowRight size={18} />
-                  </Link>
-                </MagneticButton>
-              </div>
+              {/* Subtext description */}
+              <motion.p 
+                className="battleship-sub-desc"
+                initial="hidden"
+                animate="visible"
+                custom={0.35}
+                variants={fadeInUp}
+              >
+                Hyderabad's next-generation physical gaming arena.
+              </motion.p>
 
-              {/* HUD Stats Row with SlidingNumber Counters */}
-              <div className="hud-metrics-row">
-                <div className="hud-stat-item">
-                  <span className="hud-stat-val">
-                    <SlidingNumber value={35} suffix="K+" />
-                  </span>
-                  <span className="hud-stat-lbl">SQ.FT ARENA SPACE</span>
+              {/* Action Button */}
+              <motion.div 
+                className="anorent-action-block battleship-action-block"
+                initial="hidden"
+                animate="visible"
+                custom={0.45}
+                variants={fadeInUp}
+              >
+                <Link to="/games" className="battleship-cta-pill">
+                  <div className="cta-circle-arrow">
+                    <ArrowRight size={16} />
+                  </div>
+                  <span>VIEW ATTRACTIONS</span>
+                </Link>
+              </motion.div>
+
+              {/* Coordinates & Arena System Spec */}
+              <motion.div 
+                className="battleship-coords-row"
+                initial="hidden"
+                animate="visible"
+                custom={0.55}
+                variants={fadeInUp}
+              >
+                <MapPin size={22} className="coords-icon" />
+                <div className="coords-text-col">
+                  <span className="coord-val">17.4483° N, 78.3915° E</span>
+                  <span className="sys-val">SYS-ARENA // REV-04</span>
                 </div>
-                <div className="hud-stat-item">
-                  <span className="hud-stat-val">
-                    <SlidingNumber value={6} />
-                  </span>
-                  <span className="hud-stat-lbl">PHYSICAL BATTLEGROUNDS</span>
-                </div>
-                <div className="hud-stat-item">
-                  <span className="hud-stat-val">
-                    <SlidingNumber value={100} prefix="₹" />
-                  </span>
-                  <span className="hud-stat-lbl">INSTANT ADVANCE HOLD</span>
-                </div>
-              </div>
+              </motion.div>
+
             </div>
 
-            {/* Hero Right 3D Interactive Media Card */}
-            <div className="hero-right-col">
-              <TiltCard
-                tiltDegree={10}
-                scale={1.03}
-                glare={true}
-                className="hero-feature-preview glass-card relative overflow-hidden"
-              >
-                <BorderTrail size={80} duration={4} />
-                <div className="preview-media-holder">
-                  <img src="/images/laser-blast.jpg" alt="Laser Combat" className="preview-img-active" />
-                  <div className="preview-badge-chip">
-                    <span className="badge badge-atelier">FEATURED ATTRACTION</span>
-                  </div>
-                </div>
-                <div className="preview-info-strip">
-                  <div>
-                    <span className="preview-lbl">LIVE ARENA STATUS</span>
-                    <h4 className="preview-title">Laser Blast: 2-Tier Arena</h4>
-                  </div>
-                  <Link to="/booking?game=laser-blast" className="btn btn-cyber btn-cyber-primary btn-sm">
-                    PLAY NOW
+            {/* Right Column: Attraction Showcase Cards matching reference */}
+            <div className="anorent-right-showcase battleship-right-showcase">
+              
+              {/* Vertical Stack of 3 High-Resolution Cyber Glass Cards */}
+              <div className="battleship-cards-stack">
+                
+                {/* 01: Laser Combat */}
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  custom={0.3}
+                  variants={cardSlideIn}
+                >
+                  <Link to="/games/laser-blast" className="battleship-preview-card" title="Laser Combat">
+                    <img src="/images/laser-blast.jpg" alt="Laser Combat" className="card-bg-full-img" />
+                    <div className="card-overlay-gradient" />
+                    <div className="card-content-inner">
+                      <div className="card-text-wrap">
+                        <strong className="card-title">LASER COMBAT</strong>
+                        <span className="card-sub">TEAM UP. TAKE DOWN.</span>
+                      </div>
+                      <div className="card-arrow-circle">
+                        <ArrowRight size={15} />
+                      </div>
+                    </div>
                   </Link>
-                </div>
-              </TiltCard>
+                </motion.div>
+
+                {/* 02: Electric Drift */}
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  custom={0.45}
+                  variants={cardSlideIn}
+                >
+                  <Link to="/games/bumper-cars" className="battleship-preview-card" title="Electric Drift">
+                    <img src="/images/bumper-cars.jpg" alt="Electric Drift" className="card-bg-full-img" />
+                    <div className="card-overlay-gradient" />
+                    <div className="card-content-inner">
+                      <div className="card-text-wrap">
+                        <strong className="card-title">ELECTRIC DRIFT</strong>
+                        <span className="card-sub">CRASH. LAUGH. REPEAT.</span>
+                      </div>
+                      <div className="card-arrow-circle">
+                        <ArrowRight size={15} />
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+
+                {/* 03: Glow Bowling */}
+                <motion.div
+                  initial="hidden"
+                  animate="visible"
+                  custom={0.6}
+                  variants={cardSlideIn}
+                >
+                  <Link to="/games/hyper-bowling" className="battleship-preview-card" title="Glow Bowling">
+                    <img src="/images/hyper-bowling.jpg" alt="Glow Bowling" className="card-bg-full-img" />
+                    <div className="card-overlay-gradient" />
+                    <div className="card-content-inner">
+                      <div className="card-text-wrap">
+                        <strong className="card-title">GLOW BOWLING</strong>
+                        <span className="card-sub">STRIKE IN STYLE.</span>
+                      </div>
+                      <div className="card-arrow-circle">
+                        <ArrowRight size={15} />
+                      </div>
+                    </div>
+                  </Link>
+                </motion.div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+          {/* Bottom Category Pill & Next Level Fun Bar */}
+          <div className="battleship-hero-bottom-bar">
+            <div className="bottom-categories-capsule">
+              <span className="cat-chip">ELECTRIC DRIFT</span>
+              <span className="cat-sep">✦</span>
+              <span className="cat-chip">LASER COMBAT</span>
+              <span className="cat-sep">✦</span>
+              <span className="cat-chip">GLOW BOWLING</span>
+              <span className="cat-sep">✦</span>
+              <span className="cat-chip">VR</span>
+              <span className="cat-sep">✦</span>
+              <span className="cat-chip">ARCADE</span>
+              <span className="cat-sep">✦</span>
+              <span className="cat-chip">SIM RACING</span>
+            </div>
+
+            <div className="bottom-barcode-tag">
+              <div className="mini-barcode">
+                <span className="bar b1" /><span className="bar b2" /><span className="bar b3" /><span className="bar b1" /><span className="bar b4" /><span className="bar b2" /><span className="bar b1" />
+              </div>
+              <span className="barcode-tag-text">NEXT LEVEL FUN</span>
             </div>
           </div>
 
-          {/* Quick-Booking Floating Island Dock */}
-          <div className="quick-booking-dock glass-card mt-5">
+        </div>
+      </section>
+
+      {/* =========================================================================
+          QUICK BOOKING FLOATING DOCK BAR
+          ========================================================================= */}
+      <section className="booking-dock-section">
+        <div className="container">
+          <div className="quick-booking-dock glass-card">
             <div className="dock-item">
               <span className="dock-lbl">1. SELECT ARENA</span>
               <button 
@@ -234,13 +376,13 @@ export const HomePage = () => {
               <div className="dock-counter-row">
                 <button 
                   type="button" 
-                  className="dock-cnt-btn"
+                  className="dock-cnt-btn" 
                   onClick={() => setDockPlayers(Math.max(1, dockPlayers - 1))}
                 >-</button>
                 <span className="dock-cnt-val">{dockPlayers} Players</span>
                 <button 
                   type="button" 
-                  className="dock-cnt-btn"
+                  className="dock-cnt-btn" 
                   onClick={() => setDockPlayers(Math.min(20, dockPlayers + 1))}
                 >+</button>
               </div>
@@ -248,13 +390,12 @@ export const HomePage = () => {
 
             <div className="dock-action-item">
               <MagneticButton strength={0.2} style={{ width: '100%' }}>
-                <Link 
-                  to={`/booking?game=${dockGame}&branch=${currentBranch.id}&date=${dockDate}&players=${dockPlayers}`}
-                  className="btn btn-cyber btn-cyber-primary btn-block btn-dock-cta relative overflow-hidden"
+                <Link
+                  to={`/booking?game=${dockGame}&date=${dockDate}&players=${dockPlayers}&branch=${currentBranch.id}`}
+                  className="btn btn-cyber btn-cyber-primary btn-block"
                 >
-                  <BorderTrail size={50} duration={3} />
-                  <Zap size={16} />
-                  <span>RESERVE PASS (₹100 HOLD)</span>
+                  <Calendar size={16} />
+                  <span>INSTANT PASS (FROM ₹100)</span>
                 </Link>
               </MagneticButton>
             </div>

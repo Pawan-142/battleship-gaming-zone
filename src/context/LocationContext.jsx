@@ -1,14 +1,16 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { getAllBranches, getBranchById, locationsHierarchy } from '../data/branchesData';
+import { getAllBranches, getBranchById as defaultGetBranchById, locationsHierarchy } from '../data/branchesData';
+import { useAdminStore } from './AdminStoreContext';
 
 const LocationContext = createContext();
 
 export const LocationProvider = ({ children }) => {
-  const branches = getAllBranches();
+  const { branches: storeBranches, getBranchById: storeGetBranchById } = useAdminStore();
+  const branches = storeBranches?.length ? storeBranches : getAllBranches();
   
-  // Default to Hyderabad Hitech City
+  // Default to first branch
   const [selectedBranchId, setSelectedBranchId] = useState(() => {
-    return localStorage.getItem('hyperdrive_branch_id') || 'hyd-hitech';
+    return localStorage.getItem('hyperdrive_branch_id') || branches[0]?.id || 'hyd-hitech';
   });
 
   const [isLocationModalOpen, setIsLocationModalOpen] = useState(false);
@@ -17,7 +19,7 @@ export const LocationProvider = ({ children }) => {
     localStorage.setItem('hyperdrive_branch_id', selectedBranchId);
   }, [selectedBranchId]);
 
-  const currentBranch = getBranchById(selectedBranchId) || branches[0];
+  const currentBranch = (storeGetBranchById ? storeGetBranchById(selectedBranchId) : defaultGetBranchById(selectedBranchId)) || branches[0];
 
   const selectBranch = (branchId) => {
     setSelectedBranchId(branchId);

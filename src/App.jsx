@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-route
 import { LocationProvider } from './context/LocationContext';
 import { BookingProvider } from './context/BookingContext';
 import { ThemeProvider } from './context/ThemeContext';
+import { AdminAuthProvider } from './context/AdminAuthContext';
+import { AdminStoreProvider } from './context/AdminStoreContext';
 
 // Layout Components
 import { Navbar } from './components/layout/Navbar';
@@ -26,7 +28,9 @@ import { ContactPage } from './pages/ContactPage';
 import { FaqPage } from './pages/FaqPage';
 import { GalleryPage } from './pages/GalleryPage';
 import { MyBookingPage } from './pages/MyBookingPage';
-import { StaffPosPage } from './pages/StaffPosPage';
+import { AdminLoginPage } from './pages/AdminLoginPage';
+import { AdminOwnerDashboard } from './pages/AdminOwnerDashboard';
+import { StaffDeskPage } from './pages/StaffDeskPage';
 import { CancellationPolicyPage, TermsPage, PrivacyPolicyPage } from './pages/PolicyPages';
 import { BattleshipBumperCarsPage } from './pages/BattleshipBumperCarsPage';
 import { ScrollytellingCarPage } from './pages/ScrollytellingCarPage';
@@ -54,7 +58,7 @@ const AppContent = () => {
       <LocationModal />
 
       {/* Show main luxury navigation bar for standard website pages */}
-      {!isStandaloneExperience && <Navbar />}
+      {!isStandaloneExperience && !isPosPage && <Navbar />}
 
       <main className={!isStandaloneExperience && !isPosPage ? "main-content-wrapper" : ""}>
         <Routes>
@@ -97,9 +101,14 @@ const AppContent = () => {
           <Route path="/terms" element={<TermsPage />} />
           <Route path="/privacy" element={<PrivacyPolicyPage />} />
           
-          {/* Staff POS & Operations Desk */}
-          <Route path="/admin/pos" element={<StaffPosPage />} />
-          <Route path="/staff/pos" element={<StaffPosPage />} />
+          {/* Enterprise Role-Based Portals */}
+          <Route path="/admin/login" element={<AdminLoginPage />} />
+          <Route path="/admin" element={<AdminOwnerDashboard />} />
+          <Route path="/admin/owner" element={<AdminOwnerDashboard />} />
+          <Route path="/admin/staff" element={<StaffDeskPage />} />
+          <Route path="/admin/pos" element={<StaffDeskPage />} />
+          <Route path="/staff" element={<StaffDeskPage />} />
+          <Route path="/staff/pos" element={<StaffDeskPage />} />
           
           {/* Fallback */}
           <Route path="*" element={<HomePage />} />
@@ -120,13 +129,17 @@ const AppContent = () => {
 function App() {
   return (
     <ThemeProvider>
-      <LocationProvider>
-        <BookingProvider>
-          <Router>
-            <AppContent />
-          </Router>
-        </BookingProvider>
-      </LocationProvider>
+      <AdminAuthProvider>
+        <AdminStoreProvider>
+          <LocationProvider>
+            <BookingProvider>
+              <Router>
+                <AppContent />
+              </Router>
+            </BookingProvider>
+          </LocationProvider>
+        </AdminStoreProvider>
+      </AdminAuthProvider>
     </ThemeProvider>
   );
 }

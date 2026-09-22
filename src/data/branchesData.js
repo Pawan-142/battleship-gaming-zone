@@ -139,6 +139,8 @@ export const getAllBranches = () => {
   return branches;
 };
 
+export const branchesData = getAllBranches();
+
 export const getBranchById = (id) => {
   return getAllBranches().find(b => b.id === id) || getAllBranches()[0];
 };

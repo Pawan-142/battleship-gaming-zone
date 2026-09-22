@@ -3,8 +3,9 @@ import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
 import { useBooking } from '../context/BookingContext';
-import { gamesData } from '../data/gamesData';
-import { packagesData } from '../data/packagesData';
+import { useAdminStore } from '../context/AdminStoreContext';
+import { gamesData as defaultGames } from '../data/gamesData';
+import { packagesData as defaultPackages } from '../data/packagesData';
 import { 
   generateDailyTimeSlots, 
   getTodayDateString, 
@@ -27,6 +28,10 @@ export const BookingPage = () => {
   const navigate = useNavigate();
   const { currentBranch, branches, selectBranch } = useLocation();
   const { checkSlotAvailability, acquireSlotHold } = useBooking();
+  const { games: storeGames, packages: storePackages } = useAdminStore();
+
+  const gamesData = storeGames?.length ? storeGames : defaultGames;
+  const packagesData = storePackages?.length ? storePackages : defaultPackages;
 
   const preBranch = searchParams.get('branch');
   const preGame = searchParams.get('game');
@@ -37,7 +42,7 @@ export const BookingPage = () => {
   const [selectedItemId, setSelectedItemId] = useState(() => {
     if (prePackage) return prePackage;
     if (preGame) return preGame;
-    return gamesData[0].id;
+    return gamesData[0]?.id || 'bumper-cars';
   });
 
   const [selectedDate, setSelectedDate] = useState(getTodayDateString());

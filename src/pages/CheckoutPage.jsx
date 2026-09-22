@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useBooking } from '../context/BookingContext';
-import { getGameBySlug } from '../data/gamesData';
-import { getPackageById } from '../data/packagesData';
+import { useAdminStore } from '../context/AdminStoreContext';
+import { getGameBySlug as defaultGetGame } from '../data/gamesData';
+import { getPackageById as defaultGetPackage } from '../data/packagesData';
 import { getBranchById } from '../data/branchesData';
-import { validateCoupon } from '../data/offersData';
+import { validateCoupon as defaultValidateCoupon } from '../data/offersData';
 import { formatCurrency, formatDateDisplay } from '../utils/formatters';
 import { CountdownTimer } from '../components/common/CountdownTimer';
 import { MockGatewayModal } from '../components/common/MockGatewayModal';
@@ -39,6 +40,7 @@ import { BorderTrail } from '../components/motion/BorderTrail';
 export const CheckoutPage = () => {
   const navigate = useNavigate();
   const { activeHold, releaseSlotHold, confirmBookingPayment } = useBooking();
+  const { getGameBySlug: storeGetGame, getPackageById: storeGetPackage, validateDynamicCoupon } = useAdminStore();
 
   const [showMockGateway, setShowMockGateway] = useState(false);
   const [paymentMethod, setPaymentMethod] = useState('RAZORPAY_POPUP');
@@ -83,8 +85,8 @@ export const CheckoutPage = () => {
 
   const branch = getBranchById(activeHold.branchId);
   const item = activeHold.itemType === 'package' 
-    ? getPackageById(activeHold.itemId) 
-    : getGameBySlug(activeHold.itemId);
+    ? (storeGetPackage ? storeGetPackage(activeHold.itemId) : defaultGetPackage(activeHold.itemId)) 
+    : (storeGetGame ? storeGetGame(activeHold.itemId) : defaultGetGame(activeHold.itemId));
 
   const subtotal = item.pricePerPerson * activeHold.playersCount;
   const discountAmount = appliedCoupon ? appliedCoupon.discountAmount : 0;
@@ -101,13 +103,16 @@ export const CheckoutPage = () => {
     setCouponError('');
     setCouponSuccess('');
 
-    const res = validateCoupon(couponInput, subtotal, activeHold.playersCount);
+    const res = validateDynamicCoupon 
+      ? validateDynamicCoupon(couponInput, subtotal, activeHold.playersCount)
+      : defaultValidateCoupon(couponInput, subtotal, activeHold.playersCount);
+
     if (!res.valid) {
       setCouponError(res.message);
       setAppliedCoupon(null);
     } else {
       setAppliedCoupon(res);
-      setCouponSuccess(`Coupon ${res.offer.code} applied! Saved ${formatCurrency(res.discountAmount)}.`);
+      setCouponSuccess(`Coupon ${res.offer?.code || couponInput.toUpperCase()} applied! Saved ${formatCurrency(res.discountAmount)}.`);
     }
   };
 

@@ -464,6 +464,67 @@ export const BookingProvider = ({ children }) => {
     };
   };
 
+  // Staff Check-In Function (Mark customer arrived & game ready)
+  const markBookingCheckedIn = (bookingId, marshalNotes = "") => {
+    const bookingIndex = allBookings.findIndex(b => b.id.toUpperCase() === bookingId.trim().toUpperCase());
+    if (bookingIndex === -1) return { success: false, message: "Booking not found." };
+
+    const booking = allBookings[bookingIndex];
+    if (booking.status === "CHECKED_IN") {
+      return { success: false, message: "Customer is already checked in." };
+    }
+    if (booking.status === "CANCELLED") {
+      return { success: false, message: "Cannot check in a cancelled booking." };
+    }
+
+    const updatedBooking = {
+      ...booking,
+      status: "CHECKED_IN",
+      checkedInAt: new Date().toISOString(),
+      marshalNotes: marshalNotes || booking.marshalNotes || "Checked in at reception desk"
+    };
+
+    const updatedList = [...allBookings];
+    updatedList[bookingIndex] = updatedBooking;
+    setAllBookings(updatedList);
+
+    return {
+      success: true,
+      booking: updatedBooking,
+      message: `Booking #${booking.id} checked in successfully!`
+    };
+  };
+
+  // Staff Collect Remaining Balance Due
+  const collectBalancePayment = (bookingId, paymentMethod = "COUNTER_UPI") => {
+    const bookingIndex = allBookings.findIndex(b => b.id.toUpperCase() === bookingId.trim().toUpperCase());
+    if (bookingIndex === -1) return { success: false, message: "Booking not found." };
+
+    const booking = allBookings[bookingIndex];
+    if (booking.balanceDue <= 0) {
+      return { success: false, message: "No balance due on this booking." };
+    }
+
+    const updatedBooking = {
+      ...booking,
+      advancePaid: booking.totalAmount,
+      balanceDue: 0,
+      balanceSettledAt: new Date().toISOString(),
+      balancePaymentMethod: paymentMethod,
+      balanceTxnId: `BAL-SETTLE-${Date.now()}`
+    };
+
+    const updatedList = [...allBookings];
+    updatedList[bookingIndex] = updatedBooking;
+    setAllBookings(updatedList);
+
+    return {
+      success: true,
+      booking: updatedBooking,
+      message: `Balance of ₹${booking.balanceDue} collected via ${paymentMethod}!`
+    };
+  };
+
   return (
     <BookingContext.Provider
       value={{
@@ -476,7 +537,9 @@ export const BookingProvider = ({ children }) => {
         confirmBookingPayment,
         createStaffWalkinBooking,
         lookupBooking,
-        cancelBooking
+        cancelBooking,
+        markBookingCheckedIn,
+        collectBalancePayment
       }}
     >
       {children}

@@ -40,50 +40,17 @@ export const Navbar = () => {
     setIsMobileMenuOpen(false);
   }, [routerLocation.pathname]);
 
+  const isHomePage = routerLocation.pathname === '/';
+
   return (
     <div className="header-wrapper">
-      {/* Top Ambient Live Ticker */}
-      <div className="live-broadcast-ticker">
-        <div className="ticker-track">
-          <div className="ticker-item">
-            <span className="ticker-dot" />
-            <span><strong>ARENA LIVE:</strong> {currentBranch.name.toUpperCase()} • OPEN TODAY UNTIL 11:30 PM</span>
-          </div>
-          <div className="ticker-item">
-            <span className="ticker-dot" />
-            <span><strong>ELECTRIC BUMPER DRIFT:</strong> 8 PODS ACTIVE</span>
-          </div>
-          <div className="ticker-item">
-            <span className="ticker-dot" />
-            <span><strong>2-TIER LASER BLAST:</strong> SQUAD MISSIONS EVERY 15 MINS</span>
-          </div>
-          <div className="ticker-item">
-            <span className="ticker-dot" />
-            <span><strong>UV GLOW BOWLING:</strong> LANES ONLINE</span>
-          </div>
-          <div className="ticker-item">
-            <span className="ticker-dot" />
-            <span><strong>ADVANCE PASS:</strong> ₹100 LOCKS REAL-TIME INVENTORY</span>
-          </div>
-          {/* Loop duplicates */}
-          <div className="ticker-item">
-            <span className="ticker-dot" />
-            <span><strong>ARENA LIVE:</strong> {currentBranch.name.toUpperCase()} • OPEN TODAY UNTIL 11:30 PM</span>
-          </div>
-          <div className="ticker-item">
-            <span className="ticker-dot" />
-            <span><strong>ELECTRIC BUMPER DRIFT:</strong> 8 PODS ACTIVE</span>
-          </div>
-        </div>
-      </div>
-
       {/* Sleek Floating Island Navigation */}
-      <header className={`navbar-root ${scrolled ? 'scrolled' : ''}`}>
+      <header className={`navbar-root ${scrolled ? 'scrolled' : ''} ${isHomePage ? 'home-navbar-override' : ''}`}>
         <div className="container nav-container">
           {/* Brand Logo */}
           <Link to="/" className="brand-logo" aria-label="Battleship Gaming Zone Home">
             <img 
-              src="/images/battleship_logo.jpg" 
+              src="/images/bs_header_logo.png" 
               alt="Battleship Gaming Zone Logo" 
               className="brand-logo-img" 
             />
@@ -110,32 +77,34 @@ export const Navbar = () => {
 
           {/* Desktop Nav Links */}
           <nav className="desktop-nav-menu" aria-label="Main Navigation">
-            <NavLink to="/" end className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              ARENA
-            </NavLink>
-            <NavLink to="/story" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`} style={{ color: '#00f0ff' }}>
-              ⚡ 3D STORY
-            </NavLink>
             <NavLink to="/games" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
               ATTRACTIONS
             </NavLink>
-            <NavLink to="/packages" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              COMBO PASSES
+            <span className="nav-divider">|</span>
+            <NavLink to="/story" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+              3D STORY
             </NavLink>
+            <span className="nav-divider">|</span>
+            <NavLink to="/packages" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
+              PASSES
+            </NavLink>
+            <span className="nav-divider">|</span>
             <NavLink to="/gallery" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
               GALLERY
             </NavLink>
+            <span className="nav-divider">|</span>
             <NavLink to="/about" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
               FACILITY
             </NavLink>
+            <span className="nav-divider">|</span>
             <NavLink to="/contact" className={({ isActive }) => `nav-item ${isActive ? 'active' : ''}`}>
-              CONCIERGE
+              CONTACT
             </NavLink>
           </nav>
 
           {/* Action CTAs & Theme Toggle */}
           <div className="nav-actions-group">
-            {/* Theme Toggle Button */}
+            {/* Theme Toggle Button with Smooth Icon Morph & Spin */}
             <button
               type="button"
               onClick={toggleTheme}
@@ -143,11 +112,22 @@ export const Navbar = () => {
               aria-label={isDark ? "Switch to Light Titanium Mode" : "Switch to Dark Obsidian Mode"}
               title={isDark ? "Switch to Light Titanium Mode" : "Switch to Dark Obsidian Mode"}
             >
-              {isDark ? (
-                <Sun size={17} className="theme-icon" />
-              ) : (
-                <Moon size={17} className="theme-icon" />
-              )}
+              <AnimatePresence mode="wait" initial={false}>
+                <motion.div
+                  key={isDark ? 'dark-sun' : 'light-moon'}
+                  initial={{ y: -8, opacity: 0, rotate: -70, scale: 0.5 }}
+                  animate={{ y: 0, opacity: 1, rotate: 0, scale: 1 }}
+                  exit={{ y: 8, opacity: 0, rotate: 70, scale: 0.5 }}
+                  transition={{ duration: 0.28, ease: [0.16, 1, 0.3, 1] }}
+                  style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+                >
+                  {isDark ? (
+                    <Sun size={17} className="theme-icon" />
+                  ) : (
+                    <Moon size={17} className="theme-icon" />
+                  )}
+                </motion.div>
+              </AnimatePresence>
             </button>
 
             {/* Active Hold Countdown Badge */}
@@ -158,10 +138,9 @@ export const Navbar = () => {
               </Link>
             )}
 
-            {/* Book Now Primary Button */}
-            <Link to="/booking" className="forge-nav-cta">
-              <BorderTrail size={40} duration={3} />
-              <span>BOOK PASS</span>
+            {/* Book Now Primary Button with Glossy Capsule */}
+            <Link to="/booking" className="forge-nav-cta battleship-nav-book-btn">
+              <span>BOOK PASS →</span>
             </Link>
 
             {/* Mobile Hamburger Toggle */}
@@ -251,11 +230,15 @@ export const Navbar = () => {
       <style>{`
         .header-wrapper {
           position: fixed;
-          top: 0;
+          top: 1.25rem;
           left: 0;
           right: 0;
           z-index: 1000;
-          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          padding: 0 1.25rem;
+          pointer-events: none;
         }
 
         .live-broadcast-ticker {
@@ -324,48 +307,56 @@ export const Navbar = () => {
           background: #64748b;
         }
 
-        /* Glassmorphism Header */
+        /* Ultra-Premium Glassmorphism Floating Rounded Header */
         .navbar-root {
-          height: 70px;
-          background: rgba(8, 12, 20, 0.68);
-          backdrop-filter: blur(28px) saturate(180%);
-          -webkit-backdrop-filter: blur(28px) saturate(180%);
-          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-          box-shadow: 0 4px 30px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+          pointer-events: auto;
+          height: 68px;
+          width: 100%;
+          max-width: 1360px;
+          border-radius: 9999px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(8, 12, 22, 0.68) 55%, rgba(4, 7, 14, 0.8) 100%);
+          backdrop-filter: blur(32px) saturate(190%) contrast(105%);
+          -webkit-backdrop-filter: blur(32px) saturate(190%) contrast(105%);
+          border: 1.5px solid rgba(255, 255, 255, 0.16);
+          border-top: 1.5px solid rgba(255, 255, 255, 0.32);
+          box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.3);
           display: flex;
           align-items: center;
-          transition: all 0.3s ease;
+          padding: 0 0.75rem;
+          transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         [data-theme="light"] .navbar-root {
-          background: rgba(255, 255, 255, 0.75);
-          backdrop-filter: blur(28px) saturate(180%);
-          -webkit-backdrop-filter: blur(28px) saturate(180%);
-          border-bottom: 1px solid rgba(15, 23, 42, 0.08);
-          box-shadow: 0 4px 24px rgba(15, 23, 42, 0.04), inset 0 1px 0 rgba(255, 255, 255, 0.85);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(248, 250, 252, 0.72) 100%);
+          backdrop-filter: blur(32px) saturate(190%) contrast(105%);
+          -webkit-backdrop-filter: blur(32px) saturate(190%) contrast(105%);
+          border: 1.5px solid rgba(255, 255, 255, 0.85);
+          border-bottom: 1.5px solid rgba(15, 23, 42, 0.08);
+          box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.1), inset 0 1.5px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(15, 23, 42, 0.04);
         }
 
         .navbar-root.scrolled {
-          background: rgba(6, 9, 16, 0.84);
-          border-bottom-color: rgba(255, 255, 255, 0.14);
-          box-shadow: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.12);
+          height: 62px;
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(6, 9, 16, 0.88) 100%);
+          border-color: rgba(255, 255, 255, 0.22);
+          box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.4);
         }
 
         [data-theme="light"] .navbar-root.scrolled {
-          background: rgba(255, 255, 255, 0.88);
-          border-bottom-color: rgba(15, 23, 42, 0.12);
-          box-shadow: 0 12px 32px rgba(15, 23, 42, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.95);
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(241, 245, 249, 0.88) 100%);
+          border-color: rgba(15, 23, 42, 0.14);
+          box-shadow: 0 20px 40px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 1);
         }
 
         .nav-container {
           display: flex;
           align-items: center;
           justify-content: space-between;
-          gap: 1.5rem;
+          gap: 1.25rem;
           width: 100%;
-          max-width: var(--max-width);
+          max-width: 100%;
           margin: 0 auto;
-          padding: 0 1.5rem;
+          padding: 0 0.75rem;
         }
 
         .brand-logo {
@@ -381,15 +372,16 @@ export const Navbar = () => {
           height: 44px;
           border-radius: 50%;
           object-fit: cover;
-          border: 1.5px solid #00f0ff;
-          box-shadow: 0 0 14px rgba(0, 240, 255, 0.4);
+          border: 1.5px solid rgba(255, 255, 255, 0.28);
+          box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
           flex-shrink: 0;
           transition: transform 0.25s ease, box-shadow 0.25s ease;
         }
 
         .brand-logo:hover .brand-logo-img {
-          transform: scale(1.08);
-          box-shadow: 0 0 22px rgba(0, 240, 255, 0.7);
+          transform: scale(1.06);
+          border-color: rgba(0, 240, 255, 0.6);
+          box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
         }
 
         .logo-text-stack {
@@ -398,10 +390,10 @@ export const Navbar = () => {
         }
 
         .logo-brand-main {
-          font-family: var(--font-display);
-          font-size: 1.15rem;
-          font-weight: 400;
-          letter-spacing: 0.04em;
+          font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+          font-size: 1.12rem;
+          font-weight: 800;
+          letter-spacing: 0.12em;
           color: #ffffff;
           line-height: 1;
         }
@@ -411,12 +403,12 @@ export const Navbar = () => {
         }
 
         .logo-brand-sub {
-          font-family: var(--font-mono);
-          font-size: 0.55rem;
-          color: var(--text-muted);
-          letter-spacing: 0.12em;
+          font-family: 'Space Grotesk', monospace;
+          font-size: 0.58rem;
+          color: #94a3b8;
+          letter-spacing: 0.16em;
           text-transform: uppercase;
-          margin-top: 3px;
+          margin-top: 4px;
         }
 
         .location-switcher-btn {
@@ -507,6 +499,17 @@ export const Navbar = () => {
 
         .nav-item:hover, .nav-item.active {
           color: #ffffff;
+        }
+
+        .nav-divider {
+          color: rgba(255, 255, 255, 0.2);
+          font-size: 0.72rem;
+          font-weight: 300;
+          user-select: none;
+        }
+
+        [data-theme="light"] .nav-divider {
+          color: rgba(15, 23, 42, 0.18);
         }
 
         [data-theme="light"] .nav-item {
@@ -647,6 +650,152 @@ export const Navbar = () => {
           background: #f1f5f9;
           border-color: rgba(15, 23, 42, 0.1);
           color: #090d16;
+        }
+
+        /* Home page floating navbar overrides for Dark Mode */
+        [data-theme="dark"] .home-navbar-override,
+        [data-theme="dark"] header.navbar-root.home-navbar-override {
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.09) 0%, rgba(8, 12, 22, 0.68) 55%, rgba(4, 7, 14, 0.8) 100%) !important;
+          backdrop-filter: blur(32px) saturate(190%) contrast(105%) !important;
+          -webkit-backdrop-filter: blur(32px) saturate(190%) contrast(105%) !important;
+          border: 1.5px solid rgba(255, 255, 255, 0.16) !important;
+          border-top: 1.5px solid rgba(255, 255, 255, 0.32) !important;
+          box-shadow: 0 16px 36px -10px rgba(0, 0, 0, 0.65), inset 0 1px 0 rgba(255, 255, 255, 0.35), inset 0 -1px 0 rgba(0, 0, 0, 0.3) !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .nav-item {
+          color: rgba(255, 255, 255, 0.75) !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .nav-item:hover,
+        [data-theme="dark"] .home-navbar-override .nav-item.active {
+          color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .nav-item.active::after {
+          background: #ffffff !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .nav-divider {
+          color: rgba(255, 255, 255, 0.2) !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .logo-brand-main {
+          color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .logo-brand-sub {
+          color: #94a3b8 !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .location-switcher-btn {
+          background: rgba(255, 255, 255, 0.06) !important;
+          border: 1px solid rgba(255, 255, 255, 0.18) !important;
+          color: #ffffff !important;
+          backdrop-filter: blur(16px) !important;
+          -webkit-backdrop-filter: blur(16px) !important;
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25) !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .loc-eyebrow,
+        [data-theme="dark"] .home-navbar-override .icon-loc {
+          color: #94a3b8 !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .loc-title,
+        [data-theme="dark"] .home-navbar-override .loc-arrow {
+          color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .theme-toggle-btn {
+          background: rgba(255, 255, 255, 0.08) !important;
+          border: 1px solid rgba(255, 255, 255, 0.2) !important;
+          color: #ffffff !important;
+          backdrop-filter: blur(16px) !important;
+          -webkit-backdrop-filter: blur(16px) !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .theme-icon {
+          color: #ffffff !important;
+        }
+
+        [data-theme="dark"] .home-navbar-override .battleship-nav-book-btn {
+          background: linear-gradient(180deg, #ffffff 0%, #e2e8f0 100%) !important;
+          color: #07090d !important;
+          box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25), inset 0 1px 0 #ffffff !important;
+        }
+
+        /* Home page floating navbar overrides for Light Mode */
+        [data-theme="light"] .home-navbar-override,
+        [data-theme="light"] header.navbar-root.home-navbar-override {
+          background: linear-gradient(135deg, rgba(255, 255, 255, 0.88) 0%, rgba(248, 250, 252, 0.72) 100%) !important;
+          backdrop-filter: blur(32px) saturate(190%) contrast(105%) !important;
+          -webkit-backdrop-filter: blur(32px) saturate(190%) contrast(105%) !important;
+          border: 1.5px solid rgba(255, 255, 255, 0.85) !important;
+          border-bottom: 1.5px solid rgba(15, 23, 42, 0.08) !important;
+          box-shadow: 0 16px 36px -10px rgba(15, 23, 42, 0.1), inset 0 1.5px 0 rgba(255, 255, 255, 0.98), inset 0 -1px 0 rgba(15, 23, 42, 0.04) !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .nav-item {
+          color: #475569 !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .nav-item:hover,
+        [data-theme="light"] .home-navbar-override .nav-item.active {
+          color: #090d16 !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .nav-item.active::after {
+          background: #090d16 !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .nav-divider {
+          color: rgba(15, 23, 42, 0.18) !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .logo-brand-main {
+          color: #090d16 !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .logo-brand-sub {
+          color: #64748b !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .location-switcher-btn {
+          background: rgba(255, 255, 255, 0.65) !important;
+          border: 1px solid rgba(15, 23, 42, 0.1) !important;
+          color: #090d16 !important;
+          backdrop-filter: blur(16px) !important;
+          -webkit-backdrop-filter: blur(16px) !important;
+          box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .loc-eyebrow,
+        [data-theme="light"] .home-navbar-override .icon-loc {
+          color: #64748b !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .loc-title,
+        [data-theme="light"] .home-navbar-override .loc-arrow {
+          color: #090d16 !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .theme-toggle-btn {
+          background: rgba(255, 255, 255, 0.7) !important;
+          border: 1px solid rgba(15, 23, 42, 0.12) !important;
+          color: #090d16 !important;
+          backdrop-filter: blur(16px) !important;
+          -webkit-backdrop-filter: blur(16px) !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .theme-icon {
+          color: #090d16 !important;
+        }
+
+        [data-theme="light"] .home-navbar-override .battleship-nav-book-btn {
+          background: linear-gradient(180deg, #1e293b 0%, #090d16 100%) !important;
+          color: #ffffff !important;
+          box-shadow: 0 4px 18px rgba(9, 13, 22, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
         }
 
         @media (max-width: 1080px) {
