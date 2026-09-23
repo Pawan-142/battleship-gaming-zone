@@ -2212,6 +2212,9 @@ a {
 }
 
 .battleship-cta-pill {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
   display: inline-flex;
   align-items: center;
   gap: 0.85rem;
@@ -2228,7 +2231,8 @@ a {
   letter-spacing: 0.12em;
   text-decoration: none;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-  transition: all 0.25s ease;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
 }
 
 .battleship-cta-pill:hover {
@@ -2238,7 +2242,26 @@ a {
   transform: translateY(-2px);
 }
 
+.battleship-cta-pill:active {
+  transform: scale(0.98);
+}
+
+.cta-swipe-trail {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  background: linear-gradient(90deg, rgba(0, 240, 255, 0.18), rgba(0, 240, 255, 0.65));
+  border-radius: 9999px;
+  pointer-events: none;
+  transition: width 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+  z-index: 1;
+}
+
 .cta-circle-arrow {
+  position: relative;
+  z-index: 2;
   width: 34px;
   height: 34px;
   border-radius: 50%;
@@ -2247,12 +2270,44 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s ease, background 0.2s ease;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, box-shadow 0.25s ease;
+  flex-shrink: 0;
+}
+
+.cta-pill-text {
+  position: relative;
+  z-index: 2;
+  transition: transform 0.35s ease, opacity 0.35s ease;
 }
 
 .battleship-cta-pill:hover .cta-circle-arrow {
-  transform: translateX(3px);
+  transform: translateX(4px);
   background: #00f0ff;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.5);
+}
+
+/* Swiping animation when clicked */
+.battleship-cta-pill.is-swiping {
+  border-color: #00f0ff;
+  box-shadow: 0 0 35px rgba(0, 240, 255, 0.6);
+  pointer-events: none;
+}
+
+.battleship-cta-pill.is-swiping .cta-swipe-trail {
+  width: 100%;
+}
+
+.battleship-cta-pill.is-swiping .cta-circle-arrow {
+  transform: translateX(165px);
+  background: #00f0ff;
+  color: #04070d;
+  box-shadow: 0 0 25px #00f0ff, -8px 0 16px rgba(0, 240, 255, 0.8);
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.3, 1), background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.battleship-cta-pill.is-swiping .cta-pill-text {
+  opacity: 0.35;
+  transform: translateX(-8px);
 }
 
 .battleship-coords-row {
@@ -2674,6 +2729,21 @@ a {
 [data-theme="light"] .battleship-exact-hero .battleship-cta-pill:hover .cta-circle-arrow {
   background: #ffffff !important;
   color: #0284c7 !important;
+}
+
+[data-theme="light"] .battleship-exact-hero .battleship-cta-pill .cta-swipe-trail {
+  background: linear-gradient(90deg, rgba(2, 132, 199, 0.2), rgba(2, 132, 199, 0.65));
+}
+
+[data-theme="light"] .battleship-exact-hero .battleship-cta-pill.is-swiping {
+  border-color: #0284c7 !important;
+  box-shadow: 0 0 35px rgba(2, 132, 199, 0.4) !important;
+}
+
+[data-theme="light"] .battleship-exact-hero .battleship-cta-pill.is-swiping .cta-circle-arrow {
+  background: #0284c7 !important;
+  color: #ffffff !important;
+  box-shadow: 0 0 20px rgba(2, 132, 199, 0.7), -8px 0 16px rgba(2, 132, 199, 0.4) !important;
 }
 
 [data-theme="light"] .battleship-exact-hero .battleship-coords-row {

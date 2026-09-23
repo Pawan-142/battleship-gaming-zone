@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
 import { useTheme } from '../context/ThemeContext';
@@ -13,10 +13,21 @@ import { InView, AnimatedGroup, TransitionPanel, TiltCard, MagneticButton } from
 import { Zap, MapPin, Calendar, ArrowRight, ShieldCheck, Users, Clock, Star, ExternalLink, CheckCircle2 } from 'lucide-react';
 
 export const HomePage = () => {
+  const navigate = useNavigate();
   const { currentBranch, branches, setIsLocationModalOpen } = useLocation();
   const { isDark } = useTheme();
   const [activeExpTab, setActiveExpTab] = useState(gamesData[0].id);
   const [scrollY, setScrollY] = useState(0);
+  const [isCtaSwiping, setIsCtaSwiping] = useState(false);
+
+  const handleCtaClick = (e) => {
+    e.preventDefault();
+    if (isCtaSwiping) return;
+    setIsCtaSwiping(true);
+    setTimeout(() => {
+      navigate('/games');
+    }, 420);
+  };
 
   // Quick Booking Dock Form State
   const [dockGame, setDockGame] = useState(gamesData[0].slug);
@@ -163,12 +174,18 @@ export const HomePage = () => {
                 custom={0.45}
                 variants={fadeInUp}
               >
-                <Link to="/games" className="battleship-cta-pill">
+                <button 
+                  onClick={handleCtaClick} 
+                  className={`battleship-cta-pill ${isCtaSwiping ? 'is-swiping' : ''}`}
+                  type="button"
+                  aria-label="View Attractions"
+                >
                   <div className="cta-circle-arrow">
                     <ArrowRight size={16} />
                   </div>
-                  <span>VIEW ATTRACTIONS</span>
-                </Link>
+                  <span className="cta-pill-text">VIEW ATTRACTIONS</span>
+                  <div className="cta-swipe-trail" />
+                </button>
               </motion.div>
 
               {/* Coordinates & Arena System Spec */}
