@@ -798,44 +798,50 @@ export const AdminOwnerDashboard = () => {
                     })
                     .map(b => (
                       <tr key={b.id} className="audit-row">
-                        <td className="font-mono font-bold text-cyan">#{b.id}</td>
                         <td>
-                          <span className={`source-pill ${b.source === 'ONLINE_PORTAL' ? 'web' : 'pos'}`}>
+                          <span className="booking-id-tag">#{b.id}</span>
+                        </td>
+                        <td>
+                          <span className={`source-badge ${b.source === 'ONLINE_PORTAL' ? 'source-web' : 'source-pos'}`}>
                             {b.source === 'ONLINE_PORTAL' ? 'ONLINE WEB' : 'OFFLINE POS'}
                           </span>
                         </td>
                         <td>
-                          <div className="customer-cell">
-                            <strong>{b.customer?.name || 'Walk-in Guest'}</strong>
-                            <span className="customer-phone">{b.customer?.phone}</span>
+                          <div className="table-customer-cell">
+                            <span className="customer-name">{b.customer?.name || 'Walk-in Guest'}</span>
+                            <span className="customer-contact">{b.customer?.phone || 'No phone'}</span>
                           </div>
                         </td>
                         <td>
-                          <div className="item-cell">
-                            <span>{b.itemName}</span>
-                            <small className="text-dim">{b.branchName || 'HiTech City'}</small>
+                          <div className="table-item-cell">
+                            <span className="item-title">{b.itemName}</span>
+                            <span className="item-branch-tag">{b.branchName || 'HiTech City'}</span>
                           </div>
                         </td>
                         <td>
-                          <div className="slot-cell">
-                            <span>{b.date}</span>
-                            <span className="slot-time-text">{b.timeSlotText}</span>
+                          <div className="table-slot-cell">
+                            <span className="slot-date-text">{b.date}</span>
+                            <span className="slot-time-pill">{b.timeSlotText}</span>
                           </div>
                         </td>
-                        <td>{b.playersCount} Guests</td>
-                        <td className="font-bold">{formatCurrency(b.totalAmount)}</td>
                         <td>
-                          <div className="payment-cell">
-                            <span className="paid-amount text-success">Paid: {formatCurrency(b.advancePaid)}</span>
+                          <span className="squad-count-text">{b.playersCount} Guests</span>
+                        </td>
+                        <td>
+                          <span className="table-total-amt">{formatCurrency(b.totalAmount)}</span>
+                        </td>
+                        <td>
+                          <div className="table-payment-cell">
+                            <span className="paid-tag">Paid: {formatCurrency(b.advancePaid)}</span>
                             {b.balanceDue > 0 ? (
-                              <span className="due-amount text-warning">Due: {formatCurrency(b.balanceDue)}</span>
+                              <span className="due-tag">Due: {formatCurrency(b.balanceDue)}</span>
                             ) : (
-                              <span className="settled-text text-dim">Settled</span>
+                              <span className="settled-tag">Settled</span>
                             )}
                           </div>
                         </td>
                         <td>
-                          <span className={`audit-status-badge ${b.status?.toLowerCase()}`}>
+                          <span className={`table-status-pill status-${b.status?.toLowerCase()}`}>
                             {b.status}
                           </span>
                         </td>

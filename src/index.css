@@ -4712,107 +4712,387 @@ a {
    ========================================================================= */
 .search-bar-wrap {
   position: relative;
-  width: 320px;
+  width: 360px;
 }
 
 .search-bar-wrap .search-icon {
   position: absolute;
-  left: 0.85rem;
+  left: 1rem;
   top: 50%;
   transform: translateY(-50%);
-  color: #64748b;
+  color: #94a3b8;
+  pointer-events: none;
 }
 
 .audit-search-input {
   width: 100%;
-  padding: 0.65rem 1rem 0.65rem 2.5rem;
-  border-radius: 10px;
-  background: rgba(13, 20, 36, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 0.8rem 1rem 0.8rem 2.85rem;
+  border-radius: 12px;
+  background: rgba(15, 23, 42, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   color: #ffffff;
-  font-size: 0.82rem;
+  font-size: 0.92rem;
+  font-family: inherit;
   outline: none;
+  transition: all 0.2s ease;
 }
 
-.audit-table-wrapper {
-  background: rgba(13, 20, 36, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 18px;
+.audit-search-input:focus {
+  border-color: #3b82f6;
+  box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+}
+
+.audit-table-wrapper, .ledger-table-wrap {
+  background: rgba(15, 23, 42, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 20px;
   overflow-x: auto;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
 }
 
 .audit-table, .staff-ledger-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.8rem;
+  font-size: 0.92rem;
 }
 
 .audit-table th, .staff-ledger-table th {
-  padding: 1rem 1.25rem;
-  background: rgba(5, 8, 17, 0.8);
+  padding: 1.1rem 1.25rem;
+  background: #0b1120;
   color: #94a3b8;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.72rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 800;
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  letter-spacing: 0.06em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  white-space: nowrap;
 }
 
 .audit-table td, .staff-ledger-table td {
-  padding: 1rem 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.04);
-  color: #cbd5e1;
+  padding: 1.15rem 1.25rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: #f8fafc;
+  vertical-align: middle;
 }
 
 .audit-row:hover, .staff-ledger-table tr:hover {
-  background: rgba(255, 255, 255, 0.02);
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.source-pill {
-  padding: 0.25rem 0.5rem;
-  border-radius: 6px;
-  font-family: 'Space Grotesk', monospace;
-  font-size: 0.65rem;
+.booking-id-tag {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.92rem;
   font-weight: 800;
+  color: #38bdf8;
+  letter-spacing: 0.02em;
 }
 
-.source-pill.web {
-  background: rgba(0, 240, 255, 0.1);
-  color: #00f0ff;
-  border: 1px solid rgba(0, 240, 255, 0.25);
+.source-badge, .source-pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.35rem 0.7rem;
+  border-radius: 8px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.74rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
 }
 
-.source-pill.pos {
-  background: rgba(163, 230, 53, 0.1);
-  color: #a3e635;
-  border: 1px solid rgba(163, 230, 53, 0.25);
+.source-badge.source-web, .source-pill.web {
+  background: rgba(56, 189, 248, 0.12);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.35);
 }
 
-.audit-status-badge, .status-pill {
-  display: inline-block;
-  padding: 0.25rem 0.6rem;
+.source-badge.source-pos, .source-pill.pos {
+  background: rgba(34, 197, 94, 0.12);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.35);
+}
+
+.table-customer-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.customer-name {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.customer-contact {
+  font-size: 0.82rem;
+  color: #94a3b8;
+  font-family: var(--font-mono, monospace);
+}
+
+.table-item-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.item-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #f8fafc;
+}
+
+.item-branch-tag {
+  font-size: 0.8rem;
+  color: #94a3b8;
+}
+
+.table-slot-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.slot-date-text {
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #cbd5e1;
+}
+
+.slot-time-pill {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.squad-count-text {
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: #e2e8f0;
+  white-space: nowrap;
+}
+
+.table-total-amt {
+  font-size: 1.02rem;
+  font-weight: 800;
+  color: #ffffff;
+  white-space: nowrap;
+}
+
+.table-payment-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  white-space: nowrap;
+}
+
+.paid-tag {
+  font-size: 0.88rem;
+  font-weight: 700;
+  color: #4ade80;
+}
+
+.due-tag {
+  font-size: 0.84rem;
+  font-weight: 700;
+  color: #fbbf24;
+}
+
+.settled-tag {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #94a3b8;
+}
+
+.table-status-pill, .audit-status-badge, .status-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.35rem 0.8rem;
   border-radius: 9999px;
-  font-size: 0.65rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.74rem;
   font-weight: 800;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
-.audit-status-badge.confirmed, .status-pill.confirmed {
-  background: rgba(163, 230, 53, 0.15);
-  color: #a3e635;
+.table-status-pill.status-confirmed, .audit-status-badge.confirmed, .status-pill.confirmed {
+  background: rgba(34, 197, 94, 0.15);
+  color: #4ade80;
+  border: 1px solid rgba(34, 197, 94, 0.4);
 }
 
-.audit-status-badge.checked_in, .status-pill.checked_in {
-  background: rgba(0, 240, 255, 0.15);
-  color: #00f0ff;
+.table-status-pill.status-checked_in, .audit-status-badge.checked_in, .status-pill.checked_in {
+  background: rgba(56, 189, 248, 0.15);
+  color: #38bdf8;
+  border: 1px solid rgba(56, 189, 248, 0.4);
 }
 
-.audit-status-badge.cancelled, .status-pill.cancelled {
-  background: rgba(255, 0, 85, 0.15);
-  color: #ff0055;
+.table-status-pill.status-cancelled, .audit-status-badge.cancelled, .status-pill.cancelled {
+  background: rgba(239, 68, 68, 0.15);
+  color: #f87171;
+  border: 1px solid rgba(239, 68, 68, 0.4);
 }
+
+/* Light Mode Overrides for Tables & Audits */
+[data-theme="light"] .audit-search-input {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.15) !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+}
+
+[data-theme="light"] .audit-search-input:focus {
+  border-color: #2563eb !important;
+  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2) !important;
+}
+
+[data-theme="light"] .audit-table-wrapper,
+[data-theme="light"] .ledger-table-wrap {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+}
+
+[data-theme="light"] .audit-table th,
+[data-theme="light"] .staff-ledger-table th {
+  background: #f8fafc !important;
+  color: #475569 !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1) !important;
+}
+
+[data-theme="light"] .audit-table td,
+[data-theme="light"] .staff-ledger-table td {
+  background: #ffffff !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .audit-row:hover,
+[data-theme="light"] .staff-ledger-table tr:hover {
+  background: #f8fafc !important;
+}
+
+[data-theme="light"] .booking-id-tag {
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .source-badge.source-web,
+[data-theme="light"] .source-pill.web {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+  border-color: #bae6fd !important;
+}
+
+[data-theme="light"] .source-badge.source-pos,
+[data-theme="light"] .source-pill.pos {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  border-color: #bbf7d0 !important;
+}
+
+[data-theme="light"] .customer-name {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .customer-contact {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .item-title {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .item-branch-tag {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .slot-date-text {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .slot-time-pill {
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .squad-count-text {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .table-total-amt {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .paid-tag {
+  color: #16a34a !important;
+}
+
+[data-theme="light"] .due-tag {
+  color: #d97706 !important;
+}
+
+[data-theme="light"] .settled-tag {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .table-status-pill.status-confirmed,
+[data-theme="light"] .audit-status-badge.confirmed,
+[data-theme="light"] .status-pill.confirmed {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+  border-color: #86efac !important;
+}
+
+[data-theme="light"] .table-status-pill.status-checked_in,
+[data-theme="light"] .audit-status-badge.checked_in,
+[data-theme="light"] .status-pill.checked_in {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+  border-color: #7dd3fc !important;
+}
+
+[data-theme="light"] .table-status-pill.status-cancelled,
+[data-theme="light"] .audit-status-badge.cancelled,
+[data-theme="light"] .status-pill.cancelled {
+  background: #fee2e2 !important;
+  color: #b91c1c !important;
+  border-color: #fca5a5 !important;
+}
+
+.btn-quick-checkin {
+  padding: 0.4rem 0.85rem;
+  border-radius: 8px;
+  background: #2563eb;
+  border: 1px solid #3b82f6;
+  color: #ffffff;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.btn-quick-checkin:hover {
+  background: #1d4ed8;
+  transform: translateY(-1px);
+}
+
+[data-theme="light"] .btn-quick-checkin {
+  background: #2563eb !important;
+  border-color: #2563eb !important;
+  color: #ffffff !important;
+}
+
+[data-theme="light"] .btn-quick-checkin:hover {
+  background: #1d4ed8 !important;
+}
+
 
 /* =========================================================================
    STAFF DESK VERIFICATION & POS STYLES

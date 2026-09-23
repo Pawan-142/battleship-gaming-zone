@@ -848,27 +848,42 @@ export const StaffDeskPage = () => {
                 <tbody>
                   {allBookings.map(b => (
                     <tr key={b.id}>
-                      <td className="font-mono text-cyan font-bold">#{b.id}</td>
                       <td>
-                        <span className={`source-pill ${b.source === 'ONLINE_PORTAL' ? 'web' : 'pos'}`}>
-                          {b.source === 'ONLINE_PORTAL' ? 'WEB' : 'POS'}
+                        <span className="booking-id-tag">#{b.id}</span>
+                      </td>
+                      <td>
+                        <span className={`source-badge ${b.source === 'ONLINE_PORTAL' ? 'source-web' : 'source-pos'}`}>
+                          {b.source === 'ONLINE_PORTAL' ? 'ONLINE WEB' : 'OFFLINE POS'}
                         </span>
                       </td>
                       <td>
-                        <strong>{b.customer?.name}</strong>
-                        <div className="text-dim text-xs">{b.customer?.phone}</div>
-                      </td>
-                      <td>{b.itemName}</td>
-                      <td>{b.date} @ {b.timeSlotText}</td>
-                      <td>{b.playersCount}P</td>
-                      <td>
-                        <span className="text-success">{formatCurrency(b.advancePaid)}</span>
-                        {b.balanceDue > 0 && (
-                          <div className="text-warning text-xs">Due: {formatCurrency(b.balanceDue)}</div>
-                        )}
+                        <div className="table-customer-cell">
+                          <span className="customer-name">{b.customer?.name || 'Walk-in Guest'}</span>
+                          <span className="customer-contact">{b.customer?.phone || 'No phone'}</span>
+                        </div>
                       </td>
                       <td>
-                        <span className={`status-pill ${b.status?.toLowerCase()}`}>
+                        <span className="item-title">{b.itemName}</span>
+                      </td>
+                      <td>
+                        <div className="table-slot-cell">
+                          <span className="slot-date-text">{b.date}</span>
+                          <span className="slot-time-pill">{b.timeSlotText}</span>
+                        </div>
+                      </td>
+                      <td>
+                        <span className="squad-count-text">{b.playersCount} Guests</span>
+                      </td>
+                      <td>
+                        <div className="table-payment-cell">
+                          <span className="paid-tag">Paid: {formatCurrency(b.advancePaid)}</span>
+                          {b.balanceDue > 0 && (
+                            <span className="due-tag">Due: {formatCurrency(b.balanceDue)}</span>
+                          )}
+                        </div>
+                      </td>
+                      <td>
+                        <span className={`table-status-pill status-${b.status?.toLowerCase()}`}>
                           {b.status}
                         </span>
                       </td>
@@ -882,7 +897,7 @@ export const StaffDeskPage = () => {
                             Check In
                           </button>
                         ) : (
-                          <span className="text-dim text-xs">Verified ✓</span>
+                          <span className="settled-tag">Verified ✓</span>
                         )}
                       </td>
                     </tr>
