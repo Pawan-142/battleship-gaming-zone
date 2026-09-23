@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useAdminAuth, ROLES } from '../context/AdminAuthContext';
@@ -14,7 +14,16 @@ import {
   KeyRound,
   Gamepad2,
   Building2,
-  Zap
+  Zap,
+  Clock,
+  Activity,
+  Radio,
+  Server,
+  Calendar,
+  Sun,
+  Moon,
+  Compass,
+  Flame
 } from 'lucide-react';
 
 export const AdminLoginPage = () => {
@@ -27,6 +36,29 @@ export const AdminLoginPage = () => {
   const [password, setPassword] = useState('owner123');
   const [errorMsg, setErrorMsg] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const getGreetingData = () => {
+    const hour = currentTime.getHours();
+    if (hour >= 5 && hour < 12) {
+      return { text: 'Good Morning', icon: <Sun size={24} className="greeting-icon sun" />, subtitle: 'Start your arena operational day with full command over rates and live bookings.' };
+    } else if (hour >= 12 && hour < 17) {
+      return { text: 'Good Afternoon', icon: <Sun size={24} className="greeting-icon sun" />, subtitle: 'Peak gaming hours are active. Review real-time visitor throughput and counter desk traffic.' };
+    } else if (hour >= 17 && hour < 22) {
+      return { text: 'Good Evening', icon: <Flame size={24} className="greeting-icon flame" />, subtitle: 'Prime evening laser battles and drift racing sessions in progress across Hyderabad.' };
+    } else {
+      return { text: 'Good Night', icon: <Moon size={24} className="greeting-icon moon" />, subtitle: 'Late-night operations and reconciliation mode. All central slot holds monitored.' };
+    }
+  };
+
+  const greeting = getGreetingData();
 
   const handleRoleChange = (role) => {
     setActiveRole(role);
@@ -65,6 +97,20 @@ export const AdminLoginPage = () => {
     handleRoleChange(role);
   };
 
+  const formattedTime = currentTime.toLocaleTimeString('en-IN', {
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+    hour12: true
+  });
+
+  const formattedDate = currentTime.toLocaleDateString('en-IN', {
+    weekday: 'long',
+    day: 'numeric',
+    month: 'short',
+    year: 'numeric'
+  });
+
   return (
     <div className="admin-portal-login-page">
       {/* Ambient Cyber Light Glows */}
@@ -74,11 +120,12 @@ export const AdminLoginPage = () => {
         <div className="admin-grid-lines" />
       </div>
 
-      <div className="container admin-login-container">
+      <div className="container admin-split-container">
+        {/* Left Column: Interactive Login Card */}
         <motion.div 
           className="admin-login-card"
-          initial={{ opacity: 0, y: 25 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -25 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
         >
           {/* Header */}
@@ -219,6 +266,120 @@ export const AdminLoginPage = () => {
             <Link to="/" className="back-to-site-link">
               ← Return to Public Arena Website
             </Link>
+          </div>
+        </motion.div>
+
+        {/* Right Column: Dynamic Time Greeting & Arena Telemetry Showcase */}
+        <motion.div 
+          className="admin-telemetry-showcase"
+          initial={{ opacity: 0, x: 25 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.55, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        >
+          {/* Real-time Time & Greeting Box */}
+          <div className="telemetry-greeting-card glass-card">
+            <div className="greeting-top-bar">
+              <div className="greeting-role-badge">
+                {activeRole === ROLES.OWNER ? 'COMMANDER CONSOLE' : 'OPERATIONS DESK'}
+              </div>
+              <div className="live-clock-pill">
+                <Clock size={13} className="clock-icon-anim" />
+                <span className="clock-digits">{formattedTime}</span>
+              </div>
+            </div>
+
+            <div className="greeting-main-block">
+              <div className="greeting-title-row">
+                <div className="greeting-icon-wrapper">
+                  {greeting.icon}
+                </div>
+                <div>
+                  <h2 className="greeting-heading">
+                    {greeting.text}, {activeRole === ROLES.OWNER ? 'Owner' : 'Marshal'}
+                  </h2>
+                  <span className="greeting-date-tag">
+                    <Calendar size={13} />
+                    {formattedDate} • Hyderabad Arena (IST)
+                  </span>
+                </div>
+              </div>
+
+              <p className="greeting-description">
+                {greeting.subtitle}
+              </p>
+            </div>
+
+            {/* Quick KPI Stat Chips */}
+            <div className="telemetry-kpi-row">
+              <div className="tele-kpi-box">
+                <span className="tk-num">6</span>
+                <span className="tk-lbl">ACTIVE ZONES</span>
+              </div>
+              <div className="tele-kpi-box">
+                <span className="tk-num text-cyan">2</span>
+                <span className="tk-lbl">HYD BRANCHES</span>
+              </div>
+              <div className="tele-kpi-box">
+                <span className="tk-num text-green">100%</span>
+                <span className="tk-lbl">INVENTORY SYNC</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Live Arena Status Widget */}
+          <div className="telemetry-status-card glass-card">
+            <div className="status-header">
+              <div className="status-title-group">
+                <Radio size={16} className="radar-pulse-icon" />
+                <h3>Arena Telemetry & Grid Status</h3>
+              </div>
+              <span className="status-tag-live">
+                <span className="pulse-dot-green"></span> ALL SYSTEMS ONLINE
+              </span>
+            </div>
+
+            <div className="arena-nodes-list">
+              <div className="node-item">
+                <div className="node-left">
+                  <Building2 size={16} className="node-icon cyan" />
+                  <div>
+                    <strong>Hitech City Flagship</strong>
+                    <span>Electric Drift, Laser Combat, UV Bowling & VR Pods</span>
+                  </div>
+                </div>
+                <span className="node-status-pill ready">READY</span>
+              </div>
+
+              <div className="node-item">
+                <div className="node-left">
+                  <Building2 size={16} className="node-icon amber" />
+                  <div>
+                    <strong>Gachibowli Entertainment Hub</strong>
+                    <span>Full Arena Repertoire, Party Suites & Food Diner</span>
+                  </div>
+                </div>
+                <span className="node-status-pill ready">READY</span>
+              </div>
+
+              <div className="node-item">
+                <div className="node-left">
+                  <Server size={16} className="node-icon green" />
+                  <div>
+                    <strong>Central 5-Min Hold Engine</strong>
+                    <span>Zero double-booking guarantee active across web & desk</span>
+                  </div>
+                </div>
+                <span className="node-status-pill active">SYNCED</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Motivational Command Motto */}
+          <div className="telemetry-motto-box">
+            <Sparkles size={16} className="icon-cyan" />
+            <span>
+              "Physical gaming precision engineered for Hyderabad's ultimate entertainment battlegrounds."
+            </span>
           </div>
         </motion.div>
       </div>

@@ -2886,17 +2886,422 @@ a {
   filter: blur(60px);
 }
 
+.admin-split-container {
+  display: grid;
+  grid-template-columns: 1.12fr 0.88fr;
+  gap: 2.5rem;
+  align-items: center;
+  max-width: 1200px;
+  position: relative;
+  z-index: 5;
+  width: 100%;
+}
+
 .admin-login-card {
   position: relative;
   z-index: 5;
   width: 100%;
-  max-width: 540px;
-  background: rgba(13, 20, 36, 0.85);
+  background: rgba(13, 20, 36, 0.88);
   backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 24px;
   padding: 2.5rem;
   box-shadow: 0 25px 60px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 240, 255, 0.08);
+}
+
+/* =========================================================================
+   ADMIN TELEMETRY & DYNAMIC GREETING SHOWCASE (RIGHT COLUMN)
+   ========================================================================= */
+.admin-telemetry-showcase {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  position: relative;
+  z-index: 5;
+}
+
+.telemetry-greeting-card {
+  padding: 2rem;
+  background: rgba(13, 20, 36, 0.82);
+  backdrop-filter: blur(24px);
+  border: 1px solid rgba(0, 240, 255, 0.22);
+  border-radius: 22px;
+  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.telemetry-greeting-card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 160px;
+  height: 160px;
+  background: radial-gradient(circle, rgba(0, 240, 255, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.greeting-top-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+.greeting-role-badge {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  color: #00f0ff;
+  background: rgba(0, 240, 255, 0.08);
+  border: 1px solid rgba(0, 240, 255, 0.25);
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
+}
+
+.live-clock-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
+  border-radius: 9999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #f1f5f9;
+}
+
+.clock-digits {
+  font-family: var(--font-mono, monospace);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: #ffffff;
+}
+
+.clock-icon-anim {
+  color: #00f0ff;
+}
+
+.greeting-main-block {
+  margin-bottom: 1.5rem;
+}
+
+.greeting-title-row {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 0.75rem;
+}
+
+.greeting-icon-wrapper {
+  width: 46px;
+  height: 46px;
+  border-radius: 14px;
+  background: rgba(0, 240, 255, 0.1);
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #00f0ff;
+  flex-shrink: 0;
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+}
+
+.greeting-icon.sun { color: #f59e0b; }
+.greeting-icon.flame { color: #f43f5e; }
+.greeting-icon.moon { color: #00f0ff; }
+
+.greeting-heading {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: #ffffff !important;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.greeting-date-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  margin-top: 0.2rem;
+  font-weight: 500;
+}
+
+.greeting-description {
+  font-size: 0.86rem;
+  color: #cbd5e1;
+  line-height: 1.55;
+  margin: 0;
+}
+
+.telemetry-kpi-row {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.tele-kpi-box {
+  background: rgba(5, 8, 17, 0.6);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  padding: 0.75rem 0.65rem;
+  text-align: center;
+}
+
+.tk-num {
+  display: block;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #ffffff;
+  line-height: 1.1;
+}
+
+.tk-num.text-cyan { color: #00f0ff; }
+.tk-num.text-green { color: #a3e635; }
+
+.tk-lbl {
+  display: block;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.6rem;
+  font-weight: 700;
+  color: #64748b;
+  letter-spacing: 0.06em;
+  margin-top: 0.25rem;
+}
+
+/* Telemetry Status Card */
+.telemetry-status-card {
+  padding: 1.5rem 1.75rem;
+  background: rgba(13, 20, 36, 0.75);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+}
+
+.status-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 1.2rem;
+}
+
+.status-title-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.status-title-group h3 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin: 0;
+}
+
+.radar-pulse-icon {
+  color: #00f0ff;
+  animation: pulse 2.5s infinite;
+}
+
+.status-tag-live {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.65rem;
+  font-weight: 800;
+  color: #a3e635;
+  background: rgba(163, 230, 53, 0.1);
+  border: 1px solid rgba(163, 230, 53, 0.3);
+  padding: 0.25rem 0.55rem;
+  border-radius: 9999px;
+}
+
+.pulse-dot-green {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a3e635;
+  box-shadow: 0 0 6px #a3e635;
+  animation: pulse 1.8s infinite;
+}
+
+.arena-nodes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.node-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.75rem 0.9rem;
+  background: rgba(5, 8, 17, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 12px;
+}
+
+.node-left {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+
+.node-icon {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.node-icon.cyan { color: #00f0ff; }
+.node-icon.amber { color: #f59e0b; }
+.node-icon.green { color: #a3e635; }
+
+.node-left strong {
+  display: block;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1.2;
+}
+
+.node-left span {
+  display: block;
+  font-size: 0.7rem;
+  color: #64748b;
+  margin-top: 0.15rem;
+}
+
+.node-status-pill {
+  font-family: 'Space Grotesk', monospace;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 0.2rem 0.5rem;
+  border-radius: 6px;
+  letter-spacing: 0.05em;
+}
+
+.node-status-pill.ready {
+  background: rgba(0, 240, 255, 0.1);
+  color: #00f0ff;
+  border: 1px solid rgba(0, 240, 255, 0.25);
+}
+
+.node-status-pill.active {
+  background: rgba(163, 230, 53, 0.1);
+  color: #a3e635;
+  border: 1px solid rgba(163, 230, 53, 0.25);
+}
+
+.telemetry-motto-box {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.85rem 1.25rem;
+  border-radius: 14px;
+  background: rgba(0, 240, 255, 0.04);
+  border: 1px dashed rgba(0, 240, 255, 0.2);
+  font-size: 0.78rem;
+  font-style: italic;
+  color: #94a3b8;
+}
+
+/* Light Mode Overrides for Telemetry */
+[data-theme="light"] .telemetry-greeting-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 20px 45px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+
+[data-theme="light"] .greeting-role-badge {
+  background: rgba(2, 132, 199, 0.08) !important;
+  border-color: rgba(2, 132, 199, 0.25) !important;
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .live-clock-pill {
+  background: #f1f5f9 !important;
+  border-color: rgba(15, 23, 42, 0.1) !important;
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .clock-digits {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .greeting-heading {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .greeting-date-tag {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .greeting-description {
+  color: #334155 !important;
+}
+
+[data-theme="light"] .tele-kpi-box {
+  background: #f8fafc !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="light"] .tk-num {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .tk-num.text-cyan {
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .tk-num.text-green {
+  color: #16a34a !important;
+}
+
+[data-theme="light"] .telemetry-status-card {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-color: rgba(15, 23, 42, 0.12) !important;
+  box-shadow: 0 15px 35px rgba(15, 23, 42, 0.04) !important;
+}
+
+[data-theme="light"] .status-title-group h3 {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .node-item {
+  background: #f8fafc !important;
+  border-color: rgba(15, 23, 42, 0.06) !important;
+}
+
+[data-theme="light"] .node-left strong {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .telemetry-motto-box {
+  background: #f8fafc !important;
+  border-color: rgba(2, 132, 199, 0.25) !important;
+  color: #64748b !important;
+}
+
+@media (max-width: 1024px) {
+  .admin-split-container {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 .admin-badge-pill {
