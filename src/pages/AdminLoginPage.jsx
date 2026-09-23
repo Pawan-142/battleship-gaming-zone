@@ -363,11 +363,11 @@ export const AdminLoginPage = () => {
                 <span className="tk-lbl">ACTIVE ZONES</span>
               </div>
               <div className="tele-kpi-box">
-                <span className="tk-num text-cyan">2</span>
+                <span className="tk-num">2</span>
                 <span className="tk-lbl">HYD BRANCHES</span>
               </div>
               <div className="tele-kpi-box">
-                <span className="tk-num text-green">100%</span>
+                <span className="tk-num">100%</span>
                 <span className="tk-lbl">INVENTORY SYNC</span>
               </div>
             </div>
@@ -377,7 +377,7 @@ export const AdminLoginPage = () => {
           <div className="telemetry-status-card glass-card">
             <div className="status-header">
               <div className="status-title-group">
-                <Radio size={16} className="radar-pulse-icon" />
+                <Radio size={18} className="radar-pulse-icon" />
                 <h3>Arena Telemetry & Grid Status</h3>
               </div>
               <span className="status-tag-live">
@@ -388,7 +388,7 @@ export const AdminLoginPage = () => {
             <div className="arena-nodes-list">
               <div className="node-item">
                 <div className="node-left">
-                  <Building2 size={16} className="node-icon cyan" />
+                  <Building2 size={18} className="node-icon icon-branch" />
                   <div>
                     <strong>Hitech City Flagship</strong>
                     <span>Electric Drift, Laser Combat, UV Bowling & VR Pods</span>
@@ -399,7 +399,7 @@ export const AdminLoginPage = () => {
 
               <div className="node-item">
                 <div className="node-left">
-                  <Building2 size={16} className="node-icon amber" />
+                  <Building2 size={18} className="node-icon icon-branch" />
                   <div>
                     <strong>Gachibowli Entertainment Hub</strong>
                     <span>Full Arena Repertoire, Party Suites & Food Diner</span>
@@ -410,7 +410,7 @@ export const AdminLoginPage = () => {
 
               <div className="node-item">
                 <div className="node-left">
-                  <Server size={16} className="node-icon green" />
+                  <Server size={18} className="node-icon icon-server" />
                   <div>
                     <strong>Central 5-Min Hold Engine</strong>
                     <span>Zero double-booking guarantee active across web & desk</span>
@@ -423,7 +423,7 @@ export const AdminLoginPage = () => {
 
           {/* Quick Motivational Command Motto */}
           <div className="telemetry-motto-box">
-            <Sparkles size={16} className="icon-cyan" />
+            <Sparkles size={18} className="motto-icon" />
             <span>
               "Physical gaming precision engineered for Hyderabad's ultimate entertainment battlegrounds."
             </span>
