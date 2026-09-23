@@ -177,10 +177,17 @@ export const AdminLoginPage = () => {
         >
           {/* Header */}
           <div className="admin-card-header">
-            <div className="admin-badge-pill">
-              <span className="live-dot" />
-              <span>BATTLESHIP COMMAND OS v3.4</span>
-            </div>
+            <Link to="/" className="brand-logo admin-login-brand-logo" title="Battleship Gaming Zone">
+              <img 
+                src="/images/bs_header_logo.png" 
+                alt="Battleship Gaming Zone Logo" 
+                className="brand-logo-img" 
+              />
+              <div className="logo-text-stack">
+                <span className="logo-brand-main">BATTLESHIP</span>
+                <span className="logo-brand-sub">GAMING ZONE • HYDERABAD</span>
+              </div>
+            </Link>
             
             <h1 className="admin-card-title">Enterprise Arena Portal</h1>
             <p className="admin-card-subtitle">

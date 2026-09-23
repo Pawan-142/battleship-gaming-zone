@@ -215,16 +215,17 @@ export const StaffDeskPage = () => {
       <header className="staff-top-nav">
         <div className="container staff-nav-container">
           <div className="staff-brand-info">
-            <div className="staff-brand-logo">
-              <UserCheck size={20} />
-            </div>
-            <div>
-              <div className="staff-portal-badge">
-                <span className="staff-live-dot" />
-                <span>STAFF POS & CHECK-IN DESK</span>
+            <Link to="/" className="brand-logo" title="Battleship Gaming Zone">
+              <img 
+                src="/images/bs_header_logo.png" 
+                alt="Battleship Gaming Zone Logo" 
+                className="brand-logo-img" 
+              />
+              <div className="logo-text-stack">
+                <span className="logo-brand-main">BATTLESHIP</span>
+                <span className="logo-brand-sub">FLOOR OPERATIONS & POS DESK</span>
               </div>
-              <h1 className="staff-brand-heading">Floor Operations Terminal</h1>
-            </div>
+            </Link>
           </div>
 
           <div className="staff-nav-actions">

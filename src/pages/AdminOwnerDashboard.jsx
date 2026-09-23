@@ -138,16 +138,17 @@ export const AdminOwnerDashboard = () => {
       <header className="owner-top-nav">
         <div className="container owner-nav-container">
           <div className="owner-brand-info">
-            <div className="owner-brand-logo">
-              <Zap size={20} />
-            </div>
-            <div>
-              <div className="owner-portal-badge">
-                <span className="owner-pulse-dot" />
-                <span>OWNER COMMAND SUITE</span>
+            <Link to="/" className="brand-logo" title="Battleship Gaming Zone">
+              <img 
+                src="/images/bs_header_logo.png" 
+                alt="Battleship Gaming Zone Logo" 
+                className="brand-logo-img" 
+              />
+              <div className="logo-text-stack">
+                <span className="logo-brand-main">BATTLESHIP</span>
+                <span className="logo-brand-sub">OWNER COMMAND SUITE • HYDERABAD</span>
               </div>
-              <h1 className="owner-brand-heading">Battleship Central Control</h1>
-            </div>
+            </Link>
           </div>
 
           <div className="owner-nav-actions">
