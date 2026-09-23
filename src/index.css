@@ -5744,3 +5744,180 @@ a {
   color: #0284c7 !important;
 }
 
+/* ==========================================================================
+   ADMIN PORTAL TOP CONTROLS & THEME TOGGLES
+   ========================================================================== */
+.admin-portal-top-bar {
+  position: absolute;
+  top: 1.5rem;
+  left: 2rem;
+  right: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 50;
+  pointer-events: auto;
+}
+
+.admin-portal-back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.55rem 1.1rem;
+  border-radius: 9999px;
+  background: rgba(13, 20, 36, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #94a3b8;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+.admin-portal-back-btn:hover {
+  color: #00f0ff;
+  border-color: rgba(0, 240, 255, 0.4);
+  background: rgba(13, 20, 36, 0.9);
+  transform: translateX(-3px);
+  box-shadow: 0 4px 20px rgba(0, 240, 255, 0.15);
+}
+
+.admin-theme-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 1rem;
+  border-radius: 9999px;
+  background: rgba(13, 20, 36, 0.7);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  color: #f1f5f9;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.admin-theme-toggle-btn:hover {
+  border-color: rgba(0, 240, 255, 0.5);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+  transform: scale(1.04);
+}
+
+.theme-icon-inner {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.admin-header-theme-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.admin-header-theme-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(0, 240, 255, 0.4);
+  color: #00f0ff;
+  transform: translateY(-1px);
+}
+
+/* Light Mode Overrides for Admin Top Bar & Buttons */
+[data-theme="light"] .admin-portal-back-btn {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  color: #475569 !important;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.06) !important;
+}
+
+[data-theme="light"] .admin-portal-back-btn:hover {
+  color: #0284c7 !important;
+  border-color: rgba(2, 132, 199, 0.4) !important;
+  background: #ffffff !important;
+  box-shadow: 0 6px 20px rgba(2, 132, 199, 0.12) !important;
+}
+
+[data-theme="light"] .admin-theme-toggle-btn {
+  background: rgba(255, 255, 255, 0.85) !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  color: #0f172a !important;
+  box-shadow: 0 4px 15px rgba(15, 23, 42, 0.06) !important;
+}
+
+[data-theme="light"] .admin-theme-toggle-btn:hover {
+  border-color: rgba(2, 132, 199, 0.4) !important;
+  background: #ffffff !important;
+}
+
+[data-theme="light"] .admin-header-theme-btn {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.12) !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .admin-header-theme-btn:hover {
+  background: #f8fafc !important;
+  border-color: rgba(2, 132, 199, 0.4) !important;
+  color: #0284c7 !important;
+}
+
+/* Light Mode for Staff Desk & Lookup Components */
+[data-theme="light"] .staff-lookup-card,
+[data-theme="light"] .staff-walkin-card,
+[data-theme="light"] .staff-stat-pill,
+[data-theme="light"] .lookup-result-card,
+[data-theme="light"] .walkin-summary-card {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04) !important;
+}
+
+[data-theme="light"] .lookup-search-input,
+[data-theme="light"] .pos-form-input,
+[data-theme="light"] .branch-select-input {
+  background: #f8fafc !important;
+  border-color: rgba(15, 23, 42, 0.15) !important;
+  color: #0f172a !important;
+}
+
+[data-theme="light"] .lookup-search-input:focus,
+[data-theme="light"] .pos-form-input:focus {
+  background: #ffffff !important;
+  border-color: #0284c7 !important;
+}
+
+[data-theme="light"] .booking-table-wrapper {
+  background: #ffffff !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+}
+
+[data-theme="light"] .booking-table th {
+  background: #f8fafc !important;
+  color: #64748b !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.1) !important;
+}
+
+[data-theme="light"] .booking-table td {
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06) !important;
+  color: #334155 !important;
+}
+
+[data-theme="light"] .booking-table tr:hover td {
+  background: #f1f5f9 !important;
+}

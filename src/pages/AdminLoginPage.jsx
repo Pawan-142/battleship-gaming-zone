@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useAdminAuth, ROLES } from '../context/AdminAuthContext';
+import { useTheme } from '../context/ThemeContext';
 import { 
   ShieldCheck, 
   UserCheck, 
@@ -23,11 +24,13 @@ import {
   Sun,
   Moon,
   Compass,
-  Flame
+  Flame,
+  ArrowLeft
 } from 'lucide-react';
 
 export const AdminLoginPage = () => {
   const { login, ROLES, DEFAULT_ACCOUNTS } = useAdminAuth();
+  const { theme, toggleTheme, isDark } = useTheme();
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -118,6 +121,50 @@ export const AdminLoginPage = () => {
         <div className="admin-glow-orb orb-1" />
         <div className="admin-glow-orb orb-2" />
         <div className="admin-grid-lines" />
+      </div>
+
+      {/* Top Floating Control Strip */}
+      <div className="admin-portal-top-bar">
+        <Link to="/" className="admin-portal-back-btn">
+          <ArrowLeft size={14} />
+          <span>BATTLESHIP HOME</span>
+        </Link>
+
+        {/* Interactive Dark/Light Theme Toggle Pill */}
+        <button
+          type="button"
+          onClick={toggleTheme}
+          className="admin-theme-toggle-btn"
+          title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
+        >
+          <AnimatePresence mode="wait" initial={false}>
+            {isDark ? (
+              <motion.div
+                key="moon"
+                initial={{ rotate: -90, scale: 0.5, opacity: 0 }}
+                animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                exit={{ rotate: 90, scale: 0.5, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="theme-icon-inner"
+              >
+                <Moon size={15} className="text-cyan" />
+                <span className="theme-toggle-label">DARK</span>
+              </motion.div>
+            ) : (
+              <motion.div
+                key="sun"
+                initial={{ rotate: 90, scale: 0.5, opacity: 0 }}
+                animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                exit={{ rotate: -90, scale: 0.5, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="theme-icon-inner"
+              >
+                <Sun size={15} className="text-amber" />
+                <span className="theme-toggle-label">LIGHT</span>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </button>
       </div>
 
       <div className="container admin-split-container">

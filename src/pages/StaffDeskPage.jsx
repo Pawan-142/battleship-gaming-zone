@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAdminAuth, ROLES } from '../context/AdminAuthContext';
 import { useAdminStore } from '../context/AdminStoreContext';
 import { useBooking } from '../context/BookingContext';
+import { useTheme } from '../context/ThemeContext';
 import { branchesData as defaultBranches, getBranchById as defaultGetBranchById } from '../data/branchesData';
 import { formatCurrency, getTodayDateString, getFutureDateString } from '../utils/formatters';
 import { 
@@ -27,11 +28,14 @@ import {
   Ticket,
   Printer,
   X,
-  Layers
+  Layers,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 export const StaffDeskPage = () => {
   const { currentAdmin, logout, isOwner } = useAdminAuth();
+  const { theme, toggleTheme, isDark } = useTheme();
   const { branches: storeBranches, getBranchById: storeGetBranchById, games, packages } = useAdminStore();
   const branches = storeBranches?.length ? storeBranches : defaultBranches;
   const { 
@@ -252,6 +256,38 @@ export const StaffDeskPage = () => {
                 <span className="staff-role-tag">{currentAdmin.role}</span>
               </div>
             </div>
+
+            {/* Dark / Light Mode Toggle */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="admin-header-theme-btn"
+              title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {isDark ? (
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: -90, scale: 0.5, opacity: 0 }}
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: 90, scale: 0.5, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Moon size={15} className="text-cyan" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="sun"
+                    initial={{ rotate: 90, scale: 0.5, opacity: 0 }}
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: -90, scale: 0.5, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Sun size={15} className="text-amber" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
 
             <button 
               onClick={() => { logout(); navigate('/admin/login'); }} 

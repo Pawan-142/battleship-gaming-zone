@@ -4,6 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useAdminAuth, ROLES } from '../context/AdminAuthContext';
 import { useAdminStore } from '../context/AdminStoreContext';
 import { useBooking } from '../context/BookingContext';
+import { useTheme } from '../context/ThemeContext';
 import { formatCurrency } from '../utils/formatters';
 import { 
   ShieldCheck, 
@@ -39,11 +40,14 @@ import {
   Building2,
   Phone,
   Mail,
-  Navigation
+  Navigation,
+  Sun,
+  Moon
 } from 'lucide-react';
 
 export const AdminOwnerDashboard = () => {
   const { currentAdmin, logout, isOwner } = useAdminAuth();
+  const { theme, toggleTheme, isDark } = useTheme();
   const { 
     branches,
     addBranch,
@@ -155,6 +159,39 @@ export const AdminOwnerDashboard = () => {
               <ExternalLink size={16} />
               <span>Live Website</span>
             </Link>
+
+            {/* Dark / Light Mode Toggle */}
+            <button
+              type="button"
+              onClick={toggleTheme}
+              className="admin-header-theme-btn"
+              title={`Switch to ${isDark ? 'Light' : 'Dark'} Mode`}
+            >
+              <AnimatePresence mode="wait" initial={false}>
+                {isDark ? (
+                  <motion.div
+                    key="moon"
+                    initial={{ rotate: -90, scale: 0.5, opacity: 0 }}
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: 90, scale: 0.5, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Moon size={15} className="text-cyan" />
+                  </motion.div>
+                ) : (
+                  <motion.div
+                    key="sun"
+                    initial={{ rotate: 90, scale: 0.5, opacity: 0 }}
+                    animate={{ rotate: 0, scale: 1, opacity: 1 }}
+                    exit={{ rotate: -90, scale: 0.5, opacity: 0 }}
+                    transition={{ duration: 0.2 }}
+                  >
+                    <Sun size={15} className="text-amber" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </button>
+
             <div className="owner-user-pill">
               <img src={currentAdmin.avatar} alt={currentAdmin.name} className="owner-avatar" />
               <div className="owner-meta-text">
