@@ -362,13 +362,24 @@ export const Navbar = () => {
           border: 1.5px solid rgba(255, 255, 255, 0.28);
           box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
           flex-shrink: 0;
-          transition: transform 0.25s ease, box-shadow 0.25s ease;
+          transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, border-color 0.3s ease;
         }
 
         .brand-logo:hover .brand-logo-img {
-          transform: scale(1.06);
-          border-color: rgba(0, 240, 255, 0.6);
-          box-shadow: 0 0 18px rgba(0, 240, 255, 0.4);
+          transform: scale(1.08);
+          border-color: rgba(0, 240, 255, 0.85);
+          box-shadow: 0 0 24px rgba(0, 240, 255, 0.65), 0 0 45px rgba(0, 240, 255, 0.3);
+        }
+
+        [data-theme="light"] .brand-logo-img {
+          border-color: rgba(15, 23, 42, 0.15);
+          box-shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+          filter: contrast(1.05);
+        }
+
+        [data-theme="light"] .brand-logo:hover .brand-logo-img {
+          border-color: #0284c7;
+          box-shadow: 0 0 24px rgba(2, 132, 199, 0.55), 0 0 40px rgba(2, 132, 199, 0.25);
         }
 
         .logo-text-stack {
