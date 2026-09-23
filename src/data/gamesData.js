@@ -69,7 +69,7 @@ export const gamesData = [
     rating: 5.0,
     reviewsCount: 612,
     badge: "Top Rated for Groups",
-    overview: "HyperDrive's Laser Blast is a multi-level cyberpunk arena powered by infrared targeting technology. Score points by tagging opponents' chest, back, and phaser sensors while defending your team base from enemy incursions.",
+    overview: "Battleship's Laser Combat is a multi-level cyberpunk arena powered by infrared targeting technology. Score points by tagging opponents' chest, back, and phaser sensors while defending your team base from enemy incursions.",
     howItWorks: [
       { step: "1", title: "Vesting Room", desc: "Enter the decontamination airlock and suit up in your illuminated LED tactical vest." },
       { step: "2", title: "Mission Briefing", desc: "Choose Team Deathmatch, Base Conquest, or Solo Survivor mode with the arena commander." },

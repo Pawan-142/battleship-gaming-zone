@@ -70,7 +70,7 @@ export const galleryItems = [
   {
     id: 8,
     category: "Venue & Lounge",
-    title: "HyperDrive Flagship Entrance & Plaza",
+    title: "Battleship Flagship Entrance & Plaza",
     subtitle: "Ultra-modern architectural facade in Hitech City",
     image: "/images/venue-entrance.jpg",
     aspect: "landscape"

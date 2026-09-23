@@ -11,7 +11,7 @@ export const AboutPage = () => {
       <section className="forge-header-section">
         <div className="container">
           <div className="forge-breadcrumbs">
-            <Link to="/">HYPERDRIVE</Link>
+            <Link to="/">BATTLESHIP</Link>
             <span className="sep">/</span>
             <span className="current">FACILITY & MANIFESTO</span>
           </div>
@@ -28,7 +28,7 @@ export const AboutPage = () => {
           </h1>
 
           <p className="forge-page-desc">
-            We built HyperDrive Arena to rescue human adrenaline from flat glowing screens. An uncompromising commercial battleground engineered for real competition, raw velocity, and shared victory.
+            We built Battleship Gaming Zone to rescue human adrenaline from flat glowing screens. An uncompromising commercial battleground engineered for real competition, raw velocity, and shared victory.
           </p>
         </div>
       </section>
@@ -47,7 +47,7 @@ export const AboutPage = () => {
               </p>
               
               <p className="manifesto-p">
-                Founded in Hyderabad, HyperDrive re-engineered the commercial arena from the ground up: replacing aging mechanical carnivals with whisper-quiet high-torque dual-brushless electric motors, tournament-grade UV glow lanes, and military-spec eye-safe tactical laser tags.
+                Founded in Hyderabad, Battleship re-engineered the commercial arena from the ground up: replacing aging mechanical carnivals with whisper-quiet high-torque dual-brushless electric motors, tournament-grade UV glow lanes, and military-spec eye-safe tactical laser tags.
               </p>
 
               <div className="forge-pillars-grid">
@@ -69,12 +69,12 @@ export const AboutPage = () => {
               <div className="forge-frame-box">
                 <img
                   src="/images/venue-entrance.jpg"
-                  alt="HyperDrive Arena Entrance"
+                  alt="Battleship Arena Entrance"
                   className="frame-img"
                 />
                 <div className="frame-overlay" />
                 <div className="frame-hud">
-                  <span className="hud-code">HYP-FACILITY-V3</span>
+                  <span className="hud-code">BS-FACILITY-V3</span>
                   <div className="hud-stat-big">35,000 SQ.FT</div>
                   <span className="hud-label">PURPOSE-BUILT COMMERCIAL FOOTPRINT ACROSS HYDERABAD</span>
                 </div>

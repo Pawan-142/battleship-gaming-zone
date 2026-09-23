@@ -95,7 +95,7 @@ export const FaqPage = () => {
 
         .cat-title-u {
           font-size: 1.35rem;
-          color: #ffffff;
+          color: var(--text-primary);
           margin-bottom: 1.25rem;
           border-left: 3px solid var(--cyan-primary);
           padding-left: 0.75rem;
@@ -125,7 +125,7 @@ export const FaqPage = () => {
           align-items: center;
           justify-content: space-between;
           text-align: left;
-          color: #ffffff;
+          color: var(--text-primary);
           font-family: var(--font-display);
           font-size: 1rem;
           font-weight: 700;
@@ -137,7 +137,7 @@ export const FaqPage = () => {
           padding: 0 1.5rem 1.5rem;
           font-size: 0.92rem;
           line-height: 1.6;
-          color: #cbd5e1;
+          color: var(--text-secondary);
           border-top: 1px solid var(--border-subtle);
           padding-top: 1rem;
         }
@@ -155,7 +155,34 @@ export const FaqPage = () => {
           gap: 0.6rem;
           font-size: 0.82rem;
           line-height: 1.4;
-          color: #cbd5e1;
+          color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .faq-page-root {
+          background: #f8fafc;
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .cat-title-u {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .faq-card-u {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.1);
+        }
+
+        [data-theme="light"] .faq-q-btn {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .faq-a-body {
+          color: #334155;
+          border-top-color: rgba(15, 23, 42, 0.08);
+        }
+
+        [data-theme="light"] .rules-list-u li {
+          color: #334155;
         }
 
         @media (max-width: 1024px) {

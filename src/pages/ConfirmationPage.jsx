@@ -46,7 +46,7 @@ export const ConfirmationPage = () => {
   }
 
   const handleAddToCalendar = () => {
-    const title = encodeURIComponent(`HyperDrive Arena: ${booking.itemName}`);
+    const title = encodeURIComponent(`Battleship Gaming Zone: ${booking.itemName}`);
     const details = encodeURIComponent(`Booking Ref: ${booking.id}\nLocation: ${booking.branchName}\nPlayers: ${booking.playersCount}\nBalance at Desk: ${formatCurrency(booking.balanceDue)}`);
     const location = encodeURIComponent(booking.branchAddress);
     const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&details=${details}&location=${location}`;
@@ -54,7 +54,7 @@ export const ConfirmationPage = () => {
   };
 
   const handleShareWhatsApp = () => {
-    const text = encodeURIComponent(`Hey! I booked ${booking.itemName} at HyperDrive Arena (${booking.branchName}) for ${formatDateDisplay(booking.date)} at ${booking.timeSlotText}! Booking Ref: ${booking.id}`);
+    const text = encodeURIComponent(`Hey! I booked ${booking.itemName} at Battleship Gaming Zone (${booking.branchName}) for ${formatDateDisplay(booking.date)} at ${booking.timeSlotText}! Booking Ref: ${booking.id}`);
     window.open(`https://api.whatsapp.com/send?text=${text}`, '_blank');
   };
 

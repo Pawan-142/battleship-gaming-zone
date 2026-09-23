@@ -41,7 +41,7 @@ export const GamesPage = () => {
       <section className="forge-games-header">
         <div className="container">
           <div className="forge-breadcrumbs">
-            <Link to="/">HYPERDRIVE</Link>
+            <Link to="/">BATTLESHIP</Link>
             <span className="sep">/</span>
             <span className="current">ATTRACTIONS ATELIER</span>
           </div>

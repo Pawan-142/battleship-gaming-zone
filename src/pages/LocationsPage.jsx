@@ -25,7 +25,7 @@ export const LocationsPage = () => {
       <section className="forge-header-section">
         <div className="container">
           <div className="forge-breadcrumbs">
-            <Link to="/">HYPERDRIVE</Link>
+            <Link to="/">BATTLESHIP</Link>
             <span className="sep">/</span>
             <span className="current">ARENA STUDIOS & HUBS</span>
           </div>

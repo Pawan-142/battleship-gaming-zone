@@ -69,7 +69,7 @@ export const ContactPage = () => {
       <section className="forge-hero-section">
         <div className="container">
           <div className="forge-breadcrumb">
-            <Link to="/">HYPERDRIVE</Link>
+            <Link to="/">BATTLESHIP</Link>
             <span className="sep">/</span>
             <span className="current">CONCIERGE & DESKS</span>
           </div>
@@ -150,7 +150,7 @@ export const ContactPage = () => {
                           <span>{b.phone}</span>
                         </a>
                         <a 
-                          href={`https://wa.me/${b.whatsapp.replace(/\D/g, '')}?text=Hi%20HyperDrive%20Team,%20I%20would%20like%20to%20inquire%20about%20booking%20slots.`} 
+                          href={`https://wa.me/${b.whatsapp.replace(/\D/g, '')}?text=Hi%20Battleship%20Team,%20I%20would%20like%20to%20inquire%20about%20booking%20slots.`} 
                           target="_blank" 
                           rel="noreferrer" 
                           className="forge-action-link whatsapp-link"
@@ -176,7 +176,7 @@ export const ContactPage = () => {
                     <p>Custom catering menus, exclusive 2-tier laser tag tournaments, and dedicated arena marshals for 20 to 300+ guests.</p>
                     <div className="corp-contact-row">
                       <Mail size={14} />
-                      <a href="mailto:corporate@hyperdrivearena.com">corporate@hyperdrivearena.com</a>
+                      <a href="mailto:corporate@battleshipgaming.com">corporate@battleshipgaming.com</a>
                     </div>
                   </div>
                 </div>

@@ -27,7 +27,7 @@ export const QRCodeCard = ({ qrToken, bookingId, customerName }) => {
       return Math.abs(hash);
     };
 
-    const hash = stringHash(qrToken || "HYPERDRIVE-DEFAULT");
+    const hash = stringHash(qrToken || "BATTLESHIP-DEFAULT");
     const moduleCount = 25;
     const cellSize = size / moduleCount;
 
@@ -77,7 +77,7 @@ export const QRCodeCard = ({ qrToken, bookingId, customerName }) => {
     ctx.font = 'bold 12px "Space Grotesk", sans-serif';
     ctx.textAlign = 'center';
     ctx.textBaseline = 'middle';
-    ctx.fillText('HD', size / 2, size / 2);
+    ctx.fillText('BS', size / 2, size / 2);
 
   }, [qrToken]);
 
@@ -85,7 +85,7 @@ export const QRCodeCard = ({ qrToken, bookingId, customerName }) => {
     const canvas = canvasRef.current;
     if (!canvas) return;
     const link = document.createElement('a');
-    link.download = `HyperDrive-Pass-${bookingId}.png`;
+    link.download = `Battleship-Pass-${bookingId}.png`;
     link.href = canvas.toDataURL();
     link.click();
   };

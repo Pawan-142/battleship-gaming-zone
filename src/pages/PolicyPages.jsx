@@ -40,7 +40,7 @@ export const CancellationPolicyPage = () => {
 
             <h3 className="mt-5 mb-3">How Refunds are Processed</h3>
             <p className="policy-p">
-              Approved refunds are credited back to the original payment source (UPI ID or Bank Card) within 3-5 banking days. Alternatively, you can opt for 100% instant HyperDrive arena wallet credit with 12 months validity.
+              Approved refunds are credited back to the original payment source (UPI ID or Bank Card) within 3-5 banking days. Alternatively, you can opt for 100% instant Battleship arena wallet credit with 12 months validity.
             </p>
 
             <h3 className="mt-4 mb-3">Rescheduling Policy</h3>
@@ -59,7 +59,7 @@ export const CancellationPolicyPage = () => {
         }
 
         .tier-box-u {
-          background: var(--bg-deep);
+          background: var(--bg-card);
           border: 1px solid var(--border-subtle);
           padding: 1.25rem;
           border-radius: var(--radius-xs);
@@ -80,7 +80,7 @@ export const CancellationPolicyPage = () => {
 
         .tier-win {
           font-size: 1.05rem;
-          color: #ffffff;
+          color: var(--text-primary);
           margin-bottom: 0.2rem;
         }
 
@@ -92,7 +92,25 @@ export const CancellationPolicyPage = () => {
         .policy-p {
           font-size: 0.92rem;
           line-height: 1.7;
-          color: #cbd5e1;
+          color: var(--text-secondary);
+        }
+
+        [data-theme="light"] .policy-page-root {
+          background: #f8fafc;
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .tier-box-u {
+          background: #ffffff;
+          border-color: rgba(15, 23, 42, 0.1);
+        }
+
+        [data-theme="light"] .tier-win {
+          color: #0f172a;
+        }
+
+        [data-theme="light"] .policy-p {
+          color: #334155;
         }
       `}</style>
     </div>
@@ -123,7 +141,7 @@ export const TermsPage = () => {
           <div className="glass-card p-4">
             <h2 className="mb-2">1. Admission & Age Verification</h2>
             <p className="policy-p">
-              Entry to physical attractions is subject to height and age requirements specified on each game page. HyperDrive marshals reserve the right to verify government/school ID if age compliance is in question.
+              Entry to physical attractions is subject to height and age requirements specified on each game page. Battleship marshals reserve the right to verify government/school ID if age compliance is in question.
             </p>
 
             <h2 className="mt-4 mb-2">2. Safety Compliance & Gear</h2>
@@ -138,7 +156,7 @@ export const TermsPage = () => {
 
             <h2 className="mt-4 mb-2">4. Liability & Personal Belongings</h2>
             <p className="policy-p">
-              Complimentary electronic lockers are provided for customer belongings. HyperDrive Arena accepts no responsibility for unsecured personal items.
+              Complimentary electronic lockers are provided for customer belongings. Battleship Gaming Zone accepts no responsibility for unsecured personal items.
             </p>
           </div>
         </div>
@@ -161,7 +179,7 @@ export const PrivacyPolicyPage = () => {
             PRIVACY <span className="gradient-text-cyan">POLICY</span>
           </h1>
           <p className="page-hero-desc">
-            How HyperDrive Entertainment Arena collects, protects, and handles your customer details.
+            How Battleship Gaming Zone collects, protects, and handles your customer details.
           </p>
         </div>
       </section>

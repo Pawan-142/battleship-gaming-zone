@@ -114,7 +114,7 @@ export const MockGatewayModal = ({
   };
 
   const handleCopyUpi = () => {
-    navigator.clipboard?.writeText('hyperdrive.arena@hdfcbank');
+    navigator.clipboard?.writeText('battleship.arena@hdfcbank');
     setCopiedUpi(true);
     setTimeout(() => setCopiedUpi(false), 2000);
   };
@@ -188,7 +188,7 @@ export const MockGatewayModal = ({
                 </span>
               </div>
               <span style={{ fontSize: '0.72rem', color: '#94a3b8' }}>
-                HYPERDRIVE ARENA HYDERABAD
+                BATTLESHIP GAMING ZONE HYDERABAD
               </span>
             </div>
           </div>
@@ -471,7 +471,7 @@ export const MockGatewayModal = ({
                       <span style={{ fontSize: '0.72rem', color: '#94a3b8', display: 'block' }}>VPA Merchant ID:</span>
                       <div style={{ display: 'flex', alignItems: 'center', gap: '6px', margin: '3px 0 8px' }}>
                         <code style={{ fontSize: '0.75rem', color: '#00f0ff', background: '#020617', padding: '2px 6px', borderRadius: '4px' }}>
-                          hyperdrive@hdfc
+                          battleship@hdfc
                         </code>
                         <button
                           type="button"

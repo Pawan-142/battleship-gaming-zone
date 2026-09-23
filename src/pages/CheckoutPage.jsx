@@ -120,7 +120,7 @@ export const CheckoutPage = () => {
     setCardNumber('4111 1111 1111 1111');
     setCardExpiry('12/28');
     setCardCvv('789');
-    setCardName(activeHold.customerInfo?.name || 'HyperDrive Test Pilot');
+    setCardName(activeHold.customerInfo?.name || 'Battleship Player');
   };
 
   const handleSaveCustomKey = (e) => {

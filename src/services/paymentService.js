@@ -33,7 +33,7 @@ export const setRazorpayKey = (newKey, newSecret = "") => {
  */
 export const initiateRazorpayPayment = ({
   amount, // in INR (e.g. 100 or 500)
-  itemName = "HYPERDRIVE Arena Session Pass",
+  itemName = "BATTLESHIP Arena Session Pass",
   bookingId,
   customer = {},
   themeColor = "#00f0ff"
@@ -62,16 +62,16 @@ export const initiateRazorpayPayment = ({
       key: key,
       amount: amountInPaise,
       currency: "INR",
-      name: "HYPERDRIVE ARENA",
+      name: "BATTLESHIP ARENA",
       description: `Advance Pass Reservation (${itemName})`,
-      image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0d14'/><path d='M20 50 L50 20 L80 50 L50 80 Z' fill='none' stroke='%2300f0ff' stroke-width='8'/><circle cx='50' cy='50' r='14' fill='%23ff0055'/></svg>",
+      image: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230a0d14'/><path d='M20 50 L50 20 L80 50 L50 80 Z' fill='none' stroke='%2300f0ff' stroke-width='8'/><circle cx='50' cy='50' r='14' fill='%2300f0ff'/></svg>",
       prefill: {
         name: customer.name || "Arena Guest",
-        email: customer.email || "guest@hyperdrive.in",
+        email: customer.email || "guest@battleshipgaming.com",
         contact: customer.phone || "9876543210"
       },
       notes: {
-        booking_ref: bookingId || `HD-${Date.now()}`,
+        booking_ref: bookingId || `BS-${Date.now()}`,
         venue: "Hyderabad Flagship Arena",
         item: itemName
       },

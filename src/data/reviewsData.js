@@ -8,7 +8,7 @@ export const reviewsData = [
     branch: "Hitech City Flagship",
     experience: "Corporate Laser Tag & Bowling",
     avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=150&q=80",
-    content: "We organized a 24-person engineering team outing at HyperDrive Hitech City. The 2-tier laser tag arena was hands down the best tactical setup I've seen in India. The online booking and slot hold made advance payment seamless for corporate expense reimbursement."
+    content: "We organized a 24-person engineering team outing at Battleship Hitech City. The 2-tier laser tag arena was hands down the best tactical setup I've seen in India. The online booking and slot hold made advance payment seamless for corporate expense reimbursement."
   },
   {
     id: 2,

@@ -7,34 +7,34 @@
   /* ==========================================================================
      HYPERDRIVE ATELIER - MONOCHROME LUXURY DESIGN SYSTEM (FORGE AUTOMOTIVE STYLE)
      ========================================================================== */
-  --bg-deep: #07090d;
-  --bg-main: #0b0e14;
-  --bg-surface: #0e131d;
-  --bg-card: #0e131d;
-  --bg-card-hover: #141b28;
-  --bg-elevated: #161e2e;
-  --bg-surface-2: #111723;
-  --bg-surface-3: #1a2234;
+  --bg-deep: #04070d;
+  --bg-main: #070b12;
+  --bg-surface: #0b111c;
+  --bg-card: #0e1524;
+  --bg-card-hover: #141f33;
+  --bg-elevated: #18253d;
+  --bg-surface-2: #090e17;
+  --bg-surface-3: #111a2c;
   
-  /* Pure Monochrome Luxury Accents */
-  --accent-cyan: #ffffff;
-  --cyan-primary: #ffffff;
-  --cyan-hover: #e2e8f0;
-  --cyan-glow: rgba(255, 255, 255, 0.15);
-  --cyan-dim: rgba(255, 255, 255, 0.08);
+  /* Battleship Electric Cyber Accents */
+  --accent-cyan: #00f0ff;
+  --cyan-primary: #00f0ff;
+  --cyan-hover: #38bdf8;
+  --cyan-glow: rgba(0, 240, 255, 0.28);
+  --cyan-dim: rgba(0, 240, 255, 0.12);
 
-  --amber-primary: #ffffff;
-  --amber-hover: #ffffff;
-  --amber-glow: rgba(255, 255, 255, 0.15);
-  --amber-dim: rgba(255, 255, 255, 0.08);
+  --amber-primary: #f59e0b;
+  --amber-hover: #fbbf24;
+  --amber-glow: rgba(245, 158, 11, 0.25);
+  --amber-dim: rgba(245, 158, 11, 0.1);
 
-  --crimson-primary: #ffffff;
-  --crimson-glow: rgba(255, 255, 255, 0.15);
-  --crimson-dim: rgba(255, 255, 255, 0.08);
+  --crimson-primary: #f43f5e;
+  --crimson-glow: rgba(244, 63, 94, 0.25);
+  --crimson-dim: rgba(244, 63, 94, 0.1);
 
-  --emerald-primary: #ffffff;
-  --emerald-glow: rgba(255, 255, 255, 0.15);
-  --emerald-dim: rgba(255, 255, 255, 0.08);
+  --emerald-primary: #10b981;
+  --emerald-glow: rgba(16, 185, 129, 0.25);
+  --emerald-dim: rgba(16, 185, 129, 0.1);
 
   /* Typography Colors */
   --text-main: #ffffff;

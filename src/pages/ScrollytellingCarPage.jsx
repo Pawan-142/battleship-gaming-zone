@@ -248,7 +248,7 @@ export const ScrollytellingCarPage = () => {
         </Link>
 
         <div className="scrolly-nav-center">
-          <span className="scrolly-brand-badge">HYPERDRIVE ATELIER</span>
+          <span className="scrolly-brand-badge">BATTLESHIP ARENA</span>
           <span className="scrolly-edition-chip">4K SCROLLYTELLING SHOWCASE</span>
         </div>
 

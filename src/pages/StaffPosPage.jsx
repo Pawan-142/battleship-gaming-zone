@@ -64,7 +64,7 @@ export const StaffPosPage = () => {
       <section className="forge-header-section">
         <div className="container">
           <div className="forge-breadcrumbs">
-            <Link to="/">HYPERDRIVE</Link>
+            <Link to="/">BATTLESHIP</Link>
             <span className="sep">/</span>
             <span className="current">CENTRAL INVENTORY ENGINE & POS</span>
           </div>

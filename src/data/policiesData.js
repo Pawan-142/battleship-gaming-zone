@@ -17,7 +17,7 @@ export const cancellationPolicyTiers = [
     timeWindow: "Between 2 hours to 6 hours prior",
     refundPercentage: 50,
     refundText: "50% Arena Wallet Credit",
-    description: "50% of your advance payment is credited to your HyperDrive smart card wallet for your next visit.",
+    description: "50% of your advance payment is credited to your Battleship smart card wallet for your next visit.",
     badge: "Wallet Credit"
   },
   {
@@ -30,7 +30,7 @@ export const cancellationPolicyTiers = [
 ];
 
 export const venueRules = [
-  "Closed-toe athletic shoes required for Bumper Cars, Laser Blast, and Bowling.",
+  "Closed-toe athletic shoes required for Bumper Cars, Laser Combat, and Bowling.",
   "Children under 10 years must have an accompanying adult present on the premises.",
   "Outside food and beverages are not permitted inside the gaming arenas (permitted in private party suites with catering packages).",
   "Smoking, e-cigarettes, and alcohol are strictly prohibited across all arena premises.",
@@ -60,11 +60,11 @@ export const faqData = [
     items: [
       {
         q: "Are the bumper cars and laser tag safe for children?",
-        a: "Yes! Our electric bumper cars use shock-absorbing pneumatic rings and 4-point harness belts. Our laser blast equipment uses Class 1 eye-safe infrared beams with soft padded vests and certified safety marshals constantly supervising the floor."
+        a: "Yes! Our electric bumper cars use shock-absorbing pneumatic rings and 4-point harness belts. Our laser combat equipment uses Class 1 eye-safe infrared beams with soft padded vests and certified safety marshals constantly supervising the floor."
       },
       {
         q: "Do you have parking available at the branches?",
-        a: "Yes. Both our Hitech City (Inorbit Mall) and Gachibowli (Sarath City Capital Mall) locations have dedicated multi-level covered parking and complimentary valet assistance for HyperDrive guests."
+        a: "Yes. Both our Hitech City and Gachibowli locations have dedicated multi-level covered parking and complimentary valet assistance for Battleship guests."
       },
       {
         q: "Can we organize corporate tournaments or private birthday parties?",
