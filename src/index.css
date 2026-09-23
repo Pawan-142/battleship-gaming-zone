@@ -2853,7 +2853,7 @@ a {
   position: relative;
   background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
   color: #f8fafc;
-  padding: 4rem 2rem;
+  padding: 2.5rem 1.5rem;
   overflow: hidden;
   font-family: 'Space Grotesk', 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
@@ -2869,8 +2869,8 @@ a {
   position: absolute;
   top: 10%;
   left: 15%;
-  width: 500px;
-  height: 500px;
+  width: 420px;
+  height: 420px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
   filter: blur(60px);
@@ -2880,8 +2880,8 @@ a {
   position: absolute;
   bottom: 10%;
   right: 15%;
-  width: 550px;
-  height: 550px;
+  width: 450px;
+  height: 450px;
   border-radius: 50%;
   background: radial-gradient(circle, rgba(96, 165, 250, 0.06) 0%, transparent 70%);
   filter: blur(70px);
@@ -2890,9 +2890,9 @@ a {
 .admin-split-container {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
-  gap: 2.75rem;
+  gap: 2rem;
   align-items: stretch;
-  max-width: 1260px;
+  max-width: 1140px;
   position: relative;
   z-index: 5;
   width: 100%;
@@ -2906,9 +2906,9 @@ a {
   backdrop-filter: blur(28px);
   -webkit-backdrop-filter: blur(28px);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 26px;
-  padding: 2.75rem;
-  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.55), 0 0 20px rgba(255, 255, 255, 0.04);
+  border-radius: 20px;
+  padding: 2rem 2.25rem;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.04);
   display: flex;
   flex-direction: column;
 }
@@ -2919,20 +2919,20 @@ a {
 .admin-telemetry-showcase {
   display: flex;
   flex-direction: column;
-  gap: 1.75rem;
+  gap: 1.25rem;
   position: relative;
   z-index: 5;
   justify-content: space-between;
 }
 
 .telemetry-greeting-card {
-  padding: 2.25rem;
+  padding: 1.75rem;
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(24px);
   -webkit-backdrop-filter: blur(24px);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 24px;
-  box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+  border-radius: 20px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
   position: relative;
   overflow: hidden;
 }
@@ -2941,27 +2941,27 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  margin-bottom: 1.5rem;
+  gap: 0.75rem;
+  margin-bottom: 1.15rem;
 }
 
 .greeting-role-badge {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.72rem;
   font-weight: 800;
   letter-spacing: 0.08em;
   color: #ffffff;
   background: rgba(255, 255, 255, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 0.4rem 0.85rem;
-  border-radius: 8px;
+  padding: 0.3rem 0.65rem;
+  border-radius: 6px;
 }
 
 .live-clock-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.55rem;
-  padding: 0.4rem 0.95rem;
+  gap: 0.45rem;
+  padding: 0.3rem 0.75rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.15);
@@ -2970,7 +2970,7 @@ a {
 
 .clock-digits {
   font-family: var(--font-mono, monospace);
-  font-size: 0.95rem;
+  font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   color: #ffffff;
@@ -2981,20 +2981,20 @@ a {
 }
 
 .greeting-main-block {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .greeting-title-row {
   display: flex;
   align-items: center;
-  gap: 1.15rem;
-  margin-bottom: 1rem;
+  gap: 0.85rem;
+  margin-bottom: 0.75rem;
 }
 
 .greeting-icon-wrapper {
-  width: 52px;
-  height: 52px;
-  border-radius: 16px;
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.18);
   display: flex;
@@ -3010,7 +3010,7 @@ a {
 
 .greeting-heading {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.85rem;
+  font-size: 1.45rem;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: #ffffff !important;
@@ -3021,40 +3021,40 @@ a {
 .greeting-date-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
-  font-size: 0.92rem;
+  gap: 0.35rem;
+  font-size: 0.78rem;
   color: #94a3b8;
-  margin-top: 0.35rem;
+  margin-top: 0.25rem;
   font-weight: 600;
 }
 
 .greeting-description {
-  font-size: 1.05rem;
+  font-size: 0.88rem;
   color: #e2e8f0;
-  line-height: 1.65;
+  line-height: 1.55;
   margin: 0;
 }
 
 .telemetry-kpi-row {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
-  padding-top: 1.5rem;
+  gap: 0.75rem;
+  padding-top: 1.15rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .tele-kpi-box {
   background: rgba(2, 6, 23, 0.65);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 14px;
-  padding: 0.95rem 0.85rem;
+  border-radius: 10px;
+  padding: 0.65rem 0.5rem;
   text-align: center;
 }
 
 .tk-num {
   display: block;
   font-family: 'Space Grotesk', monospace;
-  font-size: 1.85rem;
+  font-size: 1.45rem;
   font-weight: 800;
   color: #ffffff;
   line-height: 1.15;
@@ -3063,40 +3063,40 @@ a {
 .tk-lbl {
   display: block;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.68rem;
   font-weight: 700;
   color: #94a3b8;
-  letter-spacing: 0.06em;
-  margin-top: 0.35rem;
+  letter-spacing: 0.05em;
+  margin-top: 0.25rem;
 }
 
 /* Telemetry Status Card */
 .telemetry-status-card {
-  padding: 1.75rem 2rem;
+  padding: 1.35rem 1.5rem;
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border: 1px solid rgba(255, 255, 255, 0.14);
-  border-radius: 24px;
+  border-radius: 20px;
 }
 
 .status-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 0.85rem;
-  margin-bottom: 1.35rem;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
 }
 
 .status-title-group {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
+  gap: 0.5rem;
 }
 
 .status-title-group h3 {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.15rem;
+  font-size: 0.95rem;
   font-weight: 700;
   color: #ffffff;
   margin: 0;
@@ -3109,20 +3109,20 @@ a {
 .status-tag-live {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.4rem;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   font-weight: 800;
   color: #ffffff;
   background: rgba(34, 197, 94, 0.15);
   border: 1px solid rgba(34, 197, 94, 0.4);
-  padding: 0.35rem 0.75rem;
+  padding: 0.25rem 0.6rem;
   border-radius: 9999px;
 }
 
 .pulse-dot-green {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #22c55e;
   box-shadow: 0 0 6px #22c55e;
@@ -3131,28 +3131,28 @@ a {
 .arena-nodes-list {
   display: flex;
   flex-direction: column;
-  gap: 0.95rem;
+  gap: 0.65rem;
 }
 
 .node-item {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1.15rem;
-  padding: 0.95rem 1.15rem;
+  gap: 0.85rem;
+  padding: 0.75rem 0.95rem;
   background: rgba(2, 6, 23, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 14px;
+  border-radius: 10px;
 }
 
 .node-left {
   display: flex;
   align-items: flex-start;
-  gap: 0.85rem;
+  gap: 0.65rem;
 }
 
 .node-icon {
-  margin-top: 3px;
+  margin-top: 2px;
   flex-shrink: 0;
 }
 
@@ -3161,7 +3161,7 @@ a {
 
 .node-left strong {
   display: block;
-  font-size: 1.02rem;
+  font-size: 0.88rem;
   font-weight: 700;
   color: #ffffff;
   line-height: 1.3;
@@ -3169,18 +3169,18 @@ a {
 
 .node-left span {
   display: block;
-  font-size: 0.88rem;
+  font-size: 0.76rem;
   color: #94a3b8;
-  margin-top: 0.2rem;
-  line-height: 1.45;
+  margin-top: 0.15rem;
+  line-height: 1.4;
 }
 
 .node-status-pill {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.78rem;
+  font-size: 0.7rem;
   font-weight: 800;
-  padding: 0.3rem 0.65rem;
-  border-radius: 8px;
+  padding: 0.22rem 0.5rem;
+  border-radius: 6px;
   letter-spacing: 0.04em;
   flex-shrink: 0;
 }
@@ -3200,13 +3200,13 @@ a {
 .telemetry-motto-box {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 1.1rem 1.5rem;
-  border-radius: 16px;
+  gap: 0.65rem;
+  padding: 0.85rem 1.15rem;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  font-size: 0.95rem;
-  line-height: 1.55;
+  font-size: 0.82rem;
+  line-height: 1.5;
   color: #cbd5e1;
 }
 
@@ -3218,29 +3218,29 @@ a {
 @media (max-width: 1024px) {
   .admin-split-container {
     grid-template-columns: 1fr;
-    gap: 2.25rem;
+    gap: 1.75rem;
   }
 }
 
 .admin-badge-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 1rem;
+  gap: 0.5rem;
+  padding: 0.35rem 0.85rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.18);
   color: #ffffff;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.82rem;
+  font-size: 0.74rem;
   font-weight: 700;
   letter-spacing: 0.06em;
-  margin-bottom: 1.25rem;
+  margin-bottom: 0.85rem;
 }
 
 .admin-badge-pill .live-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background: #38bdf8;
   box-shadow: 0 0 6px #38bdf8;
@@ -3248,34 +3248,34 @@ a {
 
 .admin-card-title {
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.2rem;
+  font-size: 1.65rem;
   font-weight: 800;
   letter-spacing: -0.02em;
   color: #ffffff !important;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
   text-shadow: none !important;
 }
 
 .admin-card-subtitle {
-  font-size: 1.05rem;
+  font-size: 0.88rem;
   color: #cbd5e1 !important;
-  line-height: 1.6;
-  margin-bottom: 2rem;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
 }
 
 .admin-role-tabs {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1rem;
-  margin-bottom: 1.75rem;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .role-tab-btn {
   display: flex;
   align-items: flex-start;
-  gap: 0.85rem;
-  padding: 1.1rem;
-  border-radius: 16px;
+  gap: 0.65rem;
+  padding: 0.85rem;
+  border-radius: 12px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.12);
   color: #cbd5e1;
@@ -3294,14 +3294,14 @@ a {
   background: rgba(37, 99, 235, 0.16);
   border-color: #3b82f6;
   color: #ffffff;
-  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
 }
 
 .role-tab-btn .tab-title {
   display: block;
   font-family: 'Space Grotesk', sans-serif;
   font-weight: 700;
-  font-size: 1.02rem;
+  font-size: 0.88rem;
   color: #ffffff !important;
 }
 
@@ -3311,38 +3311,38 @@ a {
 
 .role-tab-btn .tab-sub {
   display: block;
-  font-size: 0.88rem;
+  font-size: 0.75rem;
   color: #94a3b8;
-  margin-top: 0.25rem;
-  line-height: 1.4;
+  margin-top: 0.15rem;
+  line-height: 1.35;
 }
 
 .demo-credentials-banner {
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.65rem;
-  padding: 0.85rem 1.15rem;
-  border-radius: 14px;
+  gap: 0.5rem;
+  padding: 0.65rem 0.95rem;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.25rem;
 }
 
 .demo-tag {
-  font-size: 0.85rem;
+  font-size: 0.74rem;
   font-weight: 800;
   font-family: 'Space Grotesk', sans-serif;
   color: #60a5fa;
 }
 
 .demo-chip {
-  padding: 0.45rem 0.85rem;
+  padding: 0.35rem 0.65rem;
   border-radius: 9999px;
   background: rgba(255, 255, 255, 0.08);
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: #f8fafc;
-  font-size: 0.85rem;
+  font-size: 0.75rem;
   font-weight: 600;
   cursor: pointer;
   transition: all 0.2s;
@@ -3355,15 +3355,15 @@ a {
 }
 
 .admin-form .form-group {
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.15rem;
 }
 
 .admin-form label {
   display: block;
-  font-size: 1rem;
+  font-size: 0.86rem;
   font-weight: 700;
   color: #e2e8f0;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.35rem;
 }
 
 .input-icon-wrap {
@@ -3374,19 +3374,19 @@ a {
 
 .input-icon-wrap .input-icon {
   position: absolute;
-  left: 1rem;
+  left: 0.9rem;
   color: #94a3b8;
   pointer-events: none;
 }
 
 .admin-text-input {
   width: 100%;
-  padding: 1rem 1.15rem 1rem 2.85rem;
-  border-radius: 14px;
+  padding: 0.8rem 1rem 0.8rem 2.5rem;
+  border-radius: 10px;
   background: rgba(2, 6, 23, 0.7);
   border: 1px solid rgba(255, 255, 255, 0.16);
   color: #ffffff;
-  font-size: 1.05rem;
+  font-size: 0.92rem;
   font-family: inherit;
   transition: all 0.25s ease;
 }
@@ -3401,15 +3401,15 @@ a {
 .role-permissions-preview {
   display: flex;
   align-items: center;
-  gap: 0.65rem;
-  padding: 0.85rem 1.15rem;
-  border-radius: 12px;
+  gap: 0.5rem;
+  padding: 0.65rem 0.95rem;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  font-size: 0.95rem;
+  font-size: 0.8rem;
   color: #cbd5e1;
-  margin-bottom: 1.75rem;
-  line-height: 1.5;
+  margin-bottom: 1.25rem;
+  line-height: 1.45;
 }
 
 .preview-label {
@@ -3420,44 +3420,44 @@ a {
 .perm-badge {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem;
+  gap: 0.35rem;
   font-weight: 600;
 }
 
 .admin-submit-btn {
   width: 100%;
-  padding: 1.1rem 1.75rem;
-  border-radius: 14px;
+  padding: 0.85rem 1.35rem;
+  border-radius: 10px;
   background: #2563eb;
   border: 1px solid #3b82f6;
   color: #ffffff;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.08rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.02em;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.65rem;
   cursor: pointer;
   transition: all 0.25s ease;
-  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.35);
 }
 
 .admin-submit-btn:hover:not(:disabled) {
   background: #1d4ed8;
   border-color: #2563eb;
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(37, 99, 235, 0.45);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.45);
 }
 
 .admin-card-footer {
-  margin-top: 1.75rem;
+  margin-top: 1.25rem;
   text-align: center;
 }
 
 .back-to-site-link {
-  font-size: 0.95rem;
+  font-size: 0.84rem;
   font-weight: 600;
   color: #94a3b8;
   text-decoration: none;
@@ -3467,6 +3467,7 @@ a {
 .back-to-site-link:hover {
   color: #ffffff;
 }
+
 
 /* Light Mode Overrides for Admin Login */
 [data-theme="light"] .admin-portal-login-page {
@@ -4712,12 +4713,12 @@ a {
    ========================================================================= */
 .search-bar-wrap {
   position: relative;
-  width: 360px;
+  width: 290px;
 }
 
 .search-bar-wrap .search-icon {
   position: absolute;
-  left: 1rem;
+  left: 0.85rem;
   top: 50%;
   transform: translateY(-50%);
   color: #94a3b8;
@@ -4726,12 +4727,12 @@ a {
 
 .audit-search-input {
   width: 100%;
-  padding: 0.8rem 1rem 0.8rem 2.85rem;
-  border-radius: 12px;
+  padding: 0.55rem 0.85rem 0.55rem 2.35rem;
+  border-radius: 10px;
   background: rgba(15, 23, 42, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.14);
   color: #ffffff;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   font-family: inherit;
   outline: none;
   transition: all 0.2s ease;
@@ -4739,54 +4740,54 @@ a {
 
 .audit-search-input:focus {
   border-color: #3b82f6;
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.25);
+  box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
 }
 
 .audit-table-wrapper, .ledger-table-wrap {
   background: rgba(15, 23, 42, 0.85);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.12);
-  border-radius: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 14px;
   overflow-x: auto;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
 }
 
 .audit-table, .staff-ledger-table {
   width: 100%;
   border-collapse: collapse;
   text-align: left;
-  font-size: 0.92rem;
+  font-size: 0.82rem;
 }
 
 .audit-table th, .staff-ledger-table th {
-  padding: 1.1rem 1.25rem;
+  padding: 0.75rem 0.95rem;
   background: #0b1120;
   color: #94a3b8;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 800;
+  font-size: 0.7rem;
+  font-weight: 700;
   text-transform: uppercase;
-  letter-spacing: 0.06em;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  letter-spacing: 0.05em;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   white-space: nowrap;
 }
 
 .audit-table td, .staff-ledger-table td {
-  padding: 1.15rem 1.25rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.75rem 0.95rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   color: #f8fafc;
   vertical-align: middle;
 }
 
 .audit-row:hover, .staff-ledger-table tr:hover {
-  background: rgba(255, 255, 255, 0.03);
+  background: rgba(255, 255, 255, 0.025);
 }
 
 .booking-id-tag {
   font-family: var(--font-mono, monospace);
-  font-size: 0.92rem;
-  font-weight: 800;
+  font-size: 0.82rem;
+  font-weight: 700;
   color: #38bdf8;
   letter-spacing: 0.02em;
 }
@@ -4794,41 +4795,41 @@ a {
 .source-badge, .source-pill {
   display: inline-flex;
   align-items: center;
-  padding: 0.35rem 0.7rem;
-  border-radius: 8px;
+  padding: 0.22rem 0.55rem;
+  border-radius: 6px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.04em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.03em;
   white-space: nowrap;
 }
 
 .source-badge.source-web, .source-pill.web {
   background: rgba(56, 189, 248, 0.12);
   color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.35);
+  border: 1px solid rgba(56, 189, 248, 0.3);
 }
 
 .source-badge.source-pos, .source-pill.pos {
   background: rgba(34, 197, 94, 0.12);
   color: #4ade80;
-  border: 1px solid rgba(34, 197, 94, 0.35);
+  border: 1px solid rgba(34, 197, 94, 0.3);
 }
 
 .table-customer-cell {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.15rem;
 }
 
 .customer-name {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 700;
   color: #ffffff;
 }
 
 .customer-contact {
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   color: #94a3b8;
   font-family: var(--font-mono, monospace);
 }
@@ -4836,48 +4837,48 @@ a {
 .table-item-cell {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.15rem;
 }
 
 .item-title {
-  font-size: 0.95rem;
+  font-size: 0.85rem;
   font-weight: 600;
   color: #f8fafc;
 }
 
 .item-branch-tag {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: #94a3b8;
 }
 
 .table-slot-cell {
   display: flex;
   flex-direction: column;
-  gap: 0.3rem;
+  gap: 0.15rem;
 }
 
 .slot-date-text {
-  font-size: 0.88rem;
+  font-size: 0.8rem;
   font-weight: 600;
   color: #cbd5e1;
 }
 
 .slot-time-pill {
-  font-size: 0.82rem;
+  font-size: 0.75rem;
   font-weight: 700;
   color: #38bdf8;
 }
 
 .squad-count-text {
-  font-size: 0.92rem;
+  font-size: 0.82rem;
   font-weight: 600;
   color: #e2e8f0;
   white-space: nowrap;
 }
 
 .table-total-amt {
-  font-size: 1.02rem;
-  font-weight: 800;
+  font-size: 0.88rem;
+  font-weight: 700;
   color: #ffffff;
   white-space: nowrap;
 }
@@ -4885,24 +4886,24 @@ a {
 .table-payment-cell {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.15rem;
   white-space: nowrap;
 }
 
 .paid-tag {
-  font-size: 0.88rem;
+  font-size: 0.78rem;
   font-weight: 700;
   color: #4ade80;
 }
 
 .due-tag {
-  font-size: 0.84rem;
+  font-size: 0.76rem;
   font-weight: 700;
   color: #fbbf24;
 }
 
 .settled-tag {
-  font-size: 0.8rem;
+  font-size: 0.74rem;
   font-weight: 600;
   color: #94a3b8;
 }
@@ -4911,12 +4912,12 @@ a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.35rem 0.8rem;
+  padding: 0.22rem 0.6rem;
   border-radius: 9999px;
   font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.74rem;
-  font-weight: 800;
-  letter-spacing: 0.05em;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   text-transform: uppercase;
   white-space: nowrap;
 }
@@ -4924,19 +4925,19 @@ a {
 .table-status-pill.status-confirmed, .audit-status-badge.confirmed, .status-pill.confirmed {
   background: rgba(34, 197, 94, 0.15);
   color: #4ade80;
-  border: 1px solid rgba(34, 197, 94, 0.4);
+  border: 1px solid rgba(34, 197, 94, 0.35);
 }
 
 .table-status-pill.status-checked_in, .audit-status-badge.checked_in, .status-pill.checked_in {
   background: rgba(56, 189, 248, 0.15);
   color: #38bdf8;
-  border: 1px solid rgba(56, 189, 248, 0.4);
+  border: 1px solid rgba(56, 189, 248, 0.35);
 }
 
 .table-status-pill.status-cancelled, .audit-status-badge.cancelled, .status-pill.cancelled {
   background: rgba(239, 68, 68, 0.15);
   color: #f87171;
-  border: 1px solid rgba(239, 68, 68, 0.4);
+  border: 1px solid rgba(239, 68, 68, 0.35);
 }
 
 /* Light Mode Overrides for Tables & Audits */
@@ -4944,32 +4945,32 @@ a {
   background: #ffffff !important;
   border: 1px solid rgba(15, 23, 42, 0.15) !important;
   color: #0f172a !important;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04) !important;
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.03) !important;
 }
 
 [data-theme="light"] .audit-search-input:focus {
   border-color: #2563eb !important;
-  box-shadow: 0 0 15px rgba(37, 99, 235, 0.2) !important;
+  box-shadow: 0 0 10px rgba(37, 99, 235, 0.15) !important;
 }
 
 [data-theme="light"] .audit-table-wrapper,
 [data-theme="light"] .ledger-table-wrap {
   background: #ffffff !important;
-  border: 1px solid rgba(15, 23, 42, 0.12) !important;
-  box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05) !important;
+  border: 1px solid rgba(15, 23, 42, 0.1) !important;
+  box-shadow: 0 6px 20px rgba(15, 23, 42, 0.04) !important;
 }
 
 [data-theme="light"] .audit-table th,
 [data-theme="light"] .staff-ledger-table th {
   background: #f8fafc !important;
   color: #475569 !important;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.1) !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
 }
 
 [data-theme="light"] .audit-table td,
 [data-theme="light"] .staff-ledger-table td {
   background: #ffffff !important;
-  border-bottom: 1px solid rgba(15, 23, 42, 0.08) !important;
+  border-bottom: 1px solid rgba(15, 23, 42, 0.06) !important;
   color: #0f172a !important;
 }
 
