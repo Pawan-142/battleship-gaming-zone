@@ -137,6 +137,21 @@
   padding: 0;
 }
 
+/* Prevent native browser drag ghost previews and drag payloads on all links, images, buttons, and UI components */
+a, img, button, [role="button"], .battleship-cta-pill, .battleship-preview-card, .glass-card, .brand-logo {
+  -webkit-user-drag: none;
+  -khtml-user-drag: none;
+  -moz-user-drag: none;
+  -o-user-drag: none;
+  user-drag: none;
+}
+
+/* Disallow dragging text selection on UI buttons and cards */
+a, button, .battleship-cta-pill, .btn-cyber, .battleship-preview-card, .brand-logo, .dock-item {
+  user-select: none;
+  -webkit-user-select: none;
+}
+
 /* Custom Cyber Selection Glow (Prevents harsh default black selection boxes) */
 ::selection {
   background: rgba(0, 240, 255, 0.35);
