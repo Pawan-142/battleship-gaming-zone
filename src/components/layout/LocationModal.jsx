@@ -1,19 +1,6 @@
-import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from '../../context/LocationContext';
-import { 
-  X, 
-  MapPin, 
-  Check, 
-  Clock, 
-  Phone, 
-  Sparkles,
-  Navigation,
-  Car,
-  Zap,
-  Building2,
-  Compass
-} from 'lucide-react';
+import { X, MapPin, Check, Clock, Phone, Sparkles, Compass } from 'lucide-react';
 
 export const LocationModal = () => {
   const { 

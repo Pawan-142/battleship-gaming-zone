@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAdminAuth, ROLES } from '../context/AdminAuthContext';
@@ -6,44 +6,7 @@ import { useAdminStore } from '../context/AdminStoreContext';
 import { useBooking } from '../context/BookingContext';
 import { useTheme } from '../context/ThemeContext';
 import { formatCurrency } from '../utils/formatters';
-import { 
-  ShieldCheck, 
-  Gamepad2, 
-  Tag, 
-  Package, 
-  TrendingUp, 
-  Users, 
-  Calendar, 
-  Clock, 
-  Plus, 
-  Edit2, 
-  Trash2, 
-  CheckCircle2, 
-  X, 
-  Save, 
-  Sparkles, 
-  DollarSign, 
-  Layers, 
-  Eye, 
-  Search, 
-  Filter, 
-  LogOut, 
-  ExternalLink,
-  ChevronRight,
-  Zap,
-  Flame,
-  AlertCircle,
-  Video,
-  Image as ImageIcon,
-  RotateCcw,
-  MapPin,
-  Building2,
-  Phone,
-  Mail,
-  Navigation,
-  Sun,
-  Moon
-} from 'lucide-react';
+import { ShieldCheck, Gamepad2, Tag, Package, TrendingUp, Users, Clock, Plus, Edit2, Trash2, CheckCircle2, X, Save, DollarSign, Layers, Search, Filter, LogOut, ExternalLink, ChevronRight, Video, MapPin, Building2, Phone, Navigation, Sun, Moon } from 'lucide-react';
 
 export const AdminOwnerDashboard = () => {
   const { currentAdmin, logout, isOwner } = useAdminAuth();

@@ -1,20 +1,10 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useSearchParams, Link } from 'react-router-dom';
 import { useBooking } from '../context/BookingContext';
 import { QRCodeCard } from '../components/common/QRCodeCard';
 import { formatCurrency, formatDateDisplay } from '../utils/formatters';
 import confetti from 'canvas-confetti';
-import { 
-  CheckCircle2, 
-  Calendar, 
-  MapPin, 
-  Clock, 
-  Users, 
-  Share2, 
-  Printer, 
-  Ticket, 
-  ShieldCheck 
-} from 'lucide-react';
+import { CheckCircle2, Calendar, MapPin, Users, Share2, Printer, Ticket } from 'lucide-react';
 
 export const ConfirmationPage = () => {
   const [searchParams] = useSearchParams();

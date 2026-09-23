@@ -1,50 +1,16 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { motion, AnimatePresence, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
 import { useTheme } from '../context/ThemeContext';
 import { gamesData } from '../data/gamesData';
 import { packagesData } from '../data/packagesData';
-import { offersData } from '../data/offersData';
-import { reviewsData, arenaTrustMetrics } from '../data/reviewsData';
+
+
 import { formatCurrency } from '../utils/formatters';
-import { ParallaxCard } from '../components/common/ParallaxCard';
-import { 
-  TextEffect, 
-  TextScramble, 
-  BorderTrail, 
-  GlowEffect, 
-  InView, 
-  SlidingNumber,
-  AnimatedGroup,
-  TransitionPanel,
-  SmoothParallax,
-  ParallaxImage,
-  TiltCard,
-  MagneticButton
-} from '../components/motion';
-import { 
-  Zap, 
-  MapPin, 
-  Calendar, 
-  ArrowRight, 
-  ShieldCheck, 
-  Users, 
-  Clock, 
-  Sparkles, 
-  Star, 
-  ChevronRight,
-  ExternalLink,
-  Award,
-  CheckCircle2,
-  Ticket,
-  Flame,
-  Radio,
-  Navigation,
-  Compass,
-  Car,
-  Play
-} from 'lucide-react';
+
+import { InView, AnimatedGroup, TransitionPanel, TiltCard, MagneticButton } from '../components/motion';
+import { Zap, MapPin, Calendar, ArrowRight, ShieldCheck, Users, Clock, Star, ExternalLink, CheckCircle2 } from 'lucide-react';
 
 export const HomePage = () => {
   const { currentBranch, branches, setIsLocationModalOpen } = useLocation();

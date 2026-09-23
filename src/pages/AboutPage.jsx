@@ -1,8 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { ShieldCheck, Users, Zap, Target, Sparkles, ArrowUpRight, Award, Clock } from 'lucide-react';
+import { ShieldCheck, Users, Zap, Target, Sparkles, ArrowUpRight } from 'lucide-react';
 import { TextEffect } from '../components/motion/TextEffect';
-import { BorderTrail } from '../components/motion/BorderTrail';
+
 
 export const AboutPage = () => {
   return (

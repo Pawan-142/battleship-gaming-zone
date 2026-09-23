@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { galleryCategories, galleryItems } from '../data/galleryData';
 import { Lightbox } from '../components/common/Lightbox';
 import { TiltCard } from '../components/motion/TiltCard';
 import { TextEffect } from '../components/motion/TextEffect';
-import { Eye, ArrowUpRight } from 'lucide-react';
+import { Eye } from 'lucide-react';
 
 export const GalleryPage = () => {
   const [selectedCategory, setSelectedCategory] = useState("All");

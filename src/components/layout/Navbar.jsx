@@ -1,24 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, NavLink, useLocation as useRouterLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from '../../context/LocationContext';
 import { useBooking } from '../../context/BookingContext';
 import { useTheme } from '../../context/ThemeContext';
-import { 
-  MapPin, 
-  Calendar, 
-  Menu, 
-  X, 
-  ChevronDown, 
-  Zap,
-  Activity,
-  Sun,
-  Moon,
-  Sparkles,
-  ShieldCheck,
-  Compass
-} from 'lucide-react';
-import { BorderTrail } from '../motion';
+import { MapPin, Calendar, Menu, X, ChevronDown, Sun, Moon } from 'lucide-react';
+
 
 export const Navbar = () => {
   const { currentBranch, setIsLocationModalOpen } = useLocation();

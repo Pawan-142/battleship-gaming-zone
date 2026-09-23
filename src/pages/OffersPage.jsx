@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { offersData } from '../data/offersData';
@@ -6,7 +6,7 @@ import { useLocation } from '../context/LocationContext';
 import { TiltCard } from '../components/motion/TiltCard';
 import { MagneticButton } from '../components/motion/MagneticButton';
 import { TextEffect } from '../components/motion/TextEffect';
-import { Copy, Check, Clock, Calendar, Zap, Sparkles } from 'lucide-react';
+import { Copy, Check, Clock } from 'lucide-react';
 
 export const OffersPage = () => {
   const { currentBranch } = useLocation();

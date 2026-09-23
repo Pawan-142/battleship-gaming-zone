@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
-import { Download, QrCode as QrIcon, CheckCircle2 } from 'lucide-react';
+import { useEffect, useRef } from 'react';
+import { Download, CheckCircle2 } from 'lucide-react';
 
 // Generates an interactive visual matrix code on HTML5 Canvas representing the ticket token
 export const QRCodeCard = ({ qrToken, bookingId, customerName }) => {

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
@@ -8,17 +7,7 @@ import { TiltCard } from '../components/motion/TiltCard';
 import { TextEffect } from '../components/motion/TextEffect';
 import { BorderTrail } from '../components/motion/BorderTrail';
 import { MagneticButton } from '../components/motion/MagneticButton';
-import { 
-  CheckCircle2, 
-  Users, 
-  Clock, 
-  Calendar,
-  Building2,
-  ArrowUpRight,
-  ShieldCheck,
-  Zap,
-  Sparkles
-} from 'lucide-react';
+import { CheckCircle2, Users, Clock, Building2, ArrowUpRight, ShieldCheck } from 'lucide-react';
 
 export const PackagesPage = () => {
   const { currentBranch } = useLocation();

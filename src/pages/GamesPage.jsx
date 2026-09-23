@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
@@ -6,19 +6,8 @@ import { gamesData } from '../data/gamesData';
 import { formatCurrency } from '../utils/formatters';
 import { TiltCard } from '../components/motion/TiltCard';
 import { TextEffect } from '../components/motion/TextEffect';
-import { BorderTrail } from '../components/motion/BorderTrail';
-import { 
-  Search, 
-  Clock, 
-  Users, 
-  ShieldCheck, 
-  Star, 
-  MapPin, 
-  ArrowUpRight,
-  Zap,
-  Flame,
-  Activity
-} from 'lucide-react';
+
+import { Search, Clock, Users, Star, MapPin, ArrowUpRight, Zap } from 'lucide-react';
 
 export const GamesPage = () => {
   const { currentBranch } = useLocation();

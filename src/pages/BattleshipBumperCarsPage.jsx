@@ -1,8 +1,8 @@
-import React, { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { BattleshipHeader } from '../components/battleship/BattleshipHeader';
 import { BumperCarCinematic } from '../components/battleship/BumperCarCinematic';
 import { BattleshipBookingPanel } from '../components/battleship/BattleshipBookingPanel';
-import { MapPin, Phone, Clock, Navigation, ArrowUpRight } from 'lucide-react';
+import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import '../components/battleship/Battleship.css';
 
 export const BattleshipBumperCarsPage = () => {

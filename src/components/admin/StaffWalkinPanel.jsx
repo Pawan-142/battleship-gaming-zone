@@ -1,20 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useBooking } from '../../context/BookingContext';
 import { useLocation } from '../../context/LocationContext';
 import { gamesData } from '../../data/gamesData';
 import { generateDailyTimeSlots, getTodayDateString, formatCurrency } from '../../utils/formatters';
-import { 
-  ShieldAlert, 
-  UserCheck, 
-  Zap, 
-  X, 
-  PlusCircle, 
-  Radio, 
-  RefreshCw,
-  CheckCircle,
-  Clock,
-  Layers
-} from 'lucide-react';
+import { X, PlusCircle, CheckCircle } from 'lucide-react';
 
 export const StaffWalkinPanel = () => {
   const { createStaffWalkinBooking, allBookings, slotHolds, checkSlotAvailability } = useBooking();

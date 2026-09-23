@@ -1,20 +1,8 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from '../context/LocationContext';
-import { 
-  MapPin, 
-  Clock, 
-  Phone, 
-  Mail, 
-  ArrowUpRight, 
-  Car, 
-  Calendar,
-  Sparkles,
-  CheckCircle2,
-  ShieldCheck
-} from 'lucide-react';
+import { MapPin, Clock, Phone, ArrowUpRight, Car, CheckCircle2 } from 'lucide-react';
 import { TextEffect } from '../components/motion/TextEffect';
-import { BorderTrail } from '../components/motion/BorderTrail';
+
 
 export const LocationsPage = () => {
   const { locationsHierarchy, selectBranch, currentBranch } = useLocation();

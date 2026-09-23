@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { X, ChevronLeft, ChevronRight } from 'lucide-react';
 
 export const Lightbox = ({ items, currentIndex, onClose, onPrev, onNext }) => {

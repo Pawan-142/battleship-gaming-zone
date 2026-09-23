@@ -1,17 +1,6 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from '../../context/LocationContext';
-import { 
-  Zap, 
-  MapPin, 
-  Phone, 
-  Mail, 
-  Clock, 
-  ShieldCheck, 
-  ExternalLink,
-  Award,
-  QrCode
-} from 'lucide-react';
+import { MapPin, Phone, ShieldCheck, ExternalLink, Award, QrCode } from 'lucide-react';
 
 export const Footer = () => {
   const { branches } = useLocation();

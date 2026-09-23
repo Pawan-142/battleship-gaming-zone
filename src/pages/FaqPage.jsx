@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { faqData, venueRules } from '../data/policiesData';
 import { ChevronDown, ChevronUp, ShieldCheck, Calendar } from 'lucide-react';

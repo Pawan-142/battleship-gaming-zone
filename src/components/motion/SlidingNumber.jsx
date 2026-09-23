@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { motion, useSpring, useTransform } from 'framer-motion';
+import { useEffect, useState } from 'react';
+import { useSpring, useTransform } from 'framer-motion';
 import { cn } from '../../lib/utils';
 
 export const SlidingNumber = ({

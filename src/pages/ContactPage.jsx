@@ -1,20 +1,8 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useLocation } from '../context/LocationContext';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  MapPin, 
-  Phone, 
-  Mail,
-  Send, 
-  CheckCircle2, 
-  MessageSquare,
-  Building2,
-  Clock,
-  ArrowUpRight,
-  ShieldCheck,
-  ChevronDown
-} from 'lucide-react';
+import { MapPin, Phone, Mail, CheckCircle2, MessageSquare, Building2, Clock, ArrowUpRight, ShieldCheck, ChevronDown } from 'lucide-react';
 import { TextEffect } from '../components/motion/TextEffect';
 import { BorderTrail } from '../components/motion/BorderTrail';
 

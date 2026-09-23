@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useSearchParams, useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useLocation } from '../context/LocationContext';
@@ -6,22 +6,8 @@ import { useBooking } from '../context/BookingContext';
 import { useAdminStore } from '../context/AdminStoreContext';
 import { gamesData as defaultGames } from '../data/gamesData';
 import { packagesData as defaultPackages } from '../data/packagesData';
-import { 
-  generateDailyTimeSlots, 
-  getTodayDateString, 
-  getFutureDateString, 
-  formatCurrency, 
-  formatDateDisplay 
-} from '../utils/formatters';
-import { 
-  Calendar, 
-  MapPin, 
-  Clock, 
-  Users, 
-  AlertCircle, 
-  ArrowRight,
-  ShieldCheck
-} from 'lucide-react';
+import { generateDailyTimeSlots, getTodayDateString, getFutureDateString, formatCurrency, formatDateDisplay } from '../utils/formatters';
+import { Calendar, MapPin, Clock, Users, AlertCircle, ArrowRight, ShieldCheck } from 'lucide-react';
 
 export const BookingPage = () => {
   const [searchParams] = useSearchParams();

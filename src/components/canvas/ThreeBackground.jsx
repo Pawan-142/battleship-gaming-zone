@@ -1,5 +1,3 @@
-import React from 'react';
-
 /**
  * Architectural Luxury Ambient Backdrop (Forge Automotive Style)
  * Pure, high-performance backdrop with zero wireframe or particle clutter.

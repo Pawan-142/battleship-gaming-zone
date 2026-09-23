@@ -1,21 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { gamesData, getGameBySlug } from '../data/gamesData';
 import { useLocation } from '../context/LocationContext';
 import { getBranchById } from '../data/branchesData';
 import { formatCurrency } from '../utils/formatters';
-import { 
-  Zap, 
-  Clock, 
-  Users, 
-  ShieldCheck, 
-  MapPin, 
-  Star, 
-  CheckCircle2, 
-  HelpCircle, 
-  Calendar,
-  ArrowRight
-} from 'lucide-react';
+import { Clock, Users, ShieldCheck, MapPin, CheckCircle2, HelpCircle, Calendar } from 'lucide-react';
 
 export const GameDetailPage = () => {
   const { slug } = useParams();

@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import { createContext, useContext, useState, useEffect } from 'react';
 import { gamesData as initialGames } from '../data/gamesData';
 import { offersData as initialOffers } from '../data/offersData';
 import { packagesData as initialPackages } from '../data/packagesData';

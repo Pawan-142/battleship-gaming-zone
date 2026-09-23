@@ -1,23 +1,6 @@
-import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  ShieldCheck, 
-  Lock, 
-  Smartphone, 
-  CreditCard, 
-  Building, 
-  Wallet, 
-  CheckCircle2, 
-  X, 
-  QrCode, 
-  Zap, 
-  AlertCircle, 
-  RefreshCw,
-  ArrowRight,
-  Sparkles,
-  Copy,
-  Check
-} from 'lucide-react';
+import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { ShieldCheck, Lock, CreditCard, Building, Wallet, CheckCircle2, X, QrCode, Zap, AlertCircle, ArrowRight, Copy, Check } from 'lucide-react';
 import { formatCurrency } from '../../utils/formatters';
 
 export const MockGatewayModal = ({

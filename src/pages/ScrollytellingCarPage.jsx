@@ -1,25 +1,7 @@
-import React, { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion, useScroll, useSpring, useTransform, AnimatePresence } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Volume2, 
-  VolumeX, 
-  Play, 
-  Pause, 
-  RotateCcw, 
-  Gauge, 
-  Battery, 
-  Compass, 
-  Zap, 
-  ShieldCheck, 
-  Calendar, 
-  ChevronRight, 
-  Sparkles,
-  Layers,
-  Crosshair,
-  Info
-} from 'lucide-react';
+import { ArrowLeft, Volume2, VolumeX, Play, Pause, Gauge, Battery, Compass, Zap, Calendar, ChevronRight, Layers, Crosshair } from 'lucide-react';
 import { BorderTrail } from '../components/motion/BorderTrail';
 import './Scrollytelling.css';
 

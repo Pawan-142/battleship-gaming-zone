@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useBooking } from '../context/BookingContext';
 import { useAdminStore } from '../context/AdminStoreContext';
@@ -9,32 +9,8 @@ import { validateCoupon as defaultValidateCoupon } from '../data/offersData';
 import { formatCurrency, formatDateDisplay } from '../utils/formatters';
 import { CountdownTimer } from '../components/common/CountdownTimer';
 import { MockGatewayModal } from '../components/common/MockGatewayModal';
-import { 
-  initiateRazorpayPayment, 
-  getRazorpayKey, 
-  setRazorpayKey 
-} from '../services/paymentService';
-import { 
-  ShieldCheck, 
-  Lock, 
-  CreditCard, 
-  Smartphone, 
-  Building, 
-  Wallet, 
-  Tag, 
-  CheckCircle2, 
-  AlertTriangle,
-  Info,
-  MapPin,
-  Calendar,
-  Clock,
-  Users,
-  QrCode,
-  Zap,
-  Settings,
-  Sparkles,
-  ExternalLink
-} from 'lucide-react';
+import { initiateRazorpayPayment, getRazorpayKey, setRazorpayKey } from '../services/paymentService';
+import { ShieldCheck, Lock, CreditCard, Smartphone, Building, Wallet, Tag, CheckCircle2, AlertTriangle, MapPin, Calendar, Clock, Users, Zap, Settings } from 'lucide-react';
 import { BorderTrail } from '../components/motion/BorderTrail';
 
 export const CheckoutPage = () => {

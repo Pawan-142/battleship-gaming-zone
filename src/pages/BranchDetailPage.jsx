@@ -1,19 +1,9 @@
-import React from 'react';
 import { useParams, Link } from 'react-router-dom';
 import { getBranchById } from '../data/branchesData';
 import { gamesData } from '../data/gamesData';
 import { useLocation } from '../context/LocationContext';
-import { formatCurrency } from '../utils/formatters';
-import { 
-  MapPin, 
-  Clock, 
-  Phone, 
-  Navigation, 
-  Car, 
-  Calendar, 
-  CheckCircle2,
-  Users
-} from 'lucide-react';
+
+import { MapPin, Clock, Phone, Navigation, Car, Calendar, CheckCircle2 } from 'lucide-react';
 
 export const BranchDetailPage = () => {
   const { branchId } = useParams();

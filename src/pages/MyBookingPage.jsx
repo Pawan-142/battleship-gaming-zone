@@ -1,20 +1,9 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useBooking } from '../context/BookingContext';
 import { QRCodeCard } from '../components/common/QRCodeCard';
 import { formatCurrency, formatDateDisplay } from '../utils/formatters';
-import { 
-  Search, 
-  Ticket, 
-  MapPin, 
-  Calendar, 
-  Clock, 
-  Users, 
-  CheckCircle2, 
-  XCircle, 
-  AlertCircle,
-  Printer
-} from 'lucide-react';
+import { Search, MapPin, Calendar, Clock, CheckCircle2, XCircle, AlertCircle, Printer } from 'lucide-react';
 
 export const MyBookingPage = () => {
   const { lookupBooking, cancelBooking } = useBooking();

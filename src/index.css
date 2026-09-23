@@ -256,12 +256,15 @@ body,
 }
 
 .main-content {
+  flex: 1;
   padding-top: var(--header-offset);
   min-height: calc(100vh - 200px);
 }
 
+
 /* Unified Glass Card - Lightweight & Architectural */
 .glass-card {
+  position: relative;
   background: rgba(14, 19, 29, 0.5);
   border: 1px solid var(--border-subtle);
   border-radius: var(--radius-sm);
@@ -304,10 +307,6 @@ body,
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
-[data-theme="light"] .logo-brand-main {
-  color: #090d16;
-}
-
 [data-theme="light"] .nav-item {
   color: #475569;
 }
@@ -325,11 +324,6 @@ body,
 
 [data-theme="light"] .loc-title {
   color: #090d16;
-}
-
-[data-theme="light"] .layered-bg-text {
-  -webkit-text-stroke: 1px rgba(15, 23, 42, 0.05);
-  text-shadow: none;
 }
 
 /* Typography Hierarchy - Forge Editorial Lightweight Style */
@@ -377,11 +371,6 @@ a {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
-
-.main-content {
-  flex: 1;
-  padding-top: calc(var(--nav-height) + var(--ticker-height));
 }
 
 .container {
@@ -1213,22 +1202,8 @@ a {
 }
 
 /* ==========================================================================
-   UNIFIED CARDS & SURFACES
+   INTERACTIVE CARDS & SURFACES
    ========================================================================== */
-.glass-card {
-  background: var(--bg-card);
-  border: 1px solid var(--border-subtle);
-  border-radius: var(--radius-sm);
-  padding: 1.75rem;
-  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  position: relative;
-}
-
-.glass-card:hover {
-  border-color: var(--border-strong);
-  background: var(--bg-card-hover);
-}
-
 .glass-card-interactive:hover {
   transform: translateY(-3px);
   border-color: var(--cyan-primary);

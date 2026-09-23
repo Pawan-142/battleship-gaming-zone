@@ -1,7 +1,6 @@
-import React from 'react';
 import { Link, useLocation as useRouterLocation } from 'react-router-dom';
 import { useLocation } from '../../context/LocationContext';
-import { Calendar, MapPin, Sparkles } from 'lucide-react';
+import { Calendar, MapPin } from 'lucide-react';
 
 export const MobileStickyBar = () => {
   const { currentBranch, setIsLocationModalOpen } = useLocation();

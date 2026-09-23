@@ -1,32 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useAdminAuth, ROLES } from '../context/AdminAuthContext';
 import { useTheme } from '../context/ThemeContext';
-import { 
-  ShieldCheck, 
-  UserCheck, 
-  Lock, 
-  Mail, 
-  ArrowRight, 
-  Sparkles, 
-  CheckCircle2, 
-  AlertCircle,
-  KeyRound,
-  Gamepad2,
-  Building2,
-  Zap,
-  Clock,
-  Activity,
-  Radio,
-  Server,
-  Calendar,
-  Sun,
-  Moon,
-  Compass,
-  Flame,
-  ArrowLeft
-} from 'lucide-react';
+import { ShieldCheck, UserCheck, Lock, Mail, ArrowRight, Sparkles, AlertCircle, Building2, Clock, Radio, Server, Calendar, Sun, Moon, Flame, ArrowLeft } from 'lucide-react';
 
 export const AdminLoginPage = () => {
   const { login, ROLES, DEFAULT_ACCOUNTS } = useAdminAuth();

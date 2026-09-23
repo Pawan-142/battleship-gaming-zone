@@ -1,37 +1,13 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useAdminAuth, ROLES } from '../context/AdminAuthContext';
+import { useAdminAuth } from '../context/AdminAuthContext';
 import { useAdminStore } from '../context/AdminStoreContext';
 import { useBooking } from '../context/BookingContext';
 import { useTheme } from '../context/ThemeContext';
-import { branchesData as defaultBranches, getBranchById as defaultGetBranchById } from '../data/branchesData';
-import { formatCurrency, getTodayDateString, getFutureDateString } from '../utils/formatters';
-import { 
-  UserCheck, 
-  Search, 
-  QrCode, 
-  CheckCircle2, 
-  AlertCircle, 
-  Plus, 
-  Clock, 
-  Calendar, 
-  CreditCard, 
-  DollarSign, 
-  ShieldCheck, 
-  LogOut, 
-  ExternalLink,
-  ChevronRight,
-  Phone,
-  Mail,
-  Zap,
-  Ticket,
-  Printer,
-  X,
-  Layers,
-  Sun,
-  Moon
-} from 'lucide-react';
+import { branchesData as defaultBranches } from '../data/branchesData';
+import { formatCurrency, getTodayDateString } from '../utils/formatters';
+import { UserCheck, Search, QrCode, CheckCircle2, AlertCircle, Plus, Clock, Calendar, CreditCard, DollarSign, ShieldCheck, LogOut, Phone, Mail, Zap, Ticket, Printer, X, Layers, Sun, Moon } from 'lucide-react';
 
 export const StaffDeskPage = () => {
   const { currentAdmin, logout, isOwner } = useAdminAuth();

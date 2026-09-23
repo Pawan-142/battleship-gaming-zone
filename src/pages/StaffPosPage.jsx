@@ -1,21 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useBooking } from '../context/BookingContext';
 import { useLocation } from '../context/LocationContext';
 import { gamesData } from '../data/gamesData';
 import { generateDailyTimeSlots, getTodayDateString, formatCurrency } from '../utils/formatters';
-import { 
-  ShieldAlert, 
-  UserCheck, 
-  Zap, 
-  PlusCircle, 
-  Radio, 
-  RefreshCw,
-  CheckCircle,
-  Clock,
-  Layers,
-  ArrowUpRight
-} from 'lucide-react';
+import { PlusCircle, CheckCircle } from 'lucide-react';
 import { TextEffect } from '../components/motion/TextEffect';
 
 export const StaffPosPage = () => {
