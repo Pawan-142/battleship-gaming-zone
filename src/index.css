@@ -6028,13 +6028,147 @@ a {
 
 [data-theme="light"] .kpi-card,
 [data-theme="light"] .dashboard-card,
+[data-theme="light"] .owner-panel-card,
 [data-theme="light"] .owner-branch-card,
 [data-theme="light"] .owner-game-card,
 [data-theme="light"] .owner-offer-card,
-[data-theme="light"] .owner-pkg-card {
+[data-theme="light"] .owner-pkg-card,
+[data-theme="light"] .staff-lookup-hero-box,
+[data-theme="light"] .staff-ledger-view,
+[data-theme="light"] .slot-matrix-card {
   background: #ffffff !important;
   border: 1px solid rgba(15, 23, 42, 0.1) !important;
   box-shadow: 0 8px 24px rgba(15, 23, 42, 0.04) !important;
+}
+
+[data-theme="light"] .panel-card-head h3,
+[data-theme="light"] .lookup-header-text h2,
+[data-theme="light"] .matrix-header-row h2 {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .panel-card-head p,
+[data-theme="light"] .lookup-header-text p,
+[data-theme="light"] .matrix-header-row p {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .quick-action-item {
+  background: #f8fafc !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .quick-action-item:hover {
+  background: #f1f5f9 !important;
+  border-color: rgba(37, 99, 235, 0.3) !important;
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .action-icon-circle {
+  background: #eff6ff !important;
+  color: #2563eb !important;
+}
+
+[data-theme="light"] .action-item-text strong {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .action-item-text span {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .activity-item {
+  background: #f8fafc !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="light"] .activity-customer {
+  color: #090d16 !important;
+  font-weight: 700 !important;
+}
+
+[data-theme="light"] .activity-id {
+  color: #0284c7 !important;
+}
+
+[data-theme="light"] .activity-game {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .activity-price {
+  color: #090d16 !important;
+  font-weight: 800 !important;
+}
+
+[data-theme="light"] .activity-pill-badge.online {
+  background: #e0f2fe !important;
+  color: #0369a1 !important;
+}
+
+[data-theme="light"] .activity-pill-badge.walkin {
+  background: #dcfce7 !important;
+  color: #15803d !important;
+}
+
+[data-theme="light"] .btn-text {
+  background: transparent !important;
+  color: #2563eb !important;
+  border: 1px solid rgba(37, 99, 235, 0.2) !important;
+  border-radius: 6px !important;
+  padding: 0.25rem 0.6rem !important;
+}
+
+[data-theme="light"] .btn-text:hover {
+  background: #eff6ff !important;
+  color: #1d4ed8 !important;
+}
+
+[data-theme="light"] .btn-primary-cyan {
+  background: #2563eb !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.25) !important;
+}
+
+[data-theme="light"] .btn-primary-cyan:hover {
+  background: #1d4ed8 !important;
+}
+
+[data-theme="light"] .rates-table-strip {
+  background: #f8fafc !important;
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="light"] .rate-cell {
+  border-color: rgba(15, 23, 42, 0.08) !important;
+}
+
+[data-theme="light"] .rate-val {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .rate-lbl {
+  color: #64748b !important;
+}
+
+[data-theme="light"] .promo-code-box {
+  background: #eff6ff !important;
+  border-color: rgba(37, 99, 235, 0.25) !important;
+  color: #1d4ed8 !important;
+}
+
+[data-theme="light"] .branch-info-body h3,
+[data-theme="light"] .game-info-body h3,
+[data-theme="light"] .offer-info-body h3,
+[data-theme="light"] .pkg-info-body h3 {
+  color: #090d16 !important;
+}
+
+[data-theme="light"] .branch-address,
+[data-theme="light"] .game-desc,
+[data-theme="light"] .offer-desc,
+[data-theme="light"] .pkg-desc {
+  color: #475569 !important;
 }
 
 [data-theme="light"] .kpi-val,
@@ -6050,6 +6184,11 @@ a {
   color: #090d16 !important;
 }
 
+[data-theme="light"] .btn-edit-action:hover {
+  background: #f1f5f9 !important;
+  color: #2563eb !important;
+}
+
 [data-theme="light"] .meta-pill {
   background: #f1f5f9 !important;
   color: #475569 !important;
@@ -6059,6 +6198,7 @@ a {
   background: rgba(2, 132, 199, 0.1) !important;
   color: #0284c7 !important;
 }
+
 
 /* ==========================================================================
    ADMIN PORTAL TOP CONTROLS & THEME TOGGLES
