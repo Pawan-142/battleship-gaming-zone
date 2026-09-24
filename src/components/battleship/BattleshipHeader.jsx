@@ -8,8 +8,13 @@ export const BattleshipHeader = ({ onBookClick }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   useEffect(() => {
+    let prev = false;
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 40);
+      const next = window.scrollY > 40;
+      if (next !== prev) {
+        prev = next;
+        setIsScrolled(next);
+      }
     };
     window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);

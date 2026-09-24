@@ -764,16 +764,24 @@ export const BumperCarCinematic = ({ onBookClick, onExploreClick }) => {
 
   // Scroll listener mapped to 0 -> 1 progress
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      if (!containerRef.current) return;
-      const rect = containerRef.current.getBoundingClientRect();
-      const totalScrollable = rect.height - window.innerHeight;
-      if (totalScrollable <= 0) return;
-
-      const currentScroll = -rect.top;
-      const progress = Math.max(0, Math.min(1, currentScroll / totalScrollable));
-      setScrollProgress(progress);
-      updateChoreography(progress);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          if (containerRef.current) {
+            const rect = containerRef.current.getBoundingClientRect();
+            const totalScrollable = rect.height - window.innerHeight;
+            if (totalScrollable > 0) {
+              const currentScroll = -rect.top;
+              const progress = Math.max(0, Math.min(1, currentScroll / totalScrollable));
+              setScrollProgress(progress);
+              updateChoreography(progress);
+            }
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

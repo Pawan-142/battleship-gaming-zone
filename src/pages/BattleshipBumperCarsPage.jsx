@@ -6,26 +6,9 @@ import { MapPin, Phone, Clock, Navigation } from 'lucide-react';
 import '../components/battleship/Battleship.css';
 
 export const BattleshipBumperCarsPage = () => {
-  const [scrollY, setScrollY] = useState(0);
   const expSectionRef = useRef(null);
   const specsRef = useRef(null);
   const galleryRef = useRef(null);
-
-  // High-performance scroll parallax tracker
-  useEffect(() => {
-    let ticking = false;
-    const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrollY(window.scrollY);
-          ticking = false;
-        });
-        ticking = true;
-      }
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const scrollToBooking = () => {
     const el = document.getElementById('booking');

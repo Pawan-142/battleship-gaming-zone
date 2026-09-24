@@ -17,7 +17,6 @@ export const HomePage = () => {
   const { currentBranch, branches, setIsLocationModalOpen } = useLocation();
   const { isDark } = useTheme();
   const [activeExpTab, setActiveExpTab] = useState(gamesData[0].id);
-  const [scrollY, setScrollY] = useState(0);
   const [isCtaSwiping, setIsCtaSwiping] = useState(false);
 
   const handleCtaClick = (e) => {
@@ -76,14 +75,6 @@ export const HomePage = () => {
       }
     })
   };
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   return (
     <div className="home-page-root">
